@@ -1,0 +1,959 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Karakter Indonesia - Platform Tes Psikologi Online Terpercaya">
+    <meta name="author" content="Karakter Indonesia">
+
+    <title>Karakter Indonesia - Tes Psikologi Online</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/templatemo-topic-listing.css" rel="stylesheet">
+    
+    <style>
+        /* Custom Animations */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #13547a 0%, #80d0c7 100%);
+        }
+        
+        .stats-counter {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 10px); }
+            100% { transform: translate(0, -0px); }
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #13547a;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #13547a; }
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+    
+<body id="top">
+    <main>
+        <!-- Floating WhatsApp Button -->
+        <div class="fixed bottom-6 right-6 z-50">
+            <a href="https://wa.me/6281234567890" target="_blank" class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg pulse-animation flex items-center justify-center w-16 h-16">
+                <i class="bi-whatsapp text-xl"></i>
+            </a>
+        </div>
+
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="bi-psychology"></i>
+                    <span>Karakter Indonesia</span>
+                </a>
+
+                <div class="d-lg-none ms-auto me-4">
+                    <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                </div>
+    
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_1">Beranda</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_2">Layanan Tes</a>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_3">Cara Kerja</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_4">FAQ</a>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_5">Kontak</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lainnya</a>
+
+                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                <li><a class="dropdown-item" href="blog.html">Blog Psikologi</a></li>
+                                <li><a class="dropdown-item" href="konsultasi.html">Konsultasi</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="d-none d-lg-block">
+                        <a href="login.html" class="btn custom-btn">Masuk</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Hero Section -->
+        <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-12 mx-auto text-center">
+                        <h1 class="text-white mb-4 typewriter">Temukan Potensi Terbaik Anda</h1>
+                        <h6 class="text-white mb-5">Platform tes psikologi online terpercaya untuk pengembangan karir dan personal</h6>
+                        
+                        <div class="row mb-5">
+                            <div class="col-md-4 col-12 mb-3">
+                                <div class="bg-white rounded p-3 hover-lift">
+                                    <i class="bi-graph-up-arrow text-primary fs-1"></i>
+                                    <h5 class="mt-2">Tes Bakat & Minat</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-12 mb-3">
+                                <div class="bg-white rounded p-3 hover-lift">
+                                    <i class="bi-person-check text-primary fs-1"></i>
+                                    <h5 class="mt-2">Tes Kepribadian</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-12 mb-3">
+                                <div class="bg-white rounded p-3 hover-lift">
+                                    <i class="bi-briefcase text-primary fs-1"></i>
+                                    <h5 class="mt-2">Tes Rekrutmen</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text bi-search" id="basic-addon1"></span>
+                                <input name="keyword" type="search" class="form-control" id="keyword" placeholder="Cari jenis tes psikologi..." aria-label="Search">
+                                <button type="submit" class="form-control">Cari Tes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-3 col-6 mb-4">
+                        <div class="stats-counter text-primary">10,000+</div>
+                        <p class="text-muted">Pengguna Terdaftar</p>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4">
+                        <div class="stats-counter text-primary">50+</div>
+                        <p class="text-muted">Jenis Tes Tersedia</p>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4">
+                        <div class="stats-counter text-primary">98%</div>
+                        <p class="text-muted">Kepuasan Pengguna</p>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4">
+                        <div class="stats-counter text-primary">15+</div>
+                        <p class="text-muted">Psikolog Berpengalaman</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Section -->
+        <section class="featured-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-12 mb-4 mb-lg-0">
+                        <div class="custom-block bg-white shadow-lg hover-lift">
+                            <a href="tes-detail.html">
+                                <div class="d-flex">
+                                    <div>
+                                        <h5 class="mb-2">Tes Minat & Bakat</h5>
+                                        <p class="mb-0">Temukan potensi terpendam dan minat karir Anda dengan tes psikologi terpercaya.</p>
+                                    </div>
+                                    <span class="badge bg-design rounded-pill ms-auto">14</span>
+                                </div>
+                                <img src="images/topics/undraw_Career_development_re_sv91.png" class="custom-block-image img-fluid floating" alt="Tes Minat Bakat">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-12">
+                        <div class="custom-block custom-block-overlay">
+                            <div class="d-flex flex-column h-100">
+                                <img src="images/businesswoman-using-tablet-analysis.jpg" class="custom-block-image img-fluid" alt="Tes Kepribadian">
+
+                                <div class="custom-block-overlay-text d-flex">
+                                    <div>
+                                        <h5 class="text-white mb-2">Tes Kepribadian MBTI</h5>
+                                        <p class="text-white">Pahami kepribadian Anda lebih dalam dengan tes MBTI yang akurat. Cocok untuk pengembangan diri dan karir.</p>
+                                        <a href="tes-detail.html" class="btn custom-btn mt-2 mt-lg-3">Pelajari Lebih Lanjut</a>
+                                    </div>
+                                    <span class="badge bg-finance rounded-pill ms-auto">25</span>
+                                </div>
+
+                                <div class="social-share d-flex">
+                                    <p class="text-white me-4">Bagikan:</p>
+                                    <ul class="social-icon">
+                                        <li class="social-icon-item">
+                                            <a href="#" class="social-icon-link bi-twitter"></a>
+                                        </li>
+                                        <li class="social-icon-item">
+                                            <a href="#" class="social-icon-link bi-facebook"></a>
+                                        </li>
+                                        <li class="social-icon-item">
+                                            <a href="#" class="social-icon-link bi-pinterest"></a>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="custom-icon bi-bookmark ms-auto"></a>
+                                </div>
+
+                                <div class="section-overlay"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Explore Section -->
+        <section class="explore-section section-padding" id="section_2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2 class="mb-4">Jenis Tes Psikologi</h2>
+                        <p class="mb-5">Pilih jenis tes yang sesuai dengan kebutuhan Anda</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="bakat-tab" data-bs-toggle="tab" data-bs-target="#bakat-tab-pane" type="button" role="tab" aria-controls="bakat-tab-pane" aria-selected="true">Bakat & Minat</button>
+                        </li>
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="kepribadian-tab" data-bs-toggle="tab" data-bs-target="#kepribadian-tab-pane" type="button" role="tab" aria-controls="kepribadian-tab-pane" aria-selected="false">Kepribadian</button>
+                        </li>
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="intelegensi-tab" data-bs-toggle="tab" data-bs-target="#intelegensi-tab-pane" type="button" role="tab" aria-controls="intelegensi-tab-pane" aria-selected="false">Intelegensi</button>
+                        </li>
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="karir-tab" data-bs-toggle="tab" data-bs-target="#karir-tab-pane" type="button" role="tab" aria-controls="karir-tab-pane" aria-selected="false">Karir</button>
+                        </li>
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="klinis-tab" data-bs-toggle="tab" data-bs-target="#klinis-tab-pane" type="button" role="tab" aria-controls="klinis-tab-pane" aria-selected="false">Klinis</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="tab-content" id="myTabContent">
+                            <!-- Bakat & Minat Tab -->
+                            <div class="tab-pane fade show active" id="bakat-tab-pane" role="tabpanel" aria-labelledby="bakat-tab" tabindex="0">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                                        <div class="custom-block bg-white shadow-lg hover-lift">
+                                            <a href="tes-detail.html">
+                                                <div class="d-flex">
+                                                    <div>
+                                                        <h5 class="mb-2">Tes Holland (RIASEC)</h5>
+                                                        <p class="mb-0">Temukan kecocokan karir berdasarkan minat dan kepribadian Anda.</p>
+                                                    </div>
+                                                    <span class="badge bg-design rounded-pill ms-auto">14</span>
+                                                </div>
+                                                <img src="images/topics/undraw_Career_development_re_sv91.png" class="custom-block-image img-fluid" alt="Tes Holland">
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                                        <div class="custom-block bg-white shadow-lg hover-lift">
+                                            <a href="tes-detail.html">
+                                                <div class="d-flex">
+                                                    <div>
+                                                        <h5 class="mb-2">Multiple Intelligence</h5>
+                                                        <p class="mb-0">Identifikasi 8 jenis kecerdasan yang Anda miliki.</p>
+                                                    </div>
+                                                    <span class="badge bg-design rounded-pill ms-auto">75</span>
+                                                </div>
+                                                <img src="images/topics/undraw_Mindfulness_8gqa.png" class="custom-block-image img-fluid" alt="Multiple Intelligence">
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 col-12">
+                                        <div class="custom-block bg-white shadow-lg hover-lift">
+                                            <a href="tes-detail.html">
+                                                <div class="d-flex">
+                                                    <div>
+                                                        <h5 class="mb-2">Aptitude Test</h5>
+                                                        <p class="mb-0">Ukur potensi dan kemampuan dasar Anda dalam bidang tertentu.</p>
+                                                    </div>
+                                                    <span class="badge bg-design rounded-pill ms-auto">100</span>
+                                                </div>
+                                                <img src="images/topics/undraw_Problem_solving_re_4gq3.png" class="custom-block-image img-fluid" alt="Aptitude Test">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Kepribadian Tab -->
+                            <div class="tab-pane fade" id="kepribadian-tab-pane" role="tabpanel" aria-labelledby="kepribadian-tab" tabindex="0">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
+                                        <div class="custom-block bg-white shadow-lg hover-lift">
+                                            <a href="tes-detail.html">
+                                                <div class="d-flex">
+                                                    <div>
+                                                        <h5 class="mb-2">MBTI (Myers-Briggs)</h5>
+                                                        <p class="mb-0">Temukan tipe kepribadian Anda berdasarkan 16 tipe MBTI.</p>
+                                                    </div>
+                                                    <span class="badge bg-advertising rounded-pill ms-auto">30</span>
+                                                </div>
+                                                <img src="images/topics/undraw_Personal_notebook_re_d7dc.png" class="custom-block-image img-fluid" alt="MBTI">
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
+                                        <div class="custom-block bg-white shadow-lg hover-lift">
+                                            <a href="tes-detail.html">
+                                                <div class="d-flex">
+                                                    <div>
+                                                        <h5 class="mb-2">Big Five Personality</h5>
+                                                        <p class="mb-0">Ukur 5 dimensi utama kepribadian Anda.</p>
+                                                    </div>
+                                                    <span class="badge bg-advertising rounded-pill ms-auto">65</span>
+                                                </div>
+                                                <img src="images/topics/undraw_Profile_data_re_v81r.png" class="custom-block-image img-fluid" alt="Big Five">
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 col-12">
+                                        <div class="custom-block bg-white shadow-lg hover-lift">
+                                            <a href="tes-detail.html">
+                                                <div class="d-flex">
+                                                    <div>
+                                                        <h5 class="mb-2">DISC Assessment</h5>
+                                                        <p class="mb-0">Pahami gaya perilaku dan komunikasi Anda.</p>
+                                                    </div>
+                                                    <span class="badge bg-advertising rounded-pill ms-auto">50</span>
+                                                </div>
+                                                <img src="images/topics/undraw_Social_interaction_re_dyjh.png" class="custom-block-image img-fluid" alt="DISC">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Intelegensi Tab -->
+                            <div class="tab-pane fade" id="intelegensi-tab-pane" role="tabpanel" aria-labelledby="intelegensi-tab" tabindex="0">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-0">
+                                        <div class="custom-block bg-white shadow-lg hover-lift">
+                                            <a href="tes-detail.html">
+                                                <div class="d-flex">
+                                                    <div>
+                                                        <h5 class="mb-2">Tes IQ Standar</h5>
+                                                        <p class="mb-0">Ukur tingkat kecerdasan intelektual Anda.</p>
+                                                    </div>
+                                                    <span class="badge bg-finance rounded-pill ms-auto">30</span>
+                                                </div>
+                                                <img src="images/topics/undraw_Problem_solving_re_4gq3.png" class="custom-block-image img-fluid" alt="Tes IQ">
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="custom-block custom-block-overlay">
+                                            <div class="d-flex flex-column h-100">
+                                                <img src="images/businesswoman-using-tablet-analysis-graph-company-finance-strategy-statistics-success-concept-planning-future-office-room.jpg" class="custom-block-image img-fluid" alt="EQ Test">
+
+                                                <div class="custom-block-overlay-text d-flex">
+                                                    <div>
+                                                        <h5 class="text-white mb-2">Tes Kecerdasan Emosional (EQ)</h5>
+                                                        <p class="text-white">Ukur kemampuan Anda dalam memahami dan mengelola emosi.</p>
+                                                        <a href="tes-detail.html" class="btn custom-btn mt-2 mt-lg-3">Pelajari Lebih Lanjut</a>
+                                                    </div>
+                                                    <span class="badge bg-finance rounded-pill ms-auto">25</span>
+                                                </div>
+
+                                                <div class="social-share d-flex">
+                                                    <p class="text-white me-4">Bagikan:</p>
+                                                    <ul class="social-icon">
+                                                        <li class="social-icon-item">
+                                                            <a href="#" class="social-icon-link bi-twitter"></a>
+                                                        </li>
+                                                        <li class="social-icon-item">
+                                                            <a href="#" class="social-icon-link bi-facebook"></a>
+                                                        </li>
+                                                        <li class="social-icon-item">
+                                                            <a href="#" class="social-icon-link bi-pinterest"></a>
+                                                        </li>
+                                                    </ul>
+                                                    <a href="#" class="custom-icon bi-bookmark ms-auto"></a>
+                                                </div>
+
+                                                <div class="section-overlay"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Karir Tab -->
+                            <div class="tab-pane fade" id="karir-tab-pane" role="tabpanel" aria-labelledby="karir-tab" tabindex="0">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
+                                        <div class="custom-block bg-white shadow-lg hover-lift">
+                                            <a href="tes-detail.html">
+                                                <div class="d-flex">
+                                                    <div>
+                                                        <h5 class="mb-2">Career Anchors</h5>
+                                                        <p class="mb-0">Temukan nilai-nilai yang mendasari pilihan karir Anda.</p>
+                                                    </div>
+                                                    <span class="badge bg-music rounded-pill ms-auto">45</span>
+                                                </div>
+                                                <img src="images/topics/undraw_Job_offers_re_633p.png" class="custom-block-image img-fluid" alt="Career Anchors">
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
+                                        <div class="custom-block bg-white shadow-lg hover-lift">
+                                            <a href="tes-detail.html">
+                                                <div class="d-flex">
+                                                    <div>
+                                                        <h5 class="mb-2">Leadership Assessment</h5>
+                                                        <p class="mb-0">Ukur potensi kepemimpinan dan gaya memimpin Anda.</p>
+                                                    </div>
+                                                    <span class="badge bg-music rounded-pill ms-auto">45</span>
+                                                </div>
+                                                <img src="images/topics/undraw_Leadership_re_5ad7.png" class="custom-block-image img-fluid" alt="Leadership">
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 col-12">
+                                        <div class="custom-block bg-white shadow-lg hover-lift">
+                                            <a href="tes-detail.html">
+                                                <div class="d-flex">
+                                                    <div>
+                                                        <h5 class="mb-2">Team Role Assessment</h5>
+                                                        <p class="mb-0">Identifikasi peran terbaik Anda dalam sebuah tim.</p>
+                                                    </div>
+                                                    <span class="badge bg-music rounded-pill ms-auto">20</span>
+                                                </div>
+                                                <img src="images/topics/undraw_Team_page_re_cffb.png" class="custom-block-image img-fluid" alt="Team Role">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Klinis Tab -->
+                            <div class="tab-pane fade" id="klinis-tab-pane" role="tabpanel" aria-labelledby="klinis-tab" tabindex="0">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-3">
+                                        <div class="custom-block bg-white shadow-lg hover-lift">
+                                            <a href="tes-detail.html">
+                                                <div class="d-flex">
+                                                    <div>
+                                                        <h5 class="mb-2">Tes Depresi (BDI)</h5>
+                                                        <p class="mb-0">Screening awal untuk mendeteksi gejala depresi.</p>
+                                                    </div>
+                                                    <span class="badge bg-education rounded-pill ms-auto">80</span>
+                                                </div>
+                                                <img src="images/topics/undraw_Mindfulness_8gqa.png" class="custom-block-image img-fluid" alt="Depression Test">
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="custom-block bg-white shadow-lg hover-lift">
+                                            <a href="tes-detail.html">
+                                                <div class="d-flex">
+                                                    <div>
+                                                        <h5 class="mb-2">Tes Kecemasan (BAI)</h5>
+                                                        <p class="mb-0">Ukur tingkat kecemasan yang Anda alami.</p>
+                                                    </div>
+                                                    <span class="badge bg-education rounded-pill ms-auto">75</span>
+                                                </div>
+                                                <img src="images/topics/undraw_Meditation_re_gll0.png" class="custom-block-image img-fluid" alt="Anxiety Test">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-5">
+                        <h2>Apa Kata Klien Kami</h2>
+                        <p>Testimoni dari mereka yang telah menggunakan layanan Karakter Indonesia</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-12 mb-4">
+                        <div class="testimonial-card hover-lift">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="images/avatars/avatar1.jpg" class="rounded-circle me-3" width="60" alt="Client">
+                                <div>
+                                    <h5 class="mb-0">Sarah Wijaya</h5>
+                                    <p class="text-muted mb-0">Mahasiswa</p>
+                                </div>
+                            </div>
+                            <p class="mb-0">"Tes minat bakat membantu saya menentukan jurusan kuliah yang tepat. Hasilnya akurat dan konsultan sangat membantu!"</p>
+                            <div class="mt-3 text-warning">
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12 mb-4">
+                        <div class="testimonial-card hover-lift">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="images/avatars/avatar2.jpg" class="rounded-circle me-3" width="60" alt="Client">
+                                <div>
+                                    <h5 class="mb-0">Budi Santoso</h5>
+                                    <p class="text-muted mb-0">HR Manager</p>
+                                </div>
+                            </div>
+                            <p class="mb-0">"Kami menggunakan layanan tes psikologi untuk rekrutmen karyawan. Hasilnya membantu kami mengambil keputusan yang tepat."</p>
+                            <div class="mt-3 text-warning">
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-half"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12 mb-4">
+                        <div class="testimonial-card hover-lift">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="images/avatars/avatar3.jpg" class="rounded-circle me-3" width="60" alt="Client">
+                                <div>
+                                    <h5 class="mb-0">Dewi Lestari</h5>
+                                    <p class="text-muted mb-0">Professional</p>
+                                </div>
+                            </div>
+                            <p class="mb-0">"Tes kepribadian MBTI membuka wawasan saya tentang diri sendiri. Sekarang saya lebih memahami kekuatan dan area pengembangan."</p>
+                            <div class="mt-3 text-warning">
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section class="timeline-section section-padding" id="section_3">
+            <div class="section-overlay"></div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2 class="text-white mb-4">Bagaimana Cara Kerjanya?</h2>
+                    </div>
+
+                    <div class="col-lg-10 col-12 mx-auto">
+                        <div class="timeline-container">
+                            <ul class="vertical-scrollable-timeline" id="vertical-scrollable-timeline">
+                                <div class="list-progress">
+                                    <div class="inner"></div>
+                                </div>
+
+                                <li>
+                                    <h4 class="text-white mb-3">Daftar & Pilih Tes</h4>
+                                    <p class="text-white">Buat akun dan pilih jenis tes psikologi yang sesuai dengan kebutuhan Anda dari berbagai pilihan yang tersedia.</p>
+                                    <div class="icon-holder">
+                                      <i class="bi-clipboard-check"></i>
+                                    </div>
+                                </li>
+                                
+                                <li>
+                                    <h4 class="text-white mb-3">Ikuti Tes Online</h4>
+                                    <p class="text-white">Ikuti tes secara online kapan saja dan di mana saja. Tes dapat diselesaikan dalam waktu 30-60 menit.</p>
+                                    <div class="icon-holder">
+                                      <i class="bi-laptop"></i>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <h4 class="text-white mb-3">Dapatkan Hasil & Interpretasi</h4>
+                                    <p class="text-white">Terima hasil tes yang komprehensif beserta interpretasi dari psikolog berpengalaman dalam 3-5 hari kerja.</p>
+                                    <div class="icon-holder">
+                                      <i class="bi-graph-up"></i>
+                                    </div>
+                                </li>
+                                
+                                <li>
+                                    <h4 class="text-white mb-3">Konsultasi dengan Psikolog</h4>
+                                    <p class="text-white">Jadwalkan sesi konsultasi dengan psikolog untuk pembahasan mendalam tentang hasil tes Anda.</p>
+                                    <div class="icon-holder">
+                                      <i class="bi-person-check"></i>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-12 text-center mt-5">
+                        <p class="text-white">
+                            Ingin tahu lebih lanjut?
+                            <a href="#" class="btn custom-btn custom-border-btn ms-3">Lihat Demo Tes</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section section-padding" id="section_4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <h2 class="mb-4">Pertanyaan yang Sering Diajukan</h2>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="col-lg-5 col-12">
+                        <img src="images/faq_graphic.jpg" class="img-fluid rounded" alt="FAQs">
+                    </div>
+
+                    <div class="col-lg-6 col-12 m-auto">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Apa itu Karakter Indonesia?
+                                    </button>
+                                </h2>
+
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Karakter Indonesia adalah platform tes psikologi online yang menyediakan berbagai jenis tes psikologi untuk kebutuhan pengembangan diri, karir, dan organisasi. Kami didukung oleh tim psikolog berpengalaman yang siap membantu Anda.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Apakah hasil tes akurat?
+                                    </button>
+                                </h2>
+
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Ya, semua tes yang kami sediakan telah melalui proses validasi dan standardisasi sesuai dengan kaidah psikometri. Hasil tes juga diinterpretasikan oleh psikolog berpengalaman untuk memastikan keakuratan dan relevansi.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Berapa lama waktu yang dibutuhkan untuk menyelesaikan tes?
+                                    </button>
+                                </h2>
+
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Waktu pengerjaan bervariasi tergantung jenis tes. Rata-rata tes membutuhkan waktu 30-60 menit. Beberapa tes yang lebih kompleks mungkin membutuhkan waktu hingga 90 menit.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFour">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Apakah data pribadi saya aman?
+                                    </button>
+                                </h2>
+
+                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Keamanan data pribadi Anda adalah prioritas kami. Semua informasi yang Anda berikan dilindungi dengan enkripsi dan hanya dapat diakses oleh psikolog yang berwenang. Kami tidak akan membagikan data Anda kepada pihak ketiga tanpa izin.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFive">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Bisakah saya berkonsultasi dengan psikolog setelah tes?
+                                    </button>
+                                </h2>
+
+                                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Tentu saja! Kami menyediakan layanan konsultasi dengan psikolog berpengalaman untuk membahas hasil tes Anda secara mendalam. Anda dapat menjadwalkan sesi konsultasi melalui platform kami.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section section-padding" id="section_5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-12 mx-auto">
+                        <h2 class="text-center mb-4">Hubungi Kami</h2>
+
+                        <nav class="d-flex justify-content-center">
+                            <div class="nav nav-tabs align-items-baseline justify-content-center" id="nav-tab" role="tablist">
+                                <button class="nav-link active" id="nav-ContactForm-tab" data-bs-toggle="tab" data-bs-target="#nav-ContactForm" type="button" role="tab" aria-controls="nav-ContactForm" aria-selected="false">
+                                    <h5>Form Kontak</h5>
+                                </button>
+
+                                <button class="nav-link" id="nav-ContactMap-tab" data-bs-toggle="tab" data-bs-target="#nav-ContactMap" type="button" role="tab" aria-controls="nav-ContactMap" aria-selected="false">
+                                    <h5>Google Maps</h5>
+                                </button>
+                            </div>
+                        </nav>
+
+                        <div class="tab-content shadow-lg mt-5" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-ContactForm" role="tabpanel" aria-labelledby="nav-ContactForm-tab">
+                                <form class="custom-form contact-form mb-5 mb-lg-0" action="#" method="post" role="form">
+                                    <div class="contact-form-body">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <input type="text" name="contact-name" id="contact-name" class="form-control" placeholder="Nama Lengkap" required>
+                                            </div>
+
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <input type="email" name="contact-email" id="contact-email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email" required>
+                                            </div>
+                                        </div>
+
+                                        <input type="text" name="contact-company" id="contact-company" class="form-control" placeholder="Perusahaan/Institusi">
+
+                                        <textarea name="contact-message" rows="3" class="form-control" id="contact-message" placeholder="Pesan"></textarea>
+
+                                        <div class="col-lg-4 col-md-10 col-8 mx-auto">
+                                            <button type="submit" class="form-control">Kirim Pesan</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane fade" id="nav-ContactMap" role="tabpanel" aria-labelledby="nav-ContactMap-tab">
+                                <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613502864!3d-6.194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b45e67356080477!2sPT%20Karakter%20Bangsa%20Indonesia!5e0!3m2!1sen!2sid!4v1633033224459!5m2!1sen!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-12 mb-4 pb-2">
+                    <a class="navbar-brand mb-2" href="index.html">
+                        <i class="bi-psychology"></i>
+                        <span>Karakter Indonesia</span>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-6">
+                    <h6 class="site-footer-title mb-3">Sumber Daya</h6>
+                    <ul class="site-footer-links">
+                        <li class="site-footer-link-item">
+                            <a href="#" class="site-footer-link">Blog Psikologi</a>
+                        </li>
+                        <li class="site-footer-link-item">
+                            <a href="#" class="site-footer-link">Artikel</a>
+                        </li>
+                        <li class="site-footer-link-item">
+                            <a href="#" class="site-footer-link">Tips Karir</a>
+                        </li>
+                        <li class="site-footer-link-item">
+                            <a href="#" class="site-footer-link">Pengembangan Diri</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
+                    <h6 class="site-footer-title mb-3">Informasi</h6>
+                    <ul class="site-footer-links">
+                        <li class="site-footer-link-item">
+                            <a href="#" class="site-footer-link">Tentang Kami</a>
+                        </li>
+                        <li class="site-footer-link-item">
+                            <a href="#" class="site-footer-link">Kebijakan Privasi</a>
+                        </li>
+                        <li class="site-footer-link-item">
+                            <a href="#" class="site-footer-link">Syarat & Ketentuan</a>
+                        </li>
+                        <li class="site-footer-link-item">
+                            <a href="#" class="site-footer-link">Bantuan</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Bahasa Indonesia</button>
+
+                        <ul class="dropdown-menu">
+                            <li><button class="dropdown-item" type="button">English</button></li>
+                            <li><button class="dropdown-item" type="button">Bahasa Indonesia</button></li>
+                        </ul>
+                    </div>
+
+                    <p class="copyright-text mt-lg-5 mt-4">Copyright © 2023 Karakter Indonesia. All rights reserved.
+                    <br><br>Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a> Distribution: <a href="https://themewagon.com">ThemeWagon</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/click-scroll.js"></script>
+    <script src="js/custom.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Counter Animation
+        $(document).ready(function() {
+            $('.stats-counter').each(function() {
+                $(this).prop('Counter',0).animate({
+                    Counter: $(this).text()
+                }, {
+                    duration: 2000,
+                    easing: 'swing',
+                    step: function (now) {
+                        $(this).text(Math.ceil(now));
+                    }
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            $('a[href*="#"]').on('click', function(e) {
+                e.preventDefault();
+                
+                $('html, body').animate(
+                    {
+                        scrollTop: $($(this).attr('href')).offset().top - 70,
+                    },
+                    500,
+                    'linear'
+                );
+            });
+            
+            // Parallax effect for hero section
+            $(window).scroll(function() {
+                var scrolled = $(window).scrollTop();
+                $('.hero-section').css('background-position', 'center ' + -(scrolled * 0.2) + 'px');
+            });
+        });
+    </script>
+
+</body>
+</html>
