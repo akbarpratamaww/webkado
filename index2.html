@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Platform Tes Psikologi Online Terpercaya - Karakter Indonesia">
+    <meta name="author" content="Karakter Indonesia">
+
+    <title>Karakter Indonesia - Platform Tes Psikologi Online</title>
+
+    <!-- CSS FILES -->        
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/templatemo-topic-listing.css" rel="stylesheet">
+    <style>
+        /* Custom Styles untuk Karakter Indonesia */
+        .hero-section {
+            background: linear-gradient(135deg, #13547a 0%, #80d0c7 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 180px;
+            padding-bottom: 150px;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/psychology-pattern.png') repeat;
+            opacity: 0.1;
+        }
+        
+        .psychology-icon {
+            font-size: 3rem;
+            color: #80d0c7;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .testimonial-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        
+        .stats-section {
+            background: linear-gradient(135deg, #13547a 0%, #80d0c7 100%);
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .process-step {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 40px;
+        }
+        
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background: #80d0c7;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .psychology-badge {
+            background: #80d0c7;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #13547a 0%, #80d0c7 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+    
+<body id="top">
+    <main>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="bi-brain"></i>
+                    <span>Karakter Indonesia</span>
+                </a>
+
+                <div class="d-lg-none ms-auto me-4">
+                    <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                </div>
+    
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_1">Beranda</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_2">Jenis Tes</a>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_3">Cara Kerja</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_4">Testimoni</a>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_5">FAQ</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Layanan</a>
+
+                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                <li><a class="dropdown-item" href="tes-individu.html">Tes Individu</a></li>
+                                <li><a class="dropdown-item" href="tes-perusahaan.html">Tes Perusahaan</a></li>
+                                <li><a class="dropdown-item" href="konsultasi.html">Konsultasi Psikologi</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="d-none d-lg-block">
+                        <a href="login.html" class="btn custom-btn custom-border-btn me-2">Masuk</a>
+                        <a href="daftar.html" class="btn custom-btn">Daftar</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-12">
+                        <h1 class="text-white mb-4">Temukan Potensi Terbaik Anda</h1>
+                        <p class="text-white mb-4">Platform tes psikologi online terpercaya untuk membantu Anda memahami kepribadian, bakat, dan potensi diri secara mendalam.</p>
+                        
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="#section_2" class="btn custom-btn custom-border-btn custom-btn-bg-white">Jelajahi Tes</a>
+                            <a href="daftar.html" class="btn custom-btn">Mulai Sekarang</a>
+                        </div>
+                        
+                        <div class="d-flex mt-4">
+                            <div class="me-4">
+                                <h4 class="text-white mb-1">10.000+</h4>
+                                <p class="text-white-50 mb-0">Pengguna</p>
+                            </div>
+                            <div class="me-4">
+                                <h4 class="text-white mb-1">50+</h4>
+                                <p class="text-white-50 mb-0">Jenis Tes</p>
+                            </div>
+                            <div>
+                                <h4 class="text-white mb-1">98%</h4>
+                                <p class="text-white-50 mb-0">Kepuasan</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 col-12 mt-5 mt-lg-0">
+                        <div class="position-relative">
+                            <img src="images/psychology-illustration.png" class="img-fluid floating-animation" alt="Ilustrasi Psikologi">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding" id="section_2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-5">
+                        <h2 class="mb-3">Jenis Tes Psikologi</h2>
+                        <p class="lead">Pilih dari berbagai jenis tes psikologi yang kami sediakan untuk memahami diri Anda lebih baik</p>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-12 mb-4">
+                        <div class="feature-card bg-white shadow-lg">
+                            <div class="p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="psychology-icon">
+                                        <i class="bi-person-badge"></i>
+                                    </div>
+                                    <span class="psychology-badge ms-auto">Populer</span>
+                                </div>
+                                <h4 class="mb-3">Tes Kepribadian</h4>
+                                <p class="mb-4">Temukan tipe kepribadian Anda dengan tes MBTI dan Big Five yang akurat dan terpercaya.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">30-45 menit</span>
+                                    <a href="tes-kepribadian.html" class="btn custom-btn custom-border-btn btn-sm">Mulai Tes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 col-12 mb-4">
+                        <div class="feature-card bg-white shadow-lg">
+                            <div class="p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="psychology-icon">
+                                        <i class="bi-lightbulb"></i>
+                                    </div>
+                                    <span class="psychology-badge ms-auto">Baru</span>
+                                </div>
+                                <h4 class="mb-3">Tes Bakat & Minat</h4>
+                                <p class="mb-4">Identifikasi bakat alami dan minat karir Anda untuk menentukan jalur karier yang tepat.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">40-60 menit</span>
+                                    <a href="tes-bakat.html" class="btn custom-btn custom-border-btn btn-sm">Mulai Tes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 col-12 mb-4">
+                        <div class="feature-card bg-white shadow-lg">
+                            <div class="p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="psychology-icon">
+                                        <i class="bi-graph-up"></i>
+                                    </div>
+                                </div>
+                                <h4 class="mb-3">Tes Inteligensi</h4>
+                                <p class="mb-4">Ukur kemampuan kognitif dan potensi intelektual Anda dengan tes IQ yang terstandarisasi.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">60-90 menit</span>
+                                    <a href="tes-iq.html" class="btn custom-btn custom-border-btn btn-sm">Mulai Tes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 col-12 mb-4">
+                        <div class="feature-card bg-white shadow-lg">
+                            <div class="p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="psychology-icon">
+                                        <i class="bi-heart-pulse"></i>
+                                    </div>
+                                </div>
+                                <h4 class="mb-3">Tes Kesehatan Mental</h4>
+                                <p class="mb-4">Screening awal untuk mendeteksi gejala gangguan mental seperti depresi, kecemasan, dan stres.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">20-30 menit</span>
+                                    <a href="tes-kesehatan-mental.html" class="btn custom-btn custom-border-btn btn-sm">Mulai Tes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 col-12 mb-4">
+                        <div class="feature-card bg-white shadow-lg">
+                            <div class="p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="psychology-icon">
+                                        <i class="bi-briefcase"></i>
+                                    </div>
+                                </div>
+                                <h4 class="mb-3">Tes Rekrutmen</h4>
+                                <p class="mb-4">Tes psikometri untuk seleksi karyawan dengan penilaian kepribadian, kemampuan, dan kecocokan.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">45-75 menit</span>
+                                    <a href="tes-rekrutmen.html" class="btn custom-btn custom-border-btn btn-sm">Mulai Tes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 col-12 mb-4">
+                        <div class="feature-card bg-white shadow-lg">
+                            <div class="p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="psychology-icon">
+                                        <i class="bi-people"></i>
+                                    </div>
+                                </div>
+                                <h4 class="mb-3">Tes Tim & Organisasi</h4>
+                                <p class="mb-4">Analisis dinamika tim dan budaya organisasi untuk meningkatkan kolaborasi dan produktivitas.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">60-120 menit</span>
+                                    <a href="tes-tim.html" class="btn custom-btn custom-border-btn btn-sm">Mulai Tes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mt-5">
+                    <div class="col-12 text-center">
+                        <a href="semua-tes.html" class="btn custom-btn">Lihat Semua Tes</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="stats-section">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
+                        <div class="stat-number">10.000+</div>
+                        <div class="stat-label">Pengguna Terdaftar</div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Jenis Tes Psikologi</div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12 mb-4 mb-md-0">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Tingkat Kepuasan</div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Layanan Konsultasi</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding section-bg" id="section_3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-5">
+                        <h2 class="mb-3">Bagaimana Cara Kerjanya?</h2>
+                        <p class="lead">Hanya dalam 4 langkah sederhana, dapatkan insight mendalam tentang diri Anda</p>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-10 col-12 mx-auto">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <h4 class="mb-3">Pilih Jenis Tes</h4>
+                            <p>Pilih dari berbagai jenis tes psikologi yang sesuai dengan kebutuhan Anda. Setiap tes memiliki deskripsi lengkap tentang apa yang akan diukur dan berapa lama waktu yang dibutuhkan.</p>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <h4 class="mb-3">Daftar & Bayar</h4>
+                            <p>Buat akun dan lakukan pembayaran dengan metode yang aman dan terpercaya. Kami menawarkan berbagai pilihan pembayaran untuk kenyamanan Anda.</p>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <h4 class="mb-3">Ikuti Tes Online</h4>
+                            <p>Ikuti tes secara online di mana saja dan kapan saja. Platform kami dirancang untuk pengalaman tes yang nyaman dan tidak membuat stres.</p>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <h4 class="mb-3">Dapatkan Hasil & Konsultasi</h4>
+                            <p>Terima laporan hasil tes yang komprehensif dan mudah dipahami. Anda juga dapat memilih untuk berkonsultasi dengan psikolog profesional untuk interpretasi yang lebih mendalam.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section-padding" id="section_4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-5">
+                        <h2 class="mb-3">Apa Kata Mereka?</h2>
+                        <p class="lead">Testimoni dari pengguna yang telah merasakan manfaat tes psikologi kami</p>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-12 mb-4">
+                        <div class="testimonial-card hover-lift">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="images/testimonial-1.jpg" class="testimonial-avatar" alt="Testimoni 1">
+                                <div class="ms-3">
+                                    <h5 class="mb-1">Rina Wijaya</h5>
+                                    <p class="text-muted mb-0">Mahasiswa Psikologi</p>
+                                </div>
+                            </div>
+                            <div class="rating mb-3">
+                                <i class="bi-star-fill text-warning"></i>
+                                <i class="bi-star-fill text-warning"></i>
+                                <i class="bi-star-fill text-warning"></i>
+                                <i class="bi-star-fill text-warning"></i>
+                                <i class="bi-star-fill text-warning"></i>
+                            </div>
+                            <p class="mb-0">"Tes kepribadian MBTI di Karakter Indonesia sangat membantu saya memahami diri sendiri. Hasilnya akurat dan laporannya sangat detail. Sekarang saya lebih paham kekuatan dan kelemahan saya."</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 col-12 mb-4">
+                        <div class="testimonial-card hover-lift">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="images/testimonial-2.jpg" class="testimonial-avatar" alt="Testimoni 2">
+                                <div class="ms-3">
+                                    <h5 class="mb-1">Budi Santoso</h5>
+                                    <p class="text-muted mb-0">HR Manager</p>
+                                </div>
+                            </div>
+                            <div class="rating mb-3">
+                                <i class="bi-star-fill text-warning"></i>
+                                <i class="bi-star-fill text-warning"></i>
+                                <i class="bi-star-fill text-warning"></i>
+                                <i class="bi-star-fill text-warning"></i>
+                                <i class="bi-star-fill text-warning"></i>
+                            </div>
+                            <p class="mb-0">"Kami menggunakan layanan tes rekrutmen dari Karakter Indonesia untuk seleksi karyawan. Hasilnya sangat membantu dalam mengambil keputusan yang tepat. Platformnya mudah digunakan dan laporannya komprehensif."</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 col-12 mb-4">
+                        <div class="testimonial-card hover-lift">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="images/testimonial-3.jpg" class="testimonial-avatar" alt="Testimoni 3">
+                                <div class="ms-3">
+                                    <h5 class="mb-1">Sari Dewi</h5>
+                                    <p class="text-muted mb-0">Freelancer</p>
+                                </div>
+                            </div>
+                            <div class="rating mb-3">
+                                <i class="bi-star-fill text-warning"></i>
+                                <i class="bi-star-fill text-warning"></i>
+                                <i class="bi-star-fill text-warning"></i>
+                                <i class="bi-star-fill text-warning"></i>
+                                <i class="bi-star-half text-warning"></i>
+                            </div>
+                            <p class="mb-0">"Tes bakat dan minat membantu saya menemukan jalur karier yang tepat. Setelah bertahun-tahun merasa tidak cocok dengan pekerjaan sebelumnya, sekarang saya lebih bahagia dengan pilihan karier baru saya."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section section-padding section-bg" id="section_5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <h2 class="mb-4">Pertanyaan Umum</h2>
+                        <p class="mb-4">Temukan jawaban untuk pertanyaan yang sering diajukan tentang layanan tes psikologi kami.</p>
+                        <img src="images/faq-psychology.jpg" class="img-fluid rounded" alt="FAQ Psikologi">
+                    </div>
+
+                    <div class="col-lg-6 col-12 m-auto">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Apakah tes psikologi online akurat?
+                                    </button>
+                                </h2>
+
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Ya, tes psikologi online kami dikembangkan oleh psikolog berpengalaman dan telah melalui proses validasi yang ketat. Meskipun dilakukan secara online, akurasi hasil tetap terjaga dengan standar yang sama seperti tes konvensional.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Berapa lama waktu yang dibutuhkan untuk mendapatkan hasil tes?
+                                </button>
+                                </h2>
+
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Hasil tes biasanya tersedia dalam 24-48 jam setelah Anda menyelesaikan tes. Untuk tes yang lebih kompleks, mungkin membutuhkan waktu hingga 72 jam. Anda akan menerima notifikasi via email ketika hasil tes sudah siap.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Apakah data pribadi saya aman?
+                                </button>
+                                </h2>
+
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Keamanan data adalah prioritas kami. Semua informasi pribadi dan hasil tes dienkripsi dan disimpan dengan aman. Kami tidak akan membagikan data Anda kepada pihak ketiga tanpa izin tertulis dari Anda, kecuali diwajibkan oleh hukum.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFour">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Bisakah saya berkonsultasi dengan psikolog setelah tes?
+                                </button>
+                                </h2>
+
+                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Tentu saja! Kami menawarkan layanan konsultasi dengan psikolog profesional untuk membantu Anda memahami hasil tes lebih mendalam. Konsultasi dapat dilakukan secara online melalui video call atau chat.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFive">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Apakah ada garansi untuk tes yang dilakukan?
+                                </button>
+                                </h2>
+
+                                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Kami memberikan garansi kepuasan 100%. Jika Anda tidak puas dengan hasil atau proses tes, kami akan mengembalikan biaya tes atau memberikan kesempatan untuk mengulang tes tanpa biaya tambahan.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-12 text-center">
+                        <h2 class="text-white mb-4">Siap Mengenal Diri Anda Lebih Baik?</h2>
+                        <p class="text-white mb-5">Mulai perjalanan penemuan diri Anda sekarang. Pilih tes yang sesuai dan dapatkan insight berharga tentang kepribadian, bakat, dan potensi Anda.</p>
+                        <a href="daftar.html" class="btn custom-btn custom-btn-bg-white me-3">Daftar Sekarang</a>
+                        <a href="#section_2" class="btn custom-btn custom-border-btn custom-btn-bg-white">Jelajahi Tes</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-12 mb-4 pb-2">
+                    <a class="navbar-brand mb-2" href="index.html">
+                        <i class="bi-brain"></i>
+                        <span>Karakter Indonesia</span>
+                    </a>
+                    <p class="text-white-50">Platform tes psikologi online terpercaya untuk membantu Anda memahami potensi diri.</p>
+                    <ul class="social-icon mt-4">
+                        <li class="social-icon-item">
+                            <a href="#" class="social-icon-link bi-facebook"></a>
+                        </li>
+                        <li class="social-icon-item">
+                            <a href="#" class="social-icon-link bi-twitter"></a>
+                        </li>
+                        <li class="social-icon-item">
+                            <a href="#" class="social-icon-link bi-instagram"></a>
+                        </li>
+                        <li class="social-icon-item">
+                            <a href="#" class="social-icon-link bi-linkedin"></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-6">
+                    <h6 class="site-footer-title mb-3">Layanan</h6>
+                    <ul class="site-footer-links">
+                        <li class="site-footer-link-item">
+                            <a href="tes-individu.html" class="site-footer-link">Tes Individu</a>
+                        </li>
+                        <li class="site-footer-link-item">
+                            <a href="tes-perusahaan.html" class="site-footer-link">Tes Perusahaan</a>
+                        </li>
+                        <li class="site-footer-link-item">
+                            <a href="konsultasi.html" class="site-footer-link">Konsultasi Psikologi</a>
+                        </li>
+                        <li class="site-footer-link-item">
+                            <a href="workshop.html" class="site-footer-link">Workshop & Seminar</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
+                    <h6 class="site-footer-title mb-3">Informasi</h6>
+                    <p class="text-white d-flex mb-1">
+                        <a href="tel:021-1234567" class="site-footer-link">
+                            <i class="bi-telephone me-2"></i>021-1234567
+                        </a>
+                    </p>
+                    <p class="text-white d-flex mb-1">
+                        <a href="https://wa.me/6281234567890" class="site-footer-link">
+                            <i class="bi-whatsapp me-2"></i>0812-3456-7890
+                        </a>
+                    </p>
+                    <p class="text-white d-flex">
+                        <a href="mailto:info@karakterindonesia.com" class="site-footer-link">
+                            <i class="bi-envelope me-2"></i>info@karakterindonesia.com
+                        </a>
+                    </p>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
+                    <h6 class="site-footer-title mb-3">Newsletter</h6>
+                    <p class="text-white-50 mb-3">Berlangganan newsletter untuk mendapatkan informasi terbaru tentang tes psikologi dan promo menarik.</p>
+                    <form class="custom-form mt-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Email address" aria-label="Email">
+                            <button class="btn custom-btn" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                    <p class="copyright-text mt-lg-5 mt-4">Copyright © 2023 Karakter Indonesia. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/click-scroll.js"></script>
+    <script src="js/custom.js"></script>
+    <script>
+        // Custom JavaScript untuk interaktivitas tambahan
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animasi saat scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                    }
+                });
+            }, observerOptions);
+            
+            // Amati elemen yang ingin dianimasikan
+            const elementsToAnimate = document.querySelectorAll('.feature-card, .testimonial-card, .process-step');
+            elementsToAnimate.forEach(function(el) {
+                observer.observe(el);
+            });
+            
+            // Efek hover untuk tombol
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(function(button) {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
