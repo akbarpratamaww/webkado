@@ -721,6 +721,10 @@ blockquote {
   border-color: var(--secondary-color);
 }
 
+    .service-icon i {
+        font-size: 3.5rem;
+    }
+    .text-purple { color: #6f42c1; }
 
 /*---------------------------------------
   TIMELINE              
