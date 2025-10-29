@@ -926,7 +926,19 @@ blockquote {
   border-color: transparent;
 }
 
-
+.contact-card {
+        transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .contact-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0,0,0,.1) !important;
+    }
+    .contact-card .btn {
+        font-size: .9rem;
+    }
+    .ratio iframe {
+        border-radius: .375rem;
+    }
 /*---------------------------------------
   SITE FOOTER              
 -----------------------------------------*/
