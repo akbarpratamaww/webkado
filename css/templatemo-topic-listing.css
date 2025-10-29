@@ -726,6 +726,28 @@ blockquote {
     }
     .text-purple { color: #6f42c1; }
 
+
+    .paket-section {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+    .paket-card {
+        transition: all 0.3s ease;
+        border: none !important;
+    }
+    .paket-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.12) !important;
+    }
+    .paket-header {
+        border-radius: 1rem 1rem 0 0 !important;
+    }
+    .bg-purple {
+        background: linear-gradient(135deg, #6f42c1, #9c6ade) !important;
+    }
+    .list-unstyled i {
+        font-size: 0.9rem;
+    }
+
 /*---------------------------------------
   TIMELINE              
 -----------------------------------------*/
