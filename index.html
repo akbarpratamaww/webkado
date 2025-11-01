@@ -818,6 +818,62 @@
             color: var(--purple);
         }
         
+        /* Swiper Custom Styles */
+        .swiper {
+            width: 100%;
+            padding: 20px 0 40px;
+        }
+        
+        .swiper-slide {
+            height: auto !important;
+        }
+        
+        .swiper-pagination-bullet {
+            background: var(--tosca-primary);
+            opacity: 0.5;
+        }
+        
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+        }
+        
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--tosca-primary);
+            background: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 18px;
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Pulse Animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .section-padding {
@@ -854,6 +910,11 @@
                 margin: 0 5px;
                 font-size: 14px;
             }
+            
+            .swiper-button-next,
+            .swiper-button-prev {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -867,7 +928,7 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
            <a class="navbar-brand d-flex align-items-center" href="#beranda">
-                <img src="images/kdo.jpeg.jpg" alt="Logo" style="width: 45px; height: 45px; object-fit: contain;">
+                <img src="images/kdo.png" alt="Logo" style="width: 45px; height: 45px; object-fit: contain;">
                 <span class="fw-bold" style="color: var(--tosca-primary); font-size: 20px;">Karakter Indonesia</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -1096,66 +1157,113 @@
                 </p>
             </div>
             
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="card card-hover h-100" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-body p-4">
-                            <div class="bg-gradient-tosca" style="height: 4px; margin: -1rem -1rem 1.5rem -1rem;"></div>
-                            <div class="icon-box bg-gradient-tosca text-white mb-4">
-                                <i class="bi bi-brain"></i>
+            <!-- Swiper Container for Services -->
+            <div class="swiper servicesSwiper" data-aos="fade-up">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="card card-hover h-100">
+                            <div class="card-body p-4">
+                                <div class="bg-gradient-tosca" style="height: 4px; margin: -1rem -1rem 1.5rem -1rem;"></div>
+                                <div class="icon-box bg-gradient-tosca text-white mb-4">
+                                    <i class="bi bi-brain"></i>
+                                </div>
+                                <h4 class="fw-bold mb-3">Tes IQ</h4>
+                                <p class="text-muted mb-4">Mengukur tingkat kecerdasan intelektual siswa</p>
+                                <h6 class="fw-bold mb-3">Manfaat:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Mengidentifikasi kemampuan kognitif</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Mengetahui kekuatan dan kelemahan intelektual</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Membantu strategi pembelajaran yang tepat</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Prediksi potensi akademik</li>
+                                </ul>
                             </div>
-                            <h4 class="fw-bold mb-3">Tes IQ</h4>
-                            <p class="text-muted mb-4">Mengukur tingkat kecerdasan intelektual siswa</p>
-                            <h6 class="fw-bold mb-3">Manfaat:</h6>
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Mengidentifikasi kemampuan kognitif</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Mengetahui kekuatan dan kelemahan intelektual</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Membantu strategi pembelajaran yang tepat</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Prediksi potensi akademik</li>
-                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="card card-hover h-100">
+                            <div class="card-body p-4">
+                                <div class="bg-gradient-purple" style="height: 4px; margin: -1rem -1rem 1.5rem -1rem;"></div>
+                                <div class="icon-box bg-gradient-purple text-white mb-4">
+                                    <i class="bi bi-lightbulb"></i>
+                                </div>
+                                <h4 class="fw-bold mb-3">Tes Bakat & Minat</h4>
+                                <p class="text-muted mb-4">Menggali potensi dan minat siswa secara komprehensif</p>
+                                <h6 class="fw-bold mb-3">Manfaat:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--purple);"></i>Menemukan bakat terpendam siswa</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--purple);"></i>Mengidentifikasi bidang minat yang kuat</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--purple);"></i>Rekomendasi jurusan dan karir</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--purple);"></i>Panduan pengembangan potensi</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="card card-hover h-100">
+                            <div class="card-body p-4">
+                                <div class="bg-gradient-tosca" style="height: 4px; margin: -1rem -1rem 1.5rem -1rem;"></div>
+                                <div class="icon-box bg-gradient-tosca text-white mb-4">
+                                    <i class="bi bi-heart"></i>
+                                </div>
+                                <h4 class="fw-bold mb-3">Tes Kepribadian</h4>
+                                <p class="text-muted mb-4">Memahami karakter dan tipe kepribadian siswa</p>
+                                <h6 class="fw-bold mb-3">Manfaat:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Mengenal tipe kepribadian siswa</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Memahami cara belajar yang efektif</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Mengembangkan soft skills</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Meningkatkan kecerdasan emosional</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Service Cards for Future Expansion -->
+                    <div class="swiper-slide">
+                        <div class="card card-hover h-100">
+                            <div class="card-body p-4">
+                                <div class="bg-gradient-purple" style="height: 4px; margin: -1rem -1rem 1.5rem -1rem;"></div>
+                                <div class="icon-box bg-gradient-purple text-white mb-4">
+                                    <i class="bi bi-graph-up"></i>
+                                </div>
+                                <h4 class="fw-bold mb-3">Tes Minat Jurusan</h4>
+                                <p class="text-muted mb-4">Membantu siswa menentukan jurusan yang sesuai dengan minat dan bakat</p>
+                                <h6 class="fw-bold mb-3">Manfaat:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--purple);"></i>Mengidentifikasi minat akademik</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--purple);"></i>Rekomendasi jurusan yang tepat</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--purple);"></i>Mengurangi resiko salah jurusan</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--purple);"></i>Meningkatkan motivasi belajar</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="card card-hover h-100">
+                            <div class="card-body p-4">
+                                <div class="bg-gradient-tosca" style="height: 4px; margin: -1rem -1rem 1.5rem -1rem;"></div>
+                                <div class="icon-box bg-gradient-tosca text-white mb-4">
+                                    <i class="bi bi-people-fill"></i>
+                                </div>
+                                <h4 class="fw-bold mb-3">Tes Kecerdasan Emosional</h4>
+                                <p class="text-muted mb-4">Mengukur kemampuan siswa dalam mengelola emosi dan interaksi sosial</p>
+                                <h6 class="fw-bold mb-3">Manfaat:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Meningkatkan kesadaran diri</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Mengembangkan empati</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Meningkatkan kemampuan sosial</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Mengelola stres dengan baik</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-lg-4 col-md-6">
-                    <div class="card card-hover h-100" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card-body p-4">
-                            <div class="bg-gradient-purple" style="height: 4px; margin: -1rem -1rem 1.5rem -1rem;"></div>
-                            <div class="icon-box bg-gradient-purple text-white mb-4">
-                                <i class="bi bi-lightbulb"></i>
-                            </div>
-                            <h4 class="fw-bold mb-3">Tes Bakat & Minat</h4>
-                            <p class="text-muted mb-4">Menggali potensi dan minat siswa secara komprehensif</p>
-                            <h6 class="fw-bold mb-3">Manfaat:</h6>
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--purple);"></i>Menemukan bakat terpendam siswa</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--purple);"></i>Mengidentifikasi bidang minat yang kuat</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--purple);"></i>Rekomendasi jurusan dan karir</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--purple);"></i>Panduan pengembangan potensi</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6">
-                    <div class="card card-hover h-100" data-aos="fade-up" data-aos-delay="300">
-                        <div class="card-body p-4">
-                            <div class="bg-gradient-tosca" style="height: 4px; margin: -1rem -1rem 1.5rem -1rem;"></div>
-                            <div class="icon-box bg-gradient-tosca text-white mb-4">
-                                <i class="bi bi-heart"></i>
-                            </div>
-                            <h4 class="fw-bold mb-3">Tes Kepribadian</h4>
-                            <p class="text-muted mb-4">Memahami karakter dan tipe kepribadian siswa</p>
-                            <h6 class="fw-bold mb-3">Manfaat:</h6>
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Mengenal tipe kepribadian siswa</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Memahami cara belajar yang efektif</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Mengembangkan soft skills</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Meningkatkan kecerdasan emosional</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
             
             <div class="text-center mt-5">
@@ -1243,81 +1351,150 @@
                 </p>
             </div>
             
-            <div class="row g-4">
-                <!-- Package 1 - SMP -->
-                <div class="col-lg-4">
-                    <div class="package-card package-basic card-hover" data-aos="fade-up" data-aos-delay="100">
-                        <div class="package-header">
-                            <h4 class="fw-bold mb-2">SMP</h4>
-                            <p class="mb-0">Paket tes untuk siswa Sekolah Menengah Pertama</p>
-                        </div>
-                        <div class="package-body">
-                            <div class="text-center mb-4">
-                                <div class="package-price" style="color: var(--tosca-primary);">Rp 250.000</div>
-                                <small class="text-muted">/siswa</small>
+            <!-- Swiper Container for Packages -->
+            <div class="swiper packagesSwiper" data-aos="fade-up">
+                <div class="swiper-wrapper">
+                    <!-- Package 1 - SMP -->
+                    <div class="swiper-slide">
+                        <div class="package-card package-basic card-hover">
+                            <div class="package-header">
+                                <h4 class="fw-bold mb-2">SMP</h4>
+                                <p class="mb-0">Paket tes untuk siswa Sekolah Menengah Pertama</p>
                             </div>
-                            <ul class="package-features">
-                                <li><i class="bi bi-check-circle-fill"></i> Tes IQ</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Tes Minat</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Tes Kepribadian</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Laporan Hasil</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Konsultasi 1x</li>
-                            </ul>
-                            <a href="#kontak" class="btn btn-outline-tosca w-100">Pilih Paket</a>
+                            <div class="package-body">
+                                <div class="text-center mb-4">
+                                    <!-- <div class="package-price" style="color: var(--tosca-primary);">Rp XXX.XXX</div>
+                                    <small class="text-muted">/siswa</small> -->
+                                </div>
+                                <ul class="package-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes IQ</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Perilaku</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kepribadian</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Gaya Belajar</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Laporan Hasil</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Konsultasi 1x</li>
+                                </ul>
+                                <a href="#kontak" class="btn btn-outline-tosca w-100">Pilih Paket</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Package 2 - SMA -->
+                    <div class="swiper-slide">
+                        <div class="package-card package-school card-hover">
+                            <div class="package-header">
+                                <h4 class="fw-bold mb-2">SMA</h4>
+                                <p class="mb-0">Paket tes untuk siswa Sekolah Menengah Atas</p>
+                            </div>
+                            <div class="package-body">
+                                <div class="text-center mb-4">
+                                    <!-- <div class="package-price">Rp XXX.XXX</div>
+                                    <small>/siswa</small> -->
+                                </div>
+                                <ul class="package-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes IQ</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Perilaku</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Minat dan Bakat</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kepribadian</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Gaya Belajar</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Laporan Hasil Lengkap</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Konsultasi 2x</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Rekomendasi Jurusan</li>
+                                </ul>
+                                <a href="#kontak" class="btn btn-outline-tosca w-100">Pilih Paket</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Package 3 - Perguruan Tinggi -->
+                    <div class="swiper-slide">
+                        <div class="package-card package-premium card-hover">
+                            <div class="package-header">
+                                <h4 class="fw-bold mb-2">Perguruan Tinggi</h4>
+                                <p class="mb-0">Paket tes untuk mahasiswa dan calon mahasiswa</p>
+                            </div>
+                            <div class="package-body">
+                                <div class="text-center mb-4">
+                                    <!-- <div class="package-price" style="color: var(--purple);">Rp 450.000</div>
+                                    <small class="text-muted">/siswa</small> -->
+                                </div>
+                                <ul class="package-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes IQ</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Perilaku</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kepribadian</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kecepatan</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Ketelitian</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kestabilan</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Ketahanan</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Laporan Premium</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Konsultasi 3x</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Rekomendasi Karir</li>
+                                    <!-- <li><i class="bi bi-check-circle-fill"></i> Sertifikat</li> -->
+                                </ul>
+                                <a href="#kontak" class="btn btn-outline-tosca w-100">Pilih Paket</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Package for Future Expansion -->
+                    <div class="swiper-slide">
+                        <div class="package-card package-basic card-hover">
+                            <div class="package-header">
+                                <h4 class="fw-bold mb-2">Paket Umum</h4>
+                                <p class="mb-0">Paket tes untuk kebutuhan umum dan perusahaan</p>
+                            </div>
+                            <div class="package-body">
+                                <div class="text-center mb-4">
+                                    <!-- <div class="package-price" style="color: var(--tosca-primary);">Rp XXX.XXX</div>
+                                    <small class="text-muted">/orang</small> -->
+                                </div>
+                                <ul class="package-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes IQ</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Perilaku</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Minat dan Bakat</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kepribadian</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Gaya Belajar</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kecepatan</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Ketelitian</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kestabilan</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Ketahanan</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Laporan Premium</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Konsultasi 3x</li>
+                                </ul>
+                                <a href="#kontak" class="btn btn-outline-tosca w-100">Pilih Paket</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="package-card package-school card-hover">
+                            <div class="package-header">
+                                <h4 class="fw-bold mb-2">Paket Perusahaan</h4>
+                                <p class="mb-0">Paket tes untuk kebutuhan rekrutmen dan pengembangan SDM</p>
+                            </div>
+                            <div class="package-body">
+                                <div class="text-center mb-4">
+                                    <!-- <div class="package-price">Rp XXX.XXX</div>
+                                    <small>/karyawan</small> -->
+                                </div>
+                                <ul class="package-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kepribadian</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kecerdasan Emosional</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kepemimpinan</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kemampuan Verbal</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kemampuan Numerik</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Laporan Hasil Lengkap</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Konsultasi 2x</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Rekomendasi Posisi</li>
+                                </ul>
+                                <a href="#kontak" class="btn btn-outline-tosca w-100">Pilih Paket</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Package 2 - SMA -->
-                <div class="col-lg-4">
-                    <div class="package-card package-school card-hover" data-aos="fade-up" data-aos-delay="200">
-                        <div class="package-header">
-                            <h4 class="fw-bold mb-2">SMA</h4>
-                            <p class="mb-0">Paket tes untuk siswa Sekolah Menengah Atas</p>
-                        </div>
-                        <div class="package-body">
-                            <div class="text-center mb-4">
-                                <div class="package-price">Rp 350.000</div>
-                                <small>/siswa</small>
-                            </div>
-                            <ul class="package-features">
-                                <li><i class="bi bi-check-circle-fill"></i> Tes IQ</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Tes Minat</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Tes Kepribadian</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Laporan Hasil Lengkap</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Konsultasi 2x</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Rekomendasi Jurusan</li>
-                            </ul>
-                            <a href="#kontak" class="btn btn-light w-100">Pilih Paket</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Package 3 - Perguruan Tinggi -->
-                <div class="col-lg-4">
-                    <div class="package-card package-premium card-hover" data-aos="fade-up" data-aos-delay="300">
-                        <div class="package-header">
-                            <h4 class="fw-bold mb-2">Perguruan Tinggi</h4>
-                            <p class="mb-0">Paket tes untuk mahasiswa dan calon mahasiswa</p>
-                        </div>
-                        <div class="package-body">
-                            <div class="text-center mb-4">
-                                <div class="package-price" style="color: var(--purple);">Rp 450.000</div>
-                                <small class="text-muted">/siswa</small>
-                            </div>
-                            <ul class="package-features">
-                                <li><i class="bi bi-check-circle-fill"></i> Tes IQ</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Tes Minat</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Tes Kepribadian</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Laporan Premium</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Konsultasi 3x</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Rekomendasi Karir</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Sertifikat</li>
-                            </ul>
-                            <a href="#kontak" class="btn btn-light w-100">Pilih Paket</a>
-                        </div>
-                    </div>
-                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
             
             <div class="text-center mt-5">
@@ -1353,9 +1530,9 @@
                 <!-- SMP Gallery Items -->
                 <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="smp">
                     <div class="gallery-item">
-                        <img src="https://picsum.photos/seed/smp1/600/400.jpg" alt="SMP Activity">
+                        <img src="images/smkn/DSC06189.JPG" alt="SMP Activity">
                         <div class="gallery-overlay">
-                            <h5>Tes Psikologi di SMP Negeri 1 Surabaya</h5>
+                            <h5>Tes Psikologi di SMKN 2 Buduran</h5>
                             <p>Februari 2023</p>
                         </div>
                     </div>
@@ -1363,30 +1540,100 @@
                 
                 <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="smp">
                     <div class="gallery-item">
-                        <img src="https://picsum.photos/seed/smp2/600/400.jpg" alt="SMP Activity">
+                        <img src="images/smkn/DSC06193.JPG" alt="SMP Activity">
                         <div class="gallery-overlay">
-                            <h5>Workshop Minat Bakat di SMP Islam Al-Azhar</h5>
-                            <p>Maret 2023</p>
+                            <h5>Tes Psikologi di SMKN 2 Buduran</h5>
+                            <p>Februari 2023</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="smp">
                     <div class="gallery-item">
-                        <img src="https://picsum.photos/seed/smp3/600/400.jpg" alt="SMP Activity">
+                        <img src="images/smkn/DSC06199.JPG" alt="SMP Activity">
                         <div class="gallery-overlay">
-                            <h5>Sosialisasi Karir di SMP Negeri 5 Malang</h5>
-                            <p>April 2023</p>
+                            <h5>Tes Psikologi di SMKN 2 Buduran</h5>
+                            <p>Februari 2023</p>
                         </div>
                     </div>
                 </div>
                 
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="smp">
+                    <div class="gallery-item">
+                        <img src="images/smkn/DSC06205.JPG" alt="SMP Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di SMKN 2 Buduran</h5>
+                            <p>Februari 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="smp">
+                    <div class="gallery-item">
+                        <img src="images/smkn/DSC06216.JPG" alt="SMP Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di SMKN 2 Buduran</h5>
+                            <p>Februari 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="smp">
+                    <div class="gallery-item">
+                        <img src="images/smkn/DSC06220.JPG" alt="SMP Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di SMKN 2 Buduran</h5>
+                            <p>Februari 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="smp">
+                    <div class="gallery-item">
+                        <img src="images/smkn/DSC06241.JPG" alt="SMP Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di SMKN 2 Buduran</h5>
+                            <p>Februari 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="smp">
+                    <div class="gallery-item">
+                        <img src="images/smkn/DSC06249.JPG" alt="SMP Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di SMKN 2 Buduran</h5>
+                            <p>Februari 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="smp">
+                    <div class="gallery-item">
+                        <img src="images/smkn/DSC06258.JPG" alt="SMP Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di SMKN 2 Buduran</h5>
+                            <p>Februari 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="smp">
+                    <div class="gallery-item">
+                        <img src="images/smkn/DSC06261.JPG" alt="SMP Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di SMKN 2 Buduran</h5>
+                            <p>Februari 2023</p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- SMA Gallery Items -->
                 <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="sma">
                     <div class="gallery-item">
-                        <img src="https://picsum.photos/seed/sma1/600/400.jpg" alt="SMA Activity">
+                        <img src="images/man/IMG_9418.jpg" alt="SMA Activity">
                         <div class="gallery-overlay">
-                            <h5>Tes Minat Bakat di SMA Negeri 1 Jakarta</h5>
+                            <h5>Tes Psikologi di MA Negeri 2 Mojokerto</h5>
                             <p>Januari 2023</p>
                         </div>
                     </div>
@@ -1394,24 +1641,63 @@
                 
                 <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="sma">
                     <div class="gallery-item">
-                        <img src="https://picsum.photos/seed/sma2/600/400.jpg" alt="SMA Activity">
+                        <img src="images/man/IMG_9438.jpg" alt="SMA Activity">
                         <div class="gallery-overlay">
-                            <h5>Konsultasi Jurusan di SMA Katolik St. Louis</h5>
-                            <p>Februari 2023</p>
+                            <h5>Tes Psikologi di MA Negeri 2 Mojokerto</h5>
+                            <p>Januari 2023</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="sma">
                     <div class="gallery-item">
-                        <img src="https://picsum.photos/seed/sma3/600/400.jpg" alt="SMA Activity">
+                        <img src="images/man/IMG_9450.jpg" alt="SMA Activity">
                         <div class="gallery-overlay">
-                            <h5>Seminar Perencanaan Karir di SMA Negeri 3 Bandung</h5>
-                            <p>Maret 2023</p>
+                            <h5>Tes Psikologi di MA Negeri 2 Mojokerto</h5>
+                            <p>Januari 2023</p>
                         </div>
                     </div>
                 </div>
                 
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="sma">
+                    <div class="gallery-item">
+                        <img src="images/man/IMG_9456.jpg" alt="SMA Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di MA Negeri 2 Mojokerto</h5>
+                            <p>Januari 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="sma">
+                    <div class="gallery-item">
+                        <img src="images/man/IMG_9460.jpg" alt="SMA Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di MA Negeri 2 Mojokerto</h5>
+                            <p>Januari 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="sma">
+                    <div class="gallery-item">
+                        <img src="images/man/IMG_9464.jpg" alt="SMA Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di MA Negeri 2 Mojokerto</h5>
+                            <p>Januari 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="sma">
+                    <div class="gallery-item">
+                        <img src="images/man/IMG_9503.jpg" alt="SMA Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di MA Negeri 2 Mojokerto</h5>
+                            <p>Januari 2023</p>
+                        </div>
+                    </div>
+                </div>
                 <!-- Perguruan Tinggi Gallery Items -->
                 <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="perguruan-tinggi">
                     <div class="gallery-item">
@@ -1707,9 +1993,7 @@
             <div class="row g-4">
                 <div class="col-lg-3 col-md-6">
                     <div class="d-flex align-items-center mb-3">
-                        <div class="bg-gradient-tosca text-white rounded-3 p-2 me-2" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-                            <strong>K</strong>
-                        </div>
+                        <img src="images/kdo.png" alt="Logo" style="width: 40px; height: 40px; object-fit: contain; margin-right: 10px;">
                         <span class="fw-bold" style="font-size: 18px;">Karakter Indonesia</span>
                     </div>
                     <p class="text-white-50">
@@ -1787,6 +2071,9 @@
     <!-- AOS Animation JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    
     <script>
         // Initialize AOS
         AOS.init({
@@ -1809,6 +2096,60 @@
             } else {
                 navbar.classList.remove('scrolled');
             }
+        });
+        
+        // Initialize Swiper for Services
+        const servicesSwiper = new Swiper('.servicesSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.servicesSwiper .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.servicesSwiper .swiper-button-next',
+                prevEl: '.servicesSwiper .swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                992: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+        
+        // Initialize Swiper for Packages
+        const packagesSwiper = new Swiper('.packagesSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.packagesSwiper .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.packagesSwiper .swiper-button-next',
+                prevEl: '.packagesSwiper .swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                992: {
+                    slidesPerView: 3,
+                },
+            },
         });
         
         // Gallery filter functionality
