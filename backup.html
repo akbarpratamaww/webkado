@@ -1,0 +1,2343 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karakter Indonesia - Platform Tes Psikologi Terpercaya</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        :root {
+            --tosca-primary: #2dd4bf;
+            --tosca-dark: #14b8a6;
+            --tosca-light: #5eead4;
+            --purple: #a78bfa;
+            --purple-dark: #8b5cf6;
+            --purple-light: #c4b5fd;
+        }
+        
+        body {
+            overflow-x: hidden;
+        }
+        
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Gradient Backgrounds */
+        .bg-gradient-tosca {
+            background: linear-gradient(135deg, var(--tosca-primary) 0%, var(--tosca-light) 100%);
+        }
+        
+        .bg-gradient-purple {
+            background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+        }
+        
+        .bg-gradient-hero {
+            background: linear-gradient(135deg, var(--tosca-dark) 0%, var(--tosca-primary) 50%, var(--purple) 100%);
+        }
+        
+        /* Text Gradients */
+        .text-gradient {
+            background: linear-gradient(135deg, var(--tosca-primary), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Navbar with Blur Effect */
+        .navbar {
+            transition: all 0.4s ease;
+            backdrop-filter: blur(0px);
+            background-color: rgba(255, 255, 255, 0);
+            box-shadow: none;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            margin: 0 10px;
+            color: #333 !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--tosca-primary);
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+        
+        .nav-link:hover::after {
+            width: 80%;
+        }
+        
+        .navbar.scrolled .nav-link {
+            color: #333 !important;
+        }
+        
+        /* Buttons */
+        .btn-tosca {
+            background: var(--tosca-primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(45, 212, 191, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-tosca::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-tosca:hover::before {
+            left: 100%;
+        }
+        
+        .btn-tosca:hover {
+            background: var(--tosca-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(45, 212, 191, 0.4);
+            color: white;
+        }
+        
+        .btn-outline-tosca {
+            border: 2px solid var(--tosca-primary);
+            color: var(--tosca-primary);
+            background: transparent;
+            padding: 12px 30px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-outline-tosca::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--tosca-primary);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn-outline-tosca:hover::before {
+            width: 100%;
+        }
+        
+        .btn-outline-tosca:hover {
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Cards */
+        .card-hover {
+            transition: all 0.4s ease;
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .card-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(45, 212, 191, 0.1), rgba(167, 139, 250, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        
+        .card-hover:hover::before {
+            opacity: 1;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-hover > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Icon Boxes */
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover .icon-box {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Mission Card */
+        .mission-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 25px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+        
+        .mission-card > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Video Box */
+        .video-box {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .video-box:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .video-box iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .play-button:hover {
+            background: white;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        /* Stats Counter */
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--tosca-primary), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card {
+            padding: 30px;
+            border-radius: 20px;
+            background: transparent;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stat-card:hover .stat-number {
+            transform: scale(1.1);
+        }
+        
+        /* Decorative Elements */
+        .decoration-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        /* Section Padding */
+        .section-padding {
+            padding: 100px 0;
+        }
+        
+        /* FAQ Section - Completely Redesigned */
+        .faq-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 40px;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #333;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .faq-question::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--tosca-primary);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question::before {
+            transform: scaleY(1);
+        }
+        
+        .faq-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--tosca-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-icon {
+            background: var(--purple-dark);
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 25px;
+            color: #666;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 25px 20px;
+        }
+        
+        /* Package Card Popular */
+        .package-popular {
+            position: relative;
+            border: 3px solid var(--tosca-primary);
+            transform: scale(1.05);
+            overflow: hidden;
+        }
+        
+        .package-popular::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(45, 212, 191, 0.05), rgba(167, 139, 250, 0.05));
+            z-index: 1;
+        }
+        
+        .package-popular > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--tosca-primary), var(--purple));
+            color: white;
+            padding: 8px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(45, 212, 191, 0.4);
+            z-index: 3;
+        }
+        
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            color: white;
+        }
+        
+        .footer a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: var(--tosca-light);
+            transform: translateX(5px);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--tosca-primary);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--tosca-dark);
+        }
+        
+        /* Gallery Section */
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .gallery-tab {
+            padding: 10px 25px;
+            margin: 0 10px 10px 0;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 30px;
+            font-weight: 600;
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-tab:hover {
+            border-color: var(--tosca-primary);
+            color: var(--tosca-primary);
+            transform: translateY(-3px);
+        }
+        
+        .gallery-tab.active {
+            background: var(--tosca-primary);
+            color: white;
+            border-color: var(--tosca-primary);
+        }
+        
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 15px;
+            height: 250px;
+            margin-bottom: 20px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 20px;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        /* How It Works Steps */
+        .step-card {
+            position: relative;
+            padding: 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            width: 40px;
+            height: 40px;
+            background: var(--tosca-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            box-shadow: 0 5px 15px rgba(45, 212, 191, 0.3);
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--tosca-primary), var(--purple));
+            color: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin: 20px 0;
+            box-shadow: 0 10px 20px rgba(45, 212, 191, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .step-card:hover .step-icon {
+            transform: rotate(10deg) scale(1.1);
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        
+        .form-control, .form-select {
+            border-radius: 10px;
+            border: 2px solid #e5e7eb;
+            padding: 12px 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--tosca-primary);
+            box-shadow: 0 0 0 0.2rem rgba(45, 212, 191, 0.25);
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+        
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loader-circle {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--tosca-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Package Cards */
+        .package-card {
+            height: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .package-header {
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .package-basic .package-header {
+            background: linear-gradient(135deg, #f0fdfa, #e6fffa);
+        }
+        
+        .package-school .package-header {
+            background: linear-gradient(135deg, var(--tosca-primary), var(--tosca-light));
+            color: white;
+        }
+        
+        .package-premium .package-header {
+            background: linear-gradient(135deg, var(--purple), var(--purple-light));
+            color: white;
+        }
+        
+        .package-body {
+            padding: 20px;
+        }
+        
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        
+        .package-features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .package-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .package-features i {
+            margin-right: 10px;
+            color: var(--tosca-primary);
+        }
+        
+        .package-school .package-features i {
+            color: white;
+        }
+        
+        .package-premium .package-features i {
+            color: var(--purple);
+        }
+        
+        /* Swiper Custom Styles */
+        .swiper {
+            width: 100%;
+            padding: 20px 0 40px;
+        }
+        
+        .swiper-slide {
+            height: auto !important;
+        }
+        
+        .swiper-pagination-bullet {
+            background: var(--tosca-primary);
+            opacity: 0.5;
+        }
+        
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+        }
+        
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--tosca-primary);
+            background: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 18px;
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Pulse Animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 60px 0;
+            }
+            
+            .display-3 {
+                font-size: 2.5rem;
+            }
+            
+            .gallery-tabs {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+            
+            .gallery-tab {
+                flex-shrink: 0;
+            }
+            
+            .video-box iframe {
+                height: 250px;
+            }
+            
+            .navbar {
+                padding: 10px 0;
+            }
+            
+            .navbar-brand {
+                font-size: 18px;
+            }
+            
+            .nav-link {
+                margin: 0 5px;
+                font-size: 14px;
+            }
+            
+            .swiper-button-next,
+            .swiper-button-prev {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-circle"></div>
+    </div>
+
+    <!-- Navbar with Blur Effect -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+           <a class="navbar-brand d-flex align-items-center" href="#beranda">
+                <img src="images/kdo.png" alt="Logo" style="width: 45px; height: 45px; object-fit: contain;">
+                <span class="fw-bold" style="color: var(--tosca-primary); font-size: 20px;">Karakter Indonesia</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#beranda">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#layanan">Layanan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#cara-kerja">Cara Kerja</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#paket">Paket</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#galeri">Galeri</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="#kontak" class="btn btn-tosca">Jadwalkan Tes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="section-padding" style="margin-top: 80px; position: relative; overflow: hidden;">
+        <div class="decoration-circle bg-gradient-tosca" style="width: 400px; height: 400px; top: -100px; right: -100px;"></div>
+        <div class="decoration-circle bg-gradient-purple" style="width: 300px; height: 300px; bottom: -50px; left: -50px;"></div>
+        
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-center" data-aos="fade-up">
+                    <span class="badge bg-light text-dark px-4 py-2 rounded-pill mb-4">
+                        <i class="bi bi-stars me-2" style="color: var(--tosca-primary);"></i>
+                        Platform Tes Psikologi Terpercaya
+                    </span>
+                    
+                    <h1 class="display-3 fw-bold mb-4">
+                        Selamat Datang di<br>
+                        <span class="text-gradient">Karakter Indonesia</span>
+                    </h1>
+                    
+                    <p class="lead mb-3 fw-semibold" style="color: #374151;">
+                        Partner Terbaik untuk Merencanakan 
+                        <span style="color: var(--tosca-primary);" class="fw-bold">Masa Depan Siswa Anda</span>
+                    </p>
+                    
+                    <p class="text-muted mb-5 mx-auto" style="max-width: 700px; font-size: 1.1rem;">
+                        Membantu sekolah dan orang tua memahami potensi anak melalui Tes IQ,
+                        Bakat & Minat, serta Tes Kepribadian dengan metode yang tervalidasi
+                        dan terpercaya.
+                    </p>
+                    
+                    <div class="d-flex gap-3 justify-content-center mb-5 flex-wrap">
+                        <a href="#kontak" class="btn btn-tosca btn-lg">
+                            Jadwalkan Tes Sekarang
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                        <a href="#layanan" class="btn btn-outline-tosca btn-lg">
+                            Pelajari Layanan Kami
+                        </a>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="row mt-5 pt-4">
+                        <div class="col-md-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-delay="100">
+                            <div class="stat-card text-center">
+                                <div class="stat-number" data-target="500">0</div>
+                                <p class="text-muted">Sekolah Mitra</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-delay="200">
+                            <div class="stat-card text-center">
+                                <div class="stat-number" data-target="50">0</div>
+                                <p class="text-muted">Siswa Terbantu</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="stat-card text-center">
+                                <div class="stat-number" data-target="95">0</div>
+                                <p class="text-muted">Kepuasan Klien</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Introduction Section -->
+    <section class="section-padding bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">
+                    Kenali <span class="text-gradient">Karakter Indonesia</span>
+                </h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">
+                    Tonton video perkenalan kami untuk memahami lebih dalam tentang layanan tes psikologi yang kami tawarkan
+                </p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="video-box" data-aos="fade-up">
+                        <iframe 
+                            src="https://www.youtube.com/embed/KMXtGVcODlg" 
+                            title="Karakter Indonesia Introduction"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="tentang" class="section-padding" style="background: linear-gradient(180deg, #ffffff 0%, #f0fdfa 100%);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">
+                    Apa Itu <span class="text-gradient">Karakter Indonesia?</span>
+                </h2>
+                <p class="lead text-muted mx-auto" style="max-width: 800px;">
+                    Kami adalah platform tes psikologi terpercaya yang berkomitmen membantu
+                    sekolah dan orang tua dalam memahami potensi anak secara menyeluruh.
+                    Dengan pengalaman lebih dari 5 tahun, kami telah membantu ribuan siswa
+                    menemukan jalan terbaik untuk masa depan mereka.
+                </p>
+            </div>
+            
+            <div class="row g-4 mt-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-hover h-100 p-4 text-center" data-aos="fade-up" data-aos-delay="100">
+                        <div class="icon-box bg-gradient-tosca text-white mx-auto">
+                            <i class="bi bi-bullseye"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Akurat & Tervalidasi</h5>
+                        <p class="text-muted mb-0">Menggunakan metode psikologi yang sudah teruji dan tervalidasi secara ilmiah</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-hover h-100 p-4 text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="icon-box bg-gradient-purple text-white mx-auto">
+                            <i class="bi bi-award"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Profesional Berpengalaman</h5>
+                        <p class="text-muted mb-0">Didukung oleh tim psikolog dan konselor pendidikan bersertifikat</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-hover h-100 p-4 text-center" data-aos="fade-up" data-aos-delay="300">
+                        <div class="icon-box bg-gradient-tosca text-white mx-auto">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Pendampingan Menyeluruh</h5>
+                        <p class="text-muted mb-0">Konsultasi dan interpretasi hasil yang mudah dipahami untuk sekolah dan orang tua</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-hover h-100 p-4 text-center" data-aos="fade-up" data-aos-delay="400">
+                        <div class="icon-box bg-gradient-purple text-white mx-auto">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Membantu Perencanaan</h5>
+                        <p class="text-muted mb-0">Memberikan rekomendasi pengembangan potensi dan pemilihan jurusan yang tepat</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mission Card -->
+            <div class="row mt-5">
+                <div class="col-lg-10 mx-auto">
+                    <div class="mission-card" data-aos="fade-up">
+                        <div class="text-center">
+                            <div class="icon-box bg-white text-dark mx-auto mb-4" style="width: 80px; height: 80px; font-size: 40px;">
+                                <i class="bi bi-rocket-takeoff"></i>
+                            </div>
+                            <h3 class="fw-bold mb-3">Misi Kami</h3>
+                            <p class="lead mb-4">
+                                Menjadi partner terpercaya dalam pendidikan karakter dan pengembangan
+                                potensi siswa Indonesia, dengan menyediakan layanan tes psikologi yang
+                                akurat, terjangkau, dan mudah diakses oleh seluruh institusi pendidikan
+                                di Indonesia.
+                            </p>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="bg-white bg-opacity-10 rounded-3 p-3">
+                                        <i class="bi bi-check-circle fs-4 mb-2"></i>
+                                        <h6 class="fw-bold">Akurasi Tinggi</h6>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="bg-white bg-opacity-10 rounded-3 p-3">
+                                        <i class="bi bi-check-circle fs-4 mb-2"></i>
+                                        <h6 class="fw-bold">Terjangkau</h6>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="bg-white bg-opacity-10 rounded-3 p-3">
+                                        <i class="bi bi-check-circle fs-4 mb-2"></i>
+                                        <h6 class="fw-bold">Mudah Diakses</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="layanan" class="section-padding bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">
+                    Layanan <span class="text-gradient">Kami</span>
+                </h2>
+                <p class="lead text-muted mx-auto" style="max-width: 800px;">
+                    Tiga pilar utama layanan tes psikologi kami yang dirancang untuk
+                    memberikan pemahaman menyeluruh tentang potensi setiap siswa
+                </p>
+            </div>
+            
+            <!-- Swiper Container for Services -->
+            <div class="swiper servicesSwiper" data-aos="fade-up">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="card card-hover h-100">
+                            <div class="card-body p-4">
+                                <div class="bg-gradient-tosca" style="height: 4px; margin: -1rem -1rem 1.5rem -1rem;"></div>
+                                <div class="icon-box bg-gradient-tosca text-white mb-4">
+                                    <i class="bi bi-brain"></i>
+                                </div>
+                                <h4 class="fw-bold mb-3">Tes IQ</h4>
+                                <p class="text-muted mb-4">Mengukur tingkat kecerdasan intelektual siswa</p>
+                                <h6 class="fw-bold mb-3">Manfaat:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Mengidentifikasi kemampuan kognitif</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Mengetahui kekuatan dan kelemahan intelektual</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Membantu strategi pembelajaran yang tepat</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Prediksi potensi akademik</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="card card-hover h-100">
+                            <div class="card-body p-4">
+                                <div class="bg-gradient-purple" style="height: 4px; margin: -1rem -1rem 1.5rem -1rem;"></div>
+                                <div class="icon-box bg-gradient-purple text-white mb-4">
+                                    <i class="bi bi-lightbulb"></i>
+                                </div>
+                                <h4 class="fw-bold mb-3">Tes Bakat & Minat</h4>
+                                <p class="text-muted mb-4">Menggali potensi dan minat siswa secara komprehensif</p>
+                                <h6 class="fw-bold mb-3">Manfaat:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--purple);"></i>Menemukan bakat terpendam siswa</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--purple);"></i>Mengidentifikasi bidang minat yang kuat</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--purple);"></i>Rekomendasi jurusan dan karir</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--purple);"></i>Panduan pengembangan potensi</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="card card-hover h-100">
+                            <div class="card-body p-4">
+                                <div class="bg-gradient-tosca" style="height: 4px; margin: -1rem -1rem 1.5rem -1rem;"></div>
+                                <div class="icon-box bg-gradient-tosca text-white mb-4">
+                                    <i class="bi bi-heart"></i>
+                                </div>
+                                <h4 class="fw-bold mb-3">Tes Kepribadian</h4>
+                                <p class="text-muted mb-4">Memahami karakter dan tipe kepribadian siswa</p>
+                                <h6 class="fw-bold mb-3">Manfaat:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Mengenal tipe kepribadian siswa</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Memahami cara belajar yang efektif</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Mengembangkan soft skills</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Meningkatkan kecerdasan emosional</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Service Cards for Future Expansion -->
+                    <div class="swiper-slide">
+                        <div class="card card-hover h-100">
+                            <div class="card-body p-4">
+                                <div class="bg-gradient-purple" style="height: 4px; margin: -1rem -1rem 1.5rem -1rem;"></div>
+                                <div class="icon-box bg-gradient-purple text-white mb-4">
+                                    <i class="bi bi-graph-up"></i>
+                                </div>
+                                <h4 class="fw-bold mb-3">Tes Minat Jurusan</h4>
+                                <p class="text-muted mb-4">Membantu siswa menentukan jurusan yang sesuai dengan minat dan bakat</p>
+                                <h6 class="fw-bold mb-3">Manfaat:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--purple);"></i>Mengidentifikasi minat akademik</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--purple);"></i>Rekomendasi jurusan yang tepat</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--purple);"></i>Mengurangi resiko salah jurusan</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--purple);"></i>Meningkatkan motivasi belajar</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="card card-hover h-100">
+                            <div class="card-body p-4">
+                                <div class="bg-gradient-tosca" style="height: 4px; margin: -1rem -1rem 1.5rem -1rem;"></div>
+                                <div class="icon-box bg-gradient-tosca text-white mb-4">
+                                    <i class="bi bi-people-fill"></i>
+                                </div>
+                                <h4 class="fw-bold mb-3">Tes Kecerdasan Emosional</h4>
+                                <p class="text-muted mb-4">Mengukur kemampuan siswa dalam mengelola emosi dan interaksi sosial</p>
+                                <h6 class="fw-bold mb-3">Manfaat:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Meningkatkan kesadaran diri</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Mengembangkan empati</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Meningkatkan kemampuan sosial</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: var(--tosca-primary);"></i>Mengelola stres dengan baik</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <p class="lead text-muted mb-4">Ingin mengetahui lebih detail tentang layanan kami?</p>
+                <a href="#kontak" class="btn btn-tosca btn-lg">
+                    Konsultasi Gratis
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="cara-kerja" class="section-padding" style="background: linear-gradient(180deg, #ffffff 0%, #f0fdfa 100%);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Bagaimana Cara Kerjanya?</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">
+                    Proses sederhana untuk memulai perjalanan pengembangan diri Anda
+                </p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <i class="bi bi-clipboard-check"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Daftar & Pilih Tes</h5>
+                        <p class="text-muted mb-0">Buat akun dan pilih jenis tes psikologi yang sesuai dengan kebutuhan Anda dari berbagai pilihan yang tersedia.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">
+                            <i class="bi bi-laptop"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Ikuti Tes Online</h5>
+                        <p class="text-muted mb-0">Ikuti tes secara online kapan saja dan di mana saja. Tes dapat diselesaikan dalam waktu 30-60 menit.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Dapatkan Hasil & Interpretasi</h5>
+                        <p class="text-muted mb-0">Terima hasil tes yang komprehensif beserta interpretasi dari psikolog berpengalaman dalam 3-5 hari kerja.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="step-number">4</div>
+                        <div class="step-icon">
+                            <i class="bi bi-person-check"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Konsultasi dengan Psikolog</h5>
+                        <p class="text-muted mb-0">Jadwalkan sesi konsultasi dengan psikolog untuk pembahasan mendalam tentang hasil tes Anda.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <p class="text-muted mb-4">Ingin tahu lebih lanjut?</p>
+                <a href="#kontak" class="btn btn-tosca btn-lg">Hubungi Kami</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="paket" class="section-padding bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">
+                    Paket <span class="text-gradient">Layanan</span>
+                </h2>
+                <p class="lead text-muted mx-auto" style="max-width: 800px;">
+                    Pilih paket yang sesuai dengan kebutuhan sekolah atau siswa Anda.
+                    Kami menawarkan fleksibilitas dan harga yang terjangkau.
+                </p>
+            </div>
+            
+            <!-- Swiper Container for Packages -->
+            <div class="swiper packagesSwiper" data-aos="fade-up">
+                <div class="swiper-wrapper">
+                    <!-- Package 1 - SMP -->
+                    <div class="swiper-slide">
+                        <div class="package-card package-basic card-hover">
+                            <div class="package-header">
+                                <h4 class="fw-bold mb-2">SMP</h4>
+                                <p class="mb-0">Paket tes untuk siswa Sekolah Menengah Pertama</p>
+                            </div>
+                            <div class="package-body">
+                                <div class="text-center mb-4">
+                                    <!-- <div class="package-price" style="color: var(--tosca-primary);">Rp XXX.XXX</div>
+                                    <small class="text-muted">/siswa</small> -->
+                                </div>
+                                <ul class="package-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes IQ</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Perilaku</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kepribadian</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Gaya Belajar</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Laporan Hasil</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Konsultasi 1x</li>
+                                </ul>
+                                <a href="#kontak" class="btn btn-outline-tosca w-100">Pilih Paket</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Package 2 - SMA -->
+                    <div class="swiper-slide">
+                        <div class="package-card package-school card-hover">
+                            <div class="package-header">
+                                <h4 class="fw-bold mb-2">SMA</h4>
+                                <p class="mb-0">Paket tes untuk siswa Sekolah Menengah Atas</p>
+                            </div>
+                            <div class="package-body">
+                                <div class="text-center mb-4">
+                                    <!-- <div class="package-price">Rp XXX.XXX</div>
+                                    <small>/siswa</small> -->
+                                </div>
+                                <ul class="package-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes IQ</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Perilaku</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Minat dan Bakat</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kepribadian</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Gaya Belajar</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Laporan Hasil Lengkap</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Konsultasi 2x</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Rekomendasi Jurusan</li>
+                                </ul>
+                                <a href="#kontak" class="btn btn-outline-tosca w-100">Pilih Paket</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Package 3 - Perguruan Tinggi -->
+                    <div class="swiper-slide">
+                        <div class="package-card package-premium card-hover">
+                            <div class="package-header">
+                                <h4 class="fw-bold mb-2">Perguruan Tinggi</h4>
+                                <p class="mb-0">Paket tes untuk mahasiswa dan calon mahasiswa</p>
+                            </div>
+                            <div class="package-body">
+                                <div class="text-center mb-4">
+                                    <!-- <div class="package-price" style="color: var(--purple);">Rp 450.000</div>
+                                    <small class="text-muted">/siswa</small> -->
+                                </div>
+                                <ul class="package-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes IQ</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Perilaku</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kepribadian</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kecepatan</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Ketelitian</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kestabilan</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Ketahanan</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Laporan Premium</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Konsultasi 3x</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Rekomendasi Karir</li>
+                                    <!-- <li><i class="bi bi-check-circle-fill"></i> Sertifikat</li> -->
+                                </ul>
+                                <a href="#kontak" class="btn btn-outline-tosca w-100">Pilih Paket</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Package for Future Expansion -->
+                    <div class="swiper-slide">
+                        <div class="package-card package-basic card-hover">
+                            <div class="package-header">
+                                <h4 class="fw-bold mb-2">Paket Umum</h4>
+                                <p class="mb-0">Paket tes untuk kebutuhan umum dan perusahaan</p>
+                            </div>
+                            <div class="package-body">
+                                <div class="text-center mb-4">
+                                    <!-- <div class="package-price" style="color: var(--tosca-primary);">Rp XXX.XXX</div>
+                                    <small class="text-muted">/orang</small> -->
+                                </div>
+                                <ul class="package-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes IQ</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Perilaku</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Minat dan Bakat</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kepribadian</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Gaya Belajar</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kecepatan</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Ketelitian</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kestabilan</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Ketahanan</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Laporan Premium</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Konsultasi 3x</li>
+                                </ul>
+                                <a href="#kontak" class="btn btn-outline-tosca w-100">Pilih Paket</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="package-card package-school card-hover">
+                            <div class="package-header">
+                                <h4 class="fw-bold mb-2">Paket Perusahaan</h4>
+                                <p class="mb-0">Paket tes untuk kebutuhan rekrutmen dan pengembangan SDM</p>
+                            </div>
+                            <div class="package-body">
+                                <div class="text-center mb-4">
+                                    <!-- <div class="package-price">Rp XXX.XXX</div>
+                                    <small>/karyawan</small> -->
+                                </div>
+                                <ul class="package-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kepribadian</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kecerdasan Emosional</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kepemimpinan</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kemampuan Verbal</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Tes Kemampuan Numerik</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Laporan Hasil Lengkap</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Konsultasi 2x</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Rekomendasi Posisi</li>
+                                </ul>
+                                <a href="#kontak" class="btn btn-outline-tosca w-100">Pilih Paket</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <p class="text-muted mb-4">Butuh paket khusus untuk kebutuhan sekolah Anda?</p>
+                <a href="#kontak" class="btn btn-outline-tosca btn-lg">Hubungi Kami untuk Paket Custom</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galeri" class="section-padding" style="background: linear-gradient(180deg, #ffffff 0%, #f0fdfa 100%);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">
+                    Galeri <span class="text-gradient">Kegiatan</span>
+                </h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">
+                    Dokumentasi kegiatan tes psikologi di berbagai sekolah mitra kami
+                </p>
+            </div>
+            
+            <!-- Gallery Tabs -->
+            <div class="gallery-tabs">
+                <div class="gallery-tab active" data-category="all">Semua</div>
+                <div class="gallery-tab" data-category="smp">SMP</div>
+                <div class="gallery-tab" data-category="sma">SMA</div>
+                <div class="gallery-tab" data-category="perguruan-tinggi">Perguruan Tinggi</div>
+                <div class="gallery-tab" data-category="umum">Umum</div>
+            </div>
+            
+            <!-- Gallery Grid -->
+            <div class="row g-4 gallery-container">
+                <!-- SMP Gallery Items -->
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="smp">
+                    <div class="gallery-item">
+                        <img src="images/smkn/DSC06189.JPG" alt="SMP Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di SMKN 2 Buduran</h5>
+                            <p>Februari 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="smp">
+                    <div class="gallery-item">
+                        <img src="images/smkn/DSC06193.JPG" alt="SMP Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di SMKN 2 Buduran</h5>
+                            <p>Februari 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="smp">
+                    <div class="gallery-item">
+                        <img src="images/smkn/DSC06199.JPG" alt="SMP Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di SMKN 2 Buduran</h5>
+                            <p>Februari 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="smp">
+                    <div class="gallery-item">
+                        <img src="images/smkn/DSC06205.JPG" alt="SMP Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di SMKN 2 Buduran</h5>
+                            <p>Februari 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="smp">
+                    <div class="gallery-item">
+                        <img src="images/smkn/DSC06216.JPG" alt="SMP Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di SMKN 2 Buduran</h5>
+                            <p>Februari 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="smp">
+                    <div class="gallery-item">
+                        <img src="images/smkn/DSC06220.JPG" alt="SMP Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di SMKN 2 Buduran</h5>
+                            <p>Februari 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="smp">
+                    <div class="gallery-item">
+                        <img src="images/smkn/DSC06241.JPG" alt="SMP Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di SMKN 2 Buduran</h5>
+                            <p>Februari 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="smp">
+                    <div class="gallery-item">
+                        <img src="images/smkn/DSC06249.JPG" alt="SMP Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di SMKN 2 Buduran</h5>
+                            <p>Februari 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="smp">
+                    <div class="gallery-item">
+                        <img src="images/smkn/DSC06258.JPG" alt="SMP Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di SMKN 2 Buduran</h5>
+                            <p>Februari 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="smp">
+                    <div class="gallery-item">
+                        <img src="images/smkn/DSC06261.JPG" alt="SMP Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di SMKN 2 Buduran</h5>
+                            <p>Februari 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SMA Gallery Items -->
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="sma">
+                    <div class="gallery-item">
+                        <img src="images/man/IMG_9418.jpg" alt="SMA Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di MA Negeri 2 Mojokerto</h5>
+                            <p>Januari 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="sma">
+                    <div class="gallery-item">
+                        <img src="images/man/IMG_9438.jpg" alt="SMA Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di MA Negeri 2 Mojokerto</h5>
+                            <p>Januari 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="sma">
+                    <div class="gallery-item">
+                        <img src="images/man/IMG_9450.jpg" alt="SMA Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di MA Negeri 2 Mojokerto</h5>
+                            <p>Januari 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="sma">
+                    <div class="gallery-item">
+                        <img src="images/man/IMG_9456.jpg" alt="SMA Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di MA Negeri 2 Mojokerto</h5>
+                            <p>Januari 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="sma">
+                    <div class="gallery-item">
+                        <img src="images/man/IMG_9460.jpg" alt="SMA Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di MA Negeri 2 Mojokerto</h5>
+                            <p>Januari 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="sma">
+                    <div class="gallery-item">
+                        <img src="images/man/IMG_9464.jpg" alt="SMA Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di MA Negeri 2 Mojokerto</h5>
+                            <p>Januari 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="sma">
+                    <div class="gallery-item">
+                        <img src="images/man/IMG_9503.jpg" alt="SMA Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Psikologi di MA Negeri 2 Mojokerto</h5>
+                            <p>Januari 2023</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Perguruan Tinggi Gallery Items -->
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="perguruan-tinggi">
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/pt1/600/400.jpg" alt="Perguruan Tinggi Activity">
+                        <div class="gallery-overlay">
+                            <h5>Tes Kepribadian di Universitas Indonesia</h5>
+                            <p>Januari 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="perguruan-tinggi">
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/pt2/600/400.jpg" alt="Perguruan Tinggi Activity">
+                        <div class="gallery-overlay">
+                            <h5>Workshop Soft Skills di ITS Surabaya</h5>
+                            <p>Februari 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="perguruan-tinggi">
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/pt3/600/400.jpg" alt="Perguruan Tinggi Activity">
+                        <div class="gallery-overlay">
+                            <h5>Assessment Center di Universitas Airlangga</h5>
+                            <p>Maret 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Umum Gallery Items -->
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="umum">
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/umum1/600/400.jpg" alt="Umum Activity">
+                        <div class="gallery-overlay">
+                            <h5>Seminar Parenting di Surabaya</h5>
+                            <p>Januari 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="umum">
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/umum2/600/400.jpg" alt="Umum Activity">
+                        <div class="gallery-overlay">
+                            <h5>Workshop Pengembangan Diri di Jakarta</h5>
+                            <p>Februari 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 gallery-item-wrapper" data-category="umum">
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/umum3/600/400.jpg" alt="Umum Activity">
+                        <div class="gallery-overlay">
+                            <h5>Training untuk Guru di Bandung</h5>
+                            <p>Maret 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section - Completely Redesigned -->
+    <section id="faq" class="section-padding bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">
+                    Pertanyaan yang <span class="text-gradient">Sering Diajukan</span>
+                </h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">
+                    Temukan jawaban atas pertanyaan umum tentang layanan kami
+                </p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <div class="card border-0 shadow-lg p-5 text-center h-100" data-aos="fade-right">
+                        <div class="icon-box bg-gradient-hero text-white mx-auto mb-4">
+                            <i class="bi bi-question-circle"></i>
+                        </div>
+                        <h3 class="fw-bold mb-3">Masih Ada Pertanyaan?</h3>
+                        <p class="text-muted mb-4">Jika Anda tidak menemukan jawaban yang Anda cari, jangan ragu untuk menghubungi tim kami. Kami siap membantu Anda dengan informasi lebih lanjut.</p>
+                        <a href="#kontak" class="btn btn-tosca">
+                            <i class="bi bi-chat-dots me-2"></i>
+                            Hubungi Kami
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-7">
+                    <div class="faq-container" data-aos="fade-left">
+                        <div class="faq-item active">
+                            <div class="faq-question">
+                                <span>Apa itu Karakter Indonesia?</span>
+                                <div class="faq-icon">
+                                    <i class="bi bi-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="faq-answer">
+                                Karakter Indonesia adalah platform tes psikologi online yang menyediakan berbagai jenis tes psikologi untuk kebutuhan pengembangan diri, karir, dan organisasi. Kami didukung oleh tim psikolog berpengalaman yang siap membantu Anda.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Apakah hasil tes akurat?</span>
+                                <div class="faq-icon">
+                                    <i class="bi bi-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="faq-answer">
+                                Ya, semua tes yang kami sediakan telah melalui proses validasi dan standardisasi sesuai dengan kaidah psikometri. Hasil tes juga diinterpretasikan oleh psikolog berpengalaman untuk memastikan keakuratan dan relevansi.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Berapa lama waktu yang dibutuhkan untuk menyelesaikan tes?</span>
+                                <div class="faq-icon">
+                                    <i class="bi bi-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="faq-answer">
+                                Waktu pengerjaan bervariasi tergantung jenis tes. Rata-rata tes membutuhkan waktu 30-60 menit. Beberapa tes yang lebih kompleks mungkin membutuhkan waktu hingga 90 menit.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Apakah data pribadi saya aman?</span>
+                                <div class="faq-icon">
+                                    <i class="bi bi-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="faq-answer">
+                                Keamanan data pribadi Anda adalah prioritas kami. Semua informasi yang Anda berikan dilindungi dengan enkripsi dan hanya dapat diakses oleh psikolog yang berwenang. Kami tidak akan membagikan data Anda kepada pihak ketiga tanpa izin.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Bisakah saya berkonsultasi dengan psikolog setelah tes?</span>
+                                <div class="faq-icon">
+                                    <i class="bi bi-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="faq-answer">
+                                Tentu saja! Kami menyediakan layanan konsultasi dengan psikolog berpengalaman untuk membahas hasil tes Anda secara mendalam. Anda dapat menjadwalkan sesi konsultasi melalui platform kami.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontak" class="section-padding" style="background: linear-gradient(180deg, #ffffff 0%, #f0fdfa 100%);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">
+                    Hubungi <span class="text-gradient">Kami</span>
+                </h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">
+                    Jadwalkan tes psikologi untuk siswa Anda atau konsultasikan kebutuhan
+                    sekolah Anda dengan tim kami
+                </p>
+            </div>
+            
+            <div class="row g-5">
+                <!-- Contact Info -->
+                <div class="col-lg-5">
+                    <h4 class="fw-bold mb-4">Informasi Kontak</h4>
+                    
+                    <div class="card border-0 shadow-sm p-4 mb-3">
+                        <div class="d-flex align-items-start">
+                            <div class="icon-box bg-gradient-tosca text-white me-3" style="width: 50px; height: 50px; font-size: 24px;">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-2">Alamat</h6>
+                                <p class="text-muted mb-0">
+                                    Ruko Royal Crown Palace Blok RA No.38 Lt III<br>
+                                    Tambak Oso Waru, Sidoarjo, Jawa Timur
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card border-0 shadow-sm p-4 mb-3">
+                        <div class="d-flex align-items-start">
+                            <div class="icon-box bg-gradient-purple text-white me-3" style="width: 50px; height: 50px; font-size: 24px;">
+                                <i class="bi bi-telephone"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-2">Telepon</h6>
+                                <p class="text-muted mb-1">081336608252</p>
+                                <small class="text-muted">Senin - Sabtu: 08:00 - 17:00 WIB</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card border-0 shadow-sm p-4 mb-4">
+                        <div class="d-flex align-items-start">
+                            <div class="icon-box bg-gradient-tosca text-white me-3" style="width: 50px; height: 50px; font-size: 24px;">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-2">Email</h6>
+                                <p class="text-muted mb-1">admin@karakterindonesia.com</p>
+                                <p class="text-muted mb-0">karakterindonesia01@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card border-0 shadow-sm p-4">
+                        <h6 class="fw-bold mb-3">Jam Operasional</h6>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Senin - Jumat</span>
+                            <span class="fw-semibold">08:00 - 17:00 WIB</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Sabtu</span>
+                            <span class="fw-semibold">08:00 - 14:00 WIB</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span class="text-muted">Minggu</span>
+                            <span class="fw-semibold text-danger">Tutup</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="col-lg-7">
+                    <div class="contact-form">
+                        <h4 class="fw-bold mb-4">Formulir Pendaftaran</h4>
+                        <form id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Nama Lengkap *</label>
+                                    <input type="text" class="form-control" placeholder="Masukkan nama Anda" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Nama Sekolah</label>
+                                    <input type="text" class="form-control" placeholder="SMA/SMK/SMP ...">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Nomor Telepon *</label>
+                                    <input type="tel" class="form-control" placeholder="08XX-XXXX-XXXX" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Email</label>
+                                    <input type="email" class="form-control" placeholder="email@example.com">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Jumlah Siswa</label>
+                                    <input type="number" class="form-control" placeholder="Contoh: 30">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Jenis Tes</label>
+                                    <select class="form-select">
+                                        <option selected>Pilih jenis tes</option>
+                                        <option value="1">Tes IQ</option>
+                                        <option value="2">Tes Bakat & Minat</option>
+                                        <option value="3">Tes Kepribadian</option>
+                                        <option value="4">Paket Lengkap</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-semibold">Pesan</label>
+                                    <textarea class="form-control" rows="3" placeholder="Sampaikan pertanyaan atau kebutuhan khusus Anda"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-tosca w-100">
+                                        <i class="bi bi-send me-2"></i>
+                                        Kirim Pendaftaran
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="images/kdo.png" alt="Logo" style="width: 40px; height: 40px; object-fit: contain; margin-right: 10px;">
+                        <span class="fw-bold" style="font-size: 18px;">Karakter Indonesia</span>
+                    </div>
+                    <p class="text-white-50">
+                        Platform tes psikologi terpercaya untuk membantu mengenali potensi siswa Indonesia.
+                    </p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#" class="text-white-50"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-white-50"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-white-50"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-white-50"><i class="bi bi-linkedin fs-5"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="fw-bold mb-3">Layanan Kami</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#layanan" class="text-white-50">Tes IQ</a></li>
+                        <li class="mb-2"><a href="#layanan" class="text-white-50">Tes Bakat & Minat</a></li>
+                        <li class="mb-2"><a href="#layanan" class="text-white-50">Tes Kepribadian</a></li>
+                        <li class="mb-2"><a href="#paket" class="text-white-50">Paket Layanan</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="fw-bold mb-3">Tautan Cepat</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#tentang" class="text-white-50">Tentang Kami</a></li>
+                        <li class="mb-2"><a href="#cara-kerja" class="text-white-50">Cara Kerja</a></li>
+                        <li class="mb-2"><a href="#galeri" class="text-white-50">Galeri</a></li>
+                        <li class="mb-2"><a href="#faq" class="text-white-50">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="fw-bold mb-3">Kontak</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2 d-flex align-items-center">
+                            <i class="bi bi-geo-alt me-2"></i>
+                            <span class="text-white-50">Sidoarjo, Jawa Timur</span>
+                        </li>
+                        <li class="mb-2 d-flex align-items-center">
+                            <i class="bi bi-telephone me-2"></i>
+                            <span class="text-white-50">081336608252</span>
+                        </li>
+                        <li class="mb-2 d-flex align-items-center">
+                            <i class="bi bi-envelope me-2"></i>
+                            <span class="text-white-50">admin@karakterindonesia.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-4" style="border-color: rgba(255, 255, 255, 0.1);">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-white-50 mb-0">© 2023 Karakter Indonesia. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white-50 me-3">Kebijakan Privasi</a>
+                    <a href="#" class="text-white-50">Syarat & Ketentuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/6281336608252" target="_blank" class="whatsapp-btn">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        
+        // Hide loader when page is fully loaded
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 500);
+        });
+        
+        // Navbar scroll effect with blur
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Initialize Swiper for Services
+        const servicesSwiper = new Swiper('.servicesSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.servicesSwiper .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.servicesSwiper .swiper-button-next',
+                prevEl: '.servicesSwiper .swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                992: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+        
+        // Initialize Swiper for Packages
+        const packagesSwiper = new Swiper('.packagesSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.packagesSwiper .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.packagesSwiper .swiper-button-next',
+                prevEl: '.packagesSwiper .swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                992: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+        
+        // Gallery filter functionality
+        const galleryTabs = document.querySelectorAll('.gallery-tab');
+        const galleryItems = document.querySelectorAll('.gallery-item-wrapper');
+        
+        galleryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                galleryTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                const category = tab.getAttribute('data-category');
+                
+                // Show/hide gallery items based on category
+                galleryItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                        // Add animation
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            const form = this;
+            const button = form.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = '<i class="bi bi-check-circle me-2"></i>Pesan Terkirim!';
+            button.classList.remove('btn-tosca');
+            button.classList.add('btn-success');
+            button.disabled = true;
+            
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                form.reset();
+                button.innerHTML = originalText;
+                button.classList.remove('btn-success');
+                button.classList.add('btn-tosca');
+                button.disabled = false;
+            }, 3000);
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Counter animation for stats
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                
+                // Format the number based on the original content
+                if (element.textContent.includes('K')) {
+                    element.textContent = Math.floor(current) + 'K+';
+                } else if (element.textContent.includes('%')) {
+                    element.textContent = Math.floor(current) + '%';
+                } else {
+                    element.textContent = Math.floor(current) + '+';
+                }
+            }, 16);
+        }
+        
+        // Trigger counter animation when stats section is in view
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        animateCounter(stat);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        const statsSection = document.querySelector('#beranda .row');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+        
+        // Add parallax effect to decoration circles
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.decoration-circle');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+        
+        // Add hover effect to cards
+        const cards = document.querySelectorAll('.card-hover');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        // Add animation to icon boxes
+        const iconBoxes = document.querySelectorAll('.icon-box');
+        iconBoxes.forEach(box => {
+            box.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1) rotate(5deg)';
+            });
+            
+            box.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+        
+        // Add animation to step cards
+        const stepCards = document.querySelectorAll('.step-card');
+        stepCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                const icon = this.querySelector('.step-icon');
+                if (icon) {
+                    icon.style.transform = 'rotate(10deg) scale(1.1)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                const icon = this.querySelector('.step-icon');
+                if (icon) {
+                    icon.style.transform = 'rotate(0deg) scale(1)';
+                }
+            });
+        });
+        
+        // FAQ functionality - completely redesigned
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
