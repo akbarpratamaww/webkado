@@ -3,29 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScriptOn - Transformasi Digital Modern</title>
+    <title>Script On - Transformasi Ide Menjadi Realitas Digital</title>
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
     <style>
         :root {
-            --primary: #f97316;
-            --primary-dark: #ea580c;
-            --secondary: #fbbf24;
-            --accent: #f59e0b;
-            --light: #fffbeb;
-            --dark: #1e293b;
-            --darker: #0f172a;
+            --ruby: #B71C1C;
+            --ruby-dark: #8B0000;
+            --ruby-light: #E53935;
+            --accent: #FFC107;
+            --foreground: #FFFFFF;
+            --muted-foreground: #AAAAAA;
+            --background: #0A0A0A;
+            --secondary: #1A1A1A;
+            --input: #2A2A2A;
+            --gradient: linear-gradient(135deg, var(--ruby) 0%, var(--ruby-dark) 100%);
         }
         
         * {
@@ -35,240 +48,463 @@
         }
         
         body {
+            background-color: var(--background);
+            color: var(--foreground);
             font-family: 'Poppins', sans-serif;
-            background-color: var(--darker);
-            color: #fff;
             overflow-x: hidden;
+            cursor: none;
         }
         
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Playfair Display', serif;
         }
         
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        .text-ruby {
+            color: var(--ruby) !important;
         }
         
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
+        .text-accent {
+            color: var(--accent) !important;
         }
         
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(to bottom, var(--primary), var(--secondary));
-            border-radius: 4px;
+        .bg-ruby {
+            background-color: var(--ruby) !important;
         }
         
-        /* Logo styles */
-        .logo {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 800;
-            font-size: 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            transition: all 0.3s ease;
-            position: relative;
-            display: inline-block;
+        .bg-ruby-dark {
+            background-color: var(--ruby-dark) !important;
         }
         
-        .logo::before {
-            content: '';
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(251, 191, 36, 0.2));
-            border-radius: 8px;
-            z-index: -1;
-            filter: blur(10px);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        .bg-ruby-light {
+            background-color: var(--ruby-light) !important;
         }
         
-        .logo:hover {
-            transform: scale(1.05);
+        .bg-accent {
+            background-color: var(--accent) !important;
         }
         
-        .logo:hover::before {
-            opacity: 1;
+        .bg-secondary {
+            background-color: var(--secondary) !important;
         }
         
-        /* Gradient text */
-        .gradient-text {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            background-size: 200% auto;
-            animation: gradient 3s ease infinite;
+        .bg-input {
+            background-color: var(--input) !important;
         }
         
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .text-foreground {
+            color: var(--foreground) !important;
         }
         
-        /* Glass effect */
-        .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .text-muted-foreground {
+            color: var(--muted-foreground) !important;
         }
         
-        /* Button styles */
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        .border-ruby {
+            border-color: var(--ruby) !important;
+        }
+        
+        .btn-ruby {
+            background: var(--gradient);
             color: white;
-            padding: 14px 32px;
-            border-radius: 50px;
+            border: none;
+            padding: 12px 24px;
             font-weight: 600;
+            border-radius: 50px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+            box-shadow: 0 4px 15px rgba(183, 28, 28, 0.3);
             position: relative;
             overflow: hidden;
-            z-index: 1;
+            font-size: 0.9rem;
         }
         
-        .btn-primary::before {
+        .btn-ruby:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-ruby:hover:before {
+            left: 100%;
+        }
+        
+        .btn-ruby:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(183, 28, 28, 0.5);
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .btn-outline-ruby {
+            background: transparent;
+            color: var(--ruby);
+            border: 2px solid var(--ruby);
+            padding: 12px 24px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-size: 0.9rem;
+        }
+        
+        .btn-outline-ruby:before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
+            width: 0;
             height: 100%;
-            background: linear-gradient(135deg, var(--primary-dark), var(--accent));
+            background: var(--ruby);
+            transition: width 0.3s ease;
             z-index: -1;
-            transition: opacity 0.3s ease;
-            opacity: 0;
         }
         
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.5);
+        .btn-outline-ruby:hover:before {
+            width: 100%;
         }
         
-        .btn-primary:hover::before {
-            opacity: 1;
-        }
-        
-        .btn-outline {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-outline:hover {
-            background: var(--primary);
+        .btn-outline-ruby:hover {
             color: white;
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.3);
+            box-shadow: 0 8px 25px rgba(183, 28, 28, 0.3);
         }
         
-        /* Card styles */
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--background);
+            border: none;
+            padding: 12px 24px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-size: 0.9rem;
+        }
+        
+        .btn-accent:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-accent:hover:before {
+            left: 100%;
+        }
+        
+        .btn-accent:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
+            background-color: var(--accent);
+            color: var(--background);
+        }
+        
         .card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: var(--secondary);
+            border: 1px solid rgba(183, 28, 28, 0.2);
             border-radius: 20px;
             overflow: hidden;
             transition: all 0.4s ease;
             position: relative;
+            height: 100%;
         }
         
-        .card::before {
+        .card:before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(251, 191, 36, 0.1));
+            background: linear-gradient(135deg, rgba(183, 28, 28, 0.1) 0%, rgba(255, 193, 7, 0.05) 100%);
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: 0;
         }
         
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(249, 115, 22, 0.2);
-            border-color: rgba(249, 115, 22, 0.3);
-        }
-        
-        .card:hover::before {
+        .card:hover:before {
             opacity: 1;
         }
         
-        .card > * {
-            position: relative;
-            z-index: 1;
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(183, 28, 28, 0.2);
+            border-color: var(--ruby);
         }
         
-        /* Service icon */
+        .card-body {
+            position: relative;
+            z-index: 1;
+            padding: 1.5rem;
+        }
+        
+        .rounded-4xl {
+            border-radius: 2rem;
+        }
+        
+        .rounded-5xl {
+            border-radius: 2.5rem;
+        }
+        
+        .navbar {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            background-color: rgba(10, 10, 10, 0.7);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .navbar.scrolled {
+            background-color: rgba(10, 10, 10, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            padding: 0.5rem 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            color: var(--foreground) !important;
+            font-weight: 500;
+            margin: 0 8px;
+            position: relative;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--ruby);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .nav-link:hover {
+            color: var(--ruby) !important;
+            transform: translateY(-2px);
+        }
+        
+        .navbar-toggler {
+            border: none;
+            padding: 4px 8px;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            width: 24px;
+            height: 24px;
+        }
+        
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(183, 28, 28, 0.1) 0%, rgba(10, 10, 10, 0.9) 100%);
+            z-index: -1;
+        }
+        
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            background-color: var(--ruby);
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            25% {
+                transform: translateY(-20px) translateX(10px);
+            }
+            50% {
+                transform: translateY(10px) translateX(-10px);
+            }
+            75% {
+                transform: translateY(-10px) translateX(20px);
+            }
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: var(--muted-foreground);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--ruby) 0%, var(--ruby-light) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+        }
+        
+        .gradient-text:hover {
+            animation: gradient-shift 2s ease infinite;
+        }
+        
+        @keyframes gradient-shift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--muted-foreground);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+        
         .service-icon {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--gradient);
             border-radius: 20px;
             margin-bottom: 1.5rem;
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: white;
-            transition: all 0.5s ease;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
         
-        .service-icon::before {
+        .service-icon:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        .service-card:hover .service-icon:before {
+            transform: translateX(100%);
+        }
+        
+        .service-card:hover .service-icon {
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, var(--ruby-light) 0%, var(--ruby) 100%);
+            box-shadow: 0 10px 20px rgba(183, 28, 28, 0.3);
+        }
+        
+        .portfolio-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .portfolio-img {
+            height: 250px;
+            background: linear-gradient(135deg, rgba(183, 28, 28, 0.2) 0%, rgba(255, 193, 7, 0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: rgba(183, 28, 28, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .portfolio-img:before {
             content: '';
             position: absolute;
             top: -50%;
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
             transform: rotate(45deg) translateX(-100%);
             transition: transform 0.6s;
         }
         
-        .service-icon:hover::before {
+        .portfolio-card:hover .portfolio-img:before {
             transform: rotate(45deg) translateX(100%);
-        }
-        
-        .service-icon:hover {
-            transform: rotateY(180deg) scale(1.1);
-            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.5);
-        }
-        
-        /* Portfolio card */
-        .portfolio-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 20px;
-            height: 320px;
-            background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(251, 191, 36, 0.1));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            font-weight: 800;
-            color: rgba(249, 115, 22, 0.3);
-            transition: all 0.5s ease;
-            cursor: pointer;
-        }
-        
-        .portfolio-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(249, 115, 22, 0.3);
         }
         
         .portfolio-overlay {
@@ -277,13 +513,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(249, 115, 22, 0.95), rgba(251, 191, 36, 0.9));
+            background: rgba(183, 28, 28, 0.8);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: all 0.5s ease;
+            transition: all 0.4s ease;
             padding: 20px;
         }
         
@@ -291,177 +527,477 @@
             opacity: 1;
         }
         
-        .portfolio-overlay h3 {
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.3s ease 0.1s;
-        }
-        
-        .portfolio-overlay p {
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.3s ease 0.2s;
-        }
-        
-        .portfolio-overlay .tags {
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.3s ease 0.3s;
-        }
-        
-        .portfolio-overlay button {
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.3s ease 0.4s;
-        }
-        
-        .portfolio-card:hover .portfolio-overlay h3,
-        .portfolio-card:hover .portfolio-overlay p,
-        .portfolio-card:hover .portfolio-overlay .tags,
-        .portfolio-card:hover .portfolio-overlay button {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        /* Testimonial card */
         .testimonial-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--secondary);
             border-radius: 20px;
-            padding: 2.5rem;
+            padding: 2rem;
             position: relative;
-            transition: all 0.4s ease;
-            overflow: hidden;
-        }
-        
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 20px;
-            left: 30px;
-            font-size: 5rem;
-            color: var(--primary);
-            opacity: 0.2;
-            font-family: 'Outfit', sans-serif;
-            z-index: 0;
-        }
-        
-        .testimonial-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
         
         .testimonial-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(249, 115, 22, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
         
-        .testimonial-card:hover::after {
-            transform: scaleX(1);
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--ruby);
+            opacity: 0.2;
+            font-family: 'Playfair Display', serif;
         }
         
-        .testimonial-card > * {
-            position: relative;
-            z-index: 1;
+        .contact-form {
+            background: var(--secondary);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        /* Contact form */
         .form-control {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            color: white;
-            padding: 14px 18px;
+            background-color: var(--input);
+            border: 1px solid rgba(183, 28, 28, 0.2);
+            border-radius: 10px;
+            color: var(--foreground);
+            padding: 12px 15px;
             transition: all 0.3s ease;
-            width: 100%;
         }
         
         .form-control:focus {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--primary);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+            background-color: var(--input);
+            border-color: var(--ruby);
+            color: var(--foreground);
+            box-shadow: 0 0 0 0.25rem rgba(183, 28, 28, 0.25);
         }
         
-        /* Social icon */
+        .form-label {
+            color: var(--foreground);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .footer {
+            background-color: var(--secondary);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid rgba(183, 28, 28, 0.2);
+        }
+        
+        .footer-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .footer-link {
+            color: var(--muted-foreground);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 0.25rem 0;
+            position: relative;
+        }
+        
+        .footer-link:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--ruby);
+            transition: width 0.3s ease;
+        }
+        
+        .footer-link:hover:before {
+            width: 100%;
+        }
+        
+        .footer-link:hover {
+            color: var(--ruby);
+            transform: translateX(5px);
+        }
+        
         .social-icon {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(183, 28, 28, 0.2);
             border-radius: 50%;
-            color: white;
-            margin-right: 15px;
-            margin-bottom: 15px;
+            color: var(--foreground);
+            margin-right: 10px;
+            margin-bottom: 10px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
         
-        .social-icon::before {
+        .social-icon:before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
+            background: var(--ruby);
             transform: scale(0);
+            border-radius: 50%;
             transition: transform 0.3s ease;
             z-index: 0;
         }
         
-        .social-icon:hover::before {
+        .social-icon:hover:before {
             transform: scale(1);
         }
         
         .social-icon i {
             position: relative;
             z-index: 1;
-            transition: color 0.3s ease;
         }
         
         .social-icon:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
         }
         
-        .social-icon:hover i {
+        .stats-card {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            border-radius: 15px;
+            background: rgba(183, 28, 28, 0.1);
+            border: 1px solid rgba(183, 28, 28, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stats-card:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(183, 28, 28, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .stats-card:hover:before {
+            opacity: 1;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-5px);
+            background: rgba(183, 28, 28, 0.2);
+            box-shadow: 0 10px 20px rgba(183, 28, 28, 0.1);
+        }
+        
+        .stats-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--ruby);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stats-label {
+            color: var(--muted-foreground);
+            font-size: 0.85rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-img {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+        
+        .about-img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .about-img:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(183, 28, 28, 0.8) 0%, rgba(10, 10, 10, 0.8) 100%);
+            z-index: 1;
+        }
+        
+        .about-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .about-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .about-number:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .about-img:hover .about-number:after {
+            transform: scaleX(1);
+        }
+        
+        .badge-ruby {
+            background-color: var(--ruby);
             color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+            font-size: 0.85rem;
         }
         
-        /* Back to top */
+        .badge-ruby:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .badge-ruby:hover:before {
+            left: 100%;
+        }
+        
+        .contact-info {
+            background: rgba(183, 28, 28, 0.1);
+            border: 1px solid rgba(183, 28, 28, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-info:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(183, 28, 28, 0.2);
+            transition: width 0.3s ease;
+            z-index: 0;
+        }
+        
+        .contact-info:hover:before {
+            width: 100%;
+        }
+        
+        .contact-info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(183, 28, 28, 0.1);
+        }
+        
+        .contact-info > div {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient);
+            border-radius: 50%;
+            color: white;
+            margin-right: 1rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .contact-icon:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        .contact-info:hover .contact-icon:before {
+            transform: translateX(100%);
+        }
+        
+        .office-hours {
+            background: linear-gradient(135deg, rgba(183, 28, 28, 0.2) 0%, rgba(255, 193, 7, 0.1) 100%);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .office-hours:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(183, 28, 28, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(183, 28, 28, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(183, 28, 28, 0);
+            }
+        }
+        
+        .rotate {
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .shake {
+            animation: shake 5s ease-in-out infinite;
+        }
+        
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            10%, 30%, 50%, 70%, 90% {
+                transform: translateX(-5px);
+            }
+            20%, 40%, 60%, 80% {
+                transform: translateX(5px);
+            }
+        }
+        
+        .loading-bar {
+            height: 4px;
+            background: var(--gradient);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+        
         .back-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--gradient);
             border-radius: 50%;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
             z-index: 999;
-            box-shadow: 0 5px 15px rgba(249, 115, 22, 0.4);
+            box-shadow: 0 5px 15px rgba(183, 28, 28, 0.3);
+        }
+        
+        .back-to-top:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: scale(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .back-to-top:hover:before {
+            transform: scale(1);
         }
         
         .back-to-top.show {
@@ -471,17 +1007,121 @@
         
         .back-to-top:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.6);
         }
         
-        /* Loading animation */
+        .custom-shape-divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        
+        .custom-shape-divider svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 150px;
+        }
+        
+        .custom-shape-divider .shape-fill {
+            fill: var(--secondary);
+        }
+        
+        /* Additional hover effects */
+        .glow {
+            transition: all 0.3s ease;
+        }
+        
+        .glow:hover {
+            box-shadow: 0 0 20px rgba(183, 28, 28, 0.5);
+        }
+        
+        .tilt {
+            transition: all 0.3s ease;
+        }
+        
+        .tilt:hover {
+            transform: perspective(1000px) rotateX(5deg) rotateY(-5deg);
+        }
+        
+        /* Enhanced section spacing */
+        section {
+            padding: 60px 0;
+            position: relative;
+        }
+        
+        /* Enhanced testimonial carousel */
+        .testimonial-carousel {
+            position: relative;
+        }
+        
+        .testimonial-carousel .testimonial-card {
+            margin-bottom: 2rem;
+        }
+        
+        /* Enhanced form inputs */
+        .form-control:hover {
+            border-color: rgba(183, 28, 28, 0.4);
+        }
+        
+        /* Enhanced button effects */
+        .btn {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Enhanced portfolio overlay */
+        .portfolio-overlay h3 {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-overlay p {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease 0.1s;
+        }
+        
+        .portfolio-overlay .d-flex {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease 0.2s;
+        }
+        
+        .portfolio-overlay button {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease 0.3s;
+        }
+        
+        .portfolio-card:hover .portfolio-overlay h3,
+        .portfolio-card:hover .portfolio-overlay p,
+        .portfolio-card:hover .portfolio-overlay .d-flex,
+        .portfolio-card:hover .portfolio-overlay button {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        /* Enhanced newsletter form */
+        .newsletter-form .form-control {
+            border-radius: 50px 0 0 50px;
+        }
+        
+        .newsletter-form .btn {
+            border-radius: 0 50px 50px 0;
+        }
+        
+        /* Enhanced loading animation */
         .loading-animation {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--darker);
+            background: var(--background);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -495,13 +1135,12 @@
         }
         
         .loading-spinner {
-            width: 80px;
-            height: 80px;
-            border: 4px solid rgba(249, 115, 22, 0.2);
-            border-top: 4px solid var(--primary);
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(183, 28, 28, 0.2);
+            border-top: 3px solid var(--ruby);
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
         }
         
         @keyframes spin {
@@ -509,8 +1148,32 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* Particle animation */
-        .particles {
+        /* Custom Cursor */
+        #cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, var(--ruby), var(--ruby-dark));
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease;
+            mix-blend-mode: difference;
+        }
+        
+        #cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(183, 28, 28, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+        }
+        
+        /* Video Background */
+        .video-background {
             position: absolute;
             top: 0;
             left: 0;
@@ -520,137 +1183,433 @@
             z-index: -1;
         }
         
-        .particle {
+        .video-background video {
             position: absolute;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
-            opacity: 0.2;
-            animation: float 20s infinite ease-in-out;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: -1;
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0) scale(1); }
-            25% { transform: translateY(-20px) translateX(10px) scale(1.1); }
-            50% { transform: translateY(10px) translateX(-10px) scale(0.9); }
-            75% { transform: translateY(-10px) translateX(20px) scale(1.05); }
-        }
-        
-        /* Motion gradient */
-        .motion-gradient {
+        .video-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(251, 191, 36, 0.1));
-            z-index: -1;
-            animation: gradient 15s ease infinite;
-            background-size: 200% 200%;
+            background: rgba(10, 10, 10, 0.7);
+            z-index: 1;
         }
         
-        /* Geometric shapes */
-        .geometric-shape {
+        /* Lightbox for Projects */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            overflow: auto;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            margin: 50px auto;
+            max-width: 900px;
+            background: rgba(26, 26, 26, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(183, 28, 28, 0.5);
+        }
+        
+        .close-lightbox {
             position: absolute;
-            opacity: 0.05;
-            z-index: -1;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: #ffffff;
+            cursor: pointer;
+            z-index: 10001;
         }
         
-        .shape-1 {
-            top: 10%;
-            left: 5%;
-            width: 200px;
-            height: 200px;
-            border: 2px solid var(--primary);
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            animation: morph 15s ease-in-out infinite;
+        .lightbox-image {
+            width: 100%;
+            height: auto;
+            display: block;
         }
         
-        .shape-2 {
-            bottom: 10%;
-            right: 5%;
+        .lightbox-info {
+            padding: 30px;
+        }
+        
+        .lightbox-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--ruby);
+        }
+        
+        .lightbox-description {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .lightbox-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .lightbox-tag {
+            padding: 5px 12px;
+            background: rgba(183, 28, 28, 0.1);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--ruby);
+        }
+        
+        /* 3D Emblem */
+        #emblem-container {
             width: 300px;
             height: 300px;
-            border: 2px solid var(--secondary);
-            border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
-            animation: morph 20s ease-in-out infinite reverse;
+            margin: 0 auto 30px;
+            position: relative;
         }
         
-        .shape-3 {
-            top: 50%;
-            left: 50%;
-            width: 150px;
-            height: 150px;
-            border: 2px solid var(--accent);
-            border-radius: 25% 75% 42% 58% / 58% 32% 68% 42%;
-            animation: morph 25s ease-in-out infinite;
-            transform: translate(-50%, -50%);
+        #emblem {
+            width: 100%;
+            height: 100%;
         }
         
-        @keyframes morph {
-            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
-            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
-            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
-        }
-        
-        /* Stats card */
-        .stats-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .stats-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.2);
-        }
-        
-        .stats-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .stats-label {
-            color: #9ca3af;
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
+        /* Responsive Design */
+        @media (max-width: 1200px) {
             .hero-title {
-                font-size: 2.5rem !important;
+                font-size: 3rem;
             }
             
             .section-title {
-                font-size: 2rem !important;
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
             }
             
-            .portfolio-card {
-                height: 250px;
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .navbar-nav {
+                background: rgba(10, 10, 10, 0.95);
+                padding: 1rem;
+                border-radius: 10px;
+                margin-top: 1rem;
+            }
+            
+            .nav-link {
+                margin: 0.5rem 0;
+            }
+            
+            .btn-ruby, .btn-outline-ruby {
+                font-size: 0.85rem;
+                padding: 10px 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding-top: 80px;
+                min-height: auto;
+                padding-bottom: 80px;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+                line-height: 1.3;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            section {
+                padding: 50px 0;
+            }
+            
+            .stats-card {
+                padding: 1rem 0.5rem;
+            }
+            
+            .stats-number {
+                font-size: 1.5rem;
+            }
+            
+            .stats-label {
+                font-size: 0.75rem;
+            }
+            
+            .service-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .card-body {
+                padding: 1.2rem;
+            }
+            
+            .card-title {
+                font-size: 1.1rem;
+            }
+            
+            .card-text {
+                font-size: 0.9rem;
+            }
+            
+            .about-number {
+                font-size: 2.5rem;
+            }
+            
+            .contact-info {
+                padding: 1rem;
+            }
+            
+            .contact-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+            
+            .testimonial-card:before {
+                font-size: 3rem;
+            }
+            
+            .contact-form {
+                padding: 1.5rem;
+            }
+            
+            .footer {
+                padding: 2rem 0 1rem;
+            }
+            
+            .social-icon {
+                width: 35px;
+                height: 35px;
+                margin-right: 8px;
+                margin-bottom: 8px;
+            }
+            
+            .navbar-brand {
+                font-size: 1.3rem;
+            }
+            
+            .badge-ruby {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.8rem;
+            }
+            
+            .btn-ruby, .btn-outline-ruby {
+                font-size: 0.8rem;
+                padding: 8px 16px;
+            }
+            
+            .d-flex.gap-3 {
+                gap: 0.5rem !important;
+            }
+            
+            .custom-shape-divider svg {
+                height: 100px;
             }
         }
         
         @media (max-width: 576px) {
             .hero-title {
-                font-size: 2rem !important;
+                font-size: 1.8rem;
             }
             
             .section-title {
-                font-size: 1.8rem !important;
-            }
-            
-            .portfolio-card {
-                height: 200px;
-            }
-            
-            .logo {
                 font-size: 1.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.95rem;
+            }
+            
+            .section-subtitle {
+                font-size: 0.95rem;
+            }
+            
+            .stats-number {
+                font-size: 1.3rem;
+            }
+            
+            .stats-label {
+                font-size: 0.7rem;
+            }
+            
+            .service-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            .card-body {
+                padding: 1rem;
+            }
+            
+            .card-title {
+                font-size: 1rem;
+            }
+            
+            .card-text {
+                font-size: 0.85rem;
+            }
+            
+            .about-number {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                padding: 0.8rem;
+            }
+            
+            .contact-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+            
+            .testimonial-card {
+                padding: 1rem;
+            }
+            
+            .testimonial-card:before {
+                font-size: 2.5rem;
+            }
+            
+            .contact-form {
+                padding: 1rem;
+            }
+            
+            .footer {
+                padding: 1.5rem 0 1rem;
+            }
+            
+            .social-icon {
+                width: 30px;
+                height: 30px;
+                margin-right: 6px;
+                margin-bottom: 6px;
+            }
+            
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            
+            .badge-ruby {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.6rem;
+            }
+            
+            .btn-ruby, .btn-outline-ruby {
+                font-size: 0.75rem;
+                padding: 6px 14px;
+            }
+            
+            .d-flex.gap-3 {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .d-flex.gap-3 .btn {
+                width: 100%;
+            }
+            
+            .portfolio-img {
+                height: 200px;
+                font-size: 2.5rem;
+            }
+            
+            .portfolio-overlay h3 {
+                font-size: 1.1rem;
+            }
+            
+            .portfolio-overlay p {
+                font-size: 0.85rem;
+            }
+            
+            .custom-shape-divider svg {
+                height: 80px;
+            }
+        }
+        
+        /* Fix for mobile navbar */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+            
+            .navbar-nav {
+                background: rgba(10, 10, 10, 0.95);
+                padding: 1.5rem;
+                border-radius: 10px;
+                margin-top: 1rem;
+            }
+            
+            .navbar-nav .nav-item {
+                margin-bottom: 0.5rem;
+            }
+            
+            .navbar-nav .nav-link {
+                padding: 0.5rem 0;
+            }
+            
+            .navbar-nav .btn {
+                margin-top: 1rem;
+                width: 100%;
+            }
+        }
+        
+        /* Fix for small screens */
+        @media (max-width: 480px) {
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            
+            .row {
+                margin-left: -10px;
+                margin-right: -10px;
+            }
+            
+            .col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+                padding-left: 10px;
+                padding-right: 10px;
             }
         }
     </style>
@@ -660,468 +1619,552 @@
     <div class="loading-animation" id="loadingAnimation">
         <div class="loading-spinner"></div>
     </div>
-
+    
+    <!-- Loading Bar -->
+    <div class="loading-bar" id="loadingBar"></div>
+    
+    <!-- Custom Cursor -->
+    <div id="cursor"></div>
+    <div id="cursor-follower"></div>
+    
     <!-- Back to Top Button -->
     <div class="back-to-top" id="backToTop">
         <i class="fas fa-arrow-up"></i>
     </div>
-
+    
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 w-full z-50 transition-all duration-300 glass" id="navbar">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#home" class="logo">ScriptOn</a>
-            
-            <div class="hidden md:flex space-x-8">
-                <a href="#home" class="text-white hover:text-orange-400 transition-colors duration-300">Beranda</a>
-                <a href="#services" class="text-white hover:text-orange-400 transition-colors duration-300">Layanan</a>
-                <a href="#portfolio" class="text-white hover:text-orange-400 transition-colors duration-300">Portfolio</a>
-                <a href="#about" class="text-white hover:text-orange-400 transition-colors duration-300">Tentang</a>
-                <a href="#testimonials" class="text-white hover:text-orange-400 transition-colors duration-300">Testimoni</a>
-                <a href="#contact" class="text-white hover:text-orange-400 transition-colors duration-300">Kontak</a>
-            </div>
-            
-            <button class="btn-primary hidden md:block">Hubungi Kami</button>
-            
-            <button class="md:hidden text-white" id="mobileMenuBtn">
-                <i class="fas fa-bars text-xl"></i>
+    <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#home">
+                <img src="https://via.placeholder.com/60" alt="Logo" style="width: 60px; height: 60px; object-fit: contain;">
+                <span class="text-ruby">Script</span>On
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div class="hidden md:hidden glass px-4 py-6" id="mobileMenu">
-            <div class="flex flex-col space-y-4">
-                <a href="#home" class="text-white hover:text-orange-400 transition-colors duration-300">Beranda</a>
-                <a href="#services" class="text-white hover:text-orange-400 transition-colors duration-300">Layanan</a>
-                <a href="#portfolio" class="text-white hover:text-orange-400 transition-colors duration-300">Portfolio</a>
-                <a href="#about" class="text-white hover:text-orange-400 transition-colors duration-300">Tentang</a>
-                <a href="#testimonials" class="text-white hover:text-orange-400 transition-colors duration-300">Testimoni</a>
-                <a href="#contact" class="text-white hover:text-orange-400 transition-colors duration-300">Kontak</a>
-                <button class="btn-primary w-full mt-4">Hubungi Kami</button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Layanan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimoni</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Kontak</a>
+                    </li>
+                </ul>
+                <button class="btn btn-ruby ms-3 d-none d-lg-block">Hubungi Kami</button>
             </div>
         </div>
     </nav>
-
+    
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center relative overflow-hidden pt-20" id="home">
-        <div class="motion-gradient"></div>
-        <div class="particles" id="particles"></div>
-        
-        <!-- Geometric Shapes -->
-        <div class="geometric-shape shape-1"></div>
-        <div class="geometric-shape shape-2"></div>
-        <div class="geometric-shape shape-3"></div>
-        
-        <div class="container mx-auto px-4 z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right">
-                    <div class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-orange-500 to-yellow-400 text-white font-medium mb-6" data-aos="fade-up">
-                        Mitra Transformasi Digital Anda
-                    </div>
-                    
-                    <h1 class="hero-title text-5xl lg:text-7xl font-bold mb-6 leading-tight" data-aos="fade-up" data-aos-delay="100">
+    <section class="hero-section" id="home">
+        <div class="video-background">
+            <video autoplay muted loop id="hero-video">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-grid-background-1050-large.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        <div class="hero-particles" id="particles-js"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="badge-ruby" data-aos="fade-up">Mitra Transformasi Digital Anda</div>
+                    <h1 class="hero-title text-white" data-aos="fade-up" data-aos-delay="100">
                         Mengubah Ide Menjadi <span class="gradient-text">Realitas Digital</span>
                     </h1>
-                    
-                    <p class="text-lg text-gray-300 mb-8 max-w-lg" data-aos="fade-up" data-aos-delay="200">
+                    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
                         Kami menciptakan solusi perangkat lunak mutakhir yang mendorong inovasi dan mempercepat pertumbuhan bisnis di era digital.
                     </p>
-                    
-                    <div class="flex flex-wrap gap-4" data-aos="fade-up" data-aos-delay="300">
-                        <button class="btn-primary">Lihat Karya Kami</button>
-                        <button class="btn-outline">Mulai Proyek</button>
+                    <div class="d-flex flex-wrap gap-3" data-aos="fade-up" data-aos-delay="300">
+                        <button class="btn btn-ruby glow">Lihat Karya Kami</button>
+                        <button class="btn btn-outline-ruby">Mulai Proyek</button>
                     </div>
                 </div>
-                
-                <div class="relative" data-aos="fade-left" data-aos-delay="400">
-                    <div class="relative rounded-3xl overflow-hidden border-2 border-orange-500/30 shadow-2xl glass">
-                        <div class="aspect-video bg-gradient-to-br from-orange-500/20 to-yellow-400/10 flex items-center justify-center">
-                            <div class="text-center">
-                                <div class="w-24 h-24 rounded-full bg-gradient-to-r from-orange-500 to-yellow-400 flex items-center justify-center mx-auto mb-4 animate-pulse">
-                                    <i class="fas fa-play text-white text-3xl"></i>
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <div class="text-center" data-aos="fade-left" data-aos-delay="400">
+                        <div class="floating">
+                            <div id="emblem-container">
+                                <div id="emblem"></div>
+                            </div>
+                            <div class="rounded-5xl bg-gradient-to-br from-ruby/20 to-accent/10 p-4 p-md-5 border border-ruby/30 tilt">
+                                <div class="row g-3">
+                                    <div class="col-4">
+                                        <div class="stats-card">
+                                            <div class="stats-number">50+</div>
+                                            <div class="stats-label">Proyek Selesai</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="stats-card">
+                                            <div class="stats-number">98%</div>
+                                            <div class="stats-label">Kepuasan Klien</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="stats-card">
+                                            <div class="stats-number">24/7</div>
+                                            <div class="stats-label">Dukungan</div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p class="text-white font-medium text-lg">Tonton Video Perkenalan</p>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="absolute -bottom-6 -right-6 w-32 h-32 rounded-full bg-gradient-to-r from-orange-500 to-yellow-400 opacity-20 blur-xl"></div>
-                    <div class="absolute -top-6 -left-6 w-40 h-40 rounded-full bg-gradient-to-r from-orange-500 to-yellow-400 opacity-20 blur-xl"></div>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Services Section -->
-    <section class="py-20 relative" id="services">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="section-title text-5xl font-bold mb-4">Layanan <span class="gradient-text">Unggulan</span> Kami</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Solusi teknologi komprehensif yang disesuaikan dengan tujuan bisnis Anda</p>
+    <section class="py-5" id="services" style="background-color: var(--secondary);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title text-white" data-aos="fade-up">Layanan <span class="text-ruby">Unggulan</span> Kami</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    Solusi teknologi komprehensif yang disesuaikan dengan tujuan bisnis Anda
+                </p>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card p-8 text-center" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-icon mx-auto">
-                        <i class="fas fa-code"></i>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 service-card glow">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon mx-auto">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3 class="card-title text-white mb-3">Pengembangan Web</h3>
+                            <p class="card-text text-muted-foreground">
+                                Aplikasi web kustom yang dibangun dengan framework modern dan praktik terbaik untuk performa optimal.
+                            </p>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Pengembangan Web</h3>
-                    <p class="text-gray-400">Aplikasi web kustom yang dibangun dengan framework modern dan praktik terbaik untuk performa optimal.</p>
                 </div>
-                
-                <div class="card p-8 text-center" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon mx-auto">
-                        <i class="fas fa-mobile-alt"></i>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100 service-card glow">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon mx-auto">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3 class="card-title text-white mb-3">Solusi Mobile</h3>
+                            <p class="card-text text-muted-foreground">
+                                Aplikasi mobile native dan cross-platform yang memberikan pengalaman pengguna yang luar biasa.
+                            </p>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Solusi Mobile</h3>
-                    <p class="text-gray-400">Aplikasi mobile native dan cross-platform yang memberikan pengalaman pengguna yang luar biasa.</p>
                 </div>
-                
-                <div class="card p-8 text-center" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon mx-auto">
-                        <i class="fas fa-cloud"></i>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100 service-card glow">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon mx-auto">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <h3 class="card-title text-white mb-3">Arsitektur Cloud</h3>
+                            <p class="card-text text-muted-foreground">
+                                Infrastruktur cloud yang skalabel yang dirancang untuk tumbuh bersama kebutuhan bisnis Anda.
+                            </p>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Arsitektur Cloud</h3>
-                    <p class="text-gray-400">Infrastruktur cloud yang skalabel yang dirancang untuk tumbuh bersama kebutuhan bisnis Anda.</p>
                 </div>
-                
-                <div class="card p-8 text-center" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-icon mx-auto">
-                        <i class="fas fa-database"></i>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card h-100 service-card glow">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon mx-auto">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3 class="card-title text-white mb-3">Solusi Data</h3>
+                            <p class="card-text text-muted-foreground">
+                                Desain dan manajemen database yang kuat untuk penanganan data dan analitik yang efisien.
+                            </p>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Solusi Data</h3>
-                    <p class="text-gray-400">Desain dan manajemen database yang kuat untuk penanganan data dan analitik yang efisien.</p>
                 </div>
-                
-                <div class="card p-8 text-center" data-aos="fade-up" data-aos-delay="500">
-                    <div class="service-icon mx-auto">
-                        <i class="fas fa-shield-alt"></i>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card h-100 service-card glow">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon mx-auto">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3 class="card-title text-white mb-3">Keamanan Siber</h3>
+                            <p class="card-text text-muted-foreground">
+                                Solusi keamanan komprehensif untuk melindungi aset digital dan data pengguna Anda.
+                            </p>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Keamanan Siber</h3>
-                    <p class="text-gray-400">Solusi keamanan komprehensif untuk melindungi aset digital dan data pengguna Anda.</p>
                 </div>
-                
-                <div class="card p-8 text-center" data-aos="fade-up" data-aos-delay="600">
-                    <div class="service-icon mx-auto">
-                        <i class="fas fa-bolt"></i>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card h-100 service-card glow">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon mx-auto">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3 class="card-title text-white mb-3">Optimasi Performa</h3>
+                            <p class="card-text text-muted-foreground">
+                                Percepat aplikasi Anda dengan teknik optimasi mutakhir.
+                            </p>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Optimasi Performa</h3>
-                    <p class="text-gray-400">Percepat aplikasi Anda dengan teknik optimasi mutakhir.</p>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Portfolio Section -->
-    <section class="py-20 relative" id="portfolio">
-        <div class="motion-gradient"></div>
-        
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="section-title text-5xl font-bold mb-4">Portfolio <span class="gradient-text">Kami</span></h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Jelajahi proyek-proyek sukses kami yang telah mengubah bisnis</p>
+    <section class="py-5" id="portfolio">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title text-white" data-aos="fade-up">Portfolio <span class="text-ruby">Kami</span></h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    Jelajahi proyek-proyek sukses kami yang telah mengubah bisnis
+                </p>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="portfolio-overlay">
-                        <h3 class="text-3xl font-bold mb-3">Platform CRM Enterprise</h3>
-                        <p class="mb-4">Sistem manajemen hubungan pelanggan yang komprehensif</p>
-                        <div class="tags flex flex-wrap gap-2 justify-center mb-4">
-                            <span class="px-3 py-1 bg-white/20 rounded-full text-sm">React</span>
-                            <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Node.js</span>
-                            <span class="px-3 py-1 bg-white/20 rounded-full text-sm">PostgreSQL</span>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="https://via.placeholder.com/600x400" alt="Platform CRM Enterprise" class="img-fluid w-100 h-100 object-fit-cover">
                         </div>
-                        <button class="btn-outline">Lihat Detail</button>
+                        <div class="portfolio-overlay">
+                            <h3 class="text-white mb-3">Platform CRM Enterprise</h3>
+                            <p class="text-white-50 mb-3">Sistem manajemen hubungan pelanggan yang komprehensif</p>
+                            <div class="d-flex gap-2 justify-content-center flex-wrap">
+                                <span class="badge bg-ruby">React</span>
+                                <span class="badge bg-ruby">Node.js</span>
+                                <span class="badge bg-ruby">PostgreSQL</span>
+                            </div>
+                            <button class="btn btn-outline-light mt-3">Lihat Detail</button>
+                        </div>
                     </div>
-                    <span>01</span>
                 </div>
-                
-                <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="portfolio-overlay">
-                        <h3 class="text-3xl font-bold mb-3">Aplikasi FinTech Mobile</h3>
-                        <p class="mb-4">Aplikasi perbankan yang aman dengan autentikasi biometrik</p>
-                        <div class="tags flex flex-wrap gap-2 justify-center mb-4">
-                            <span class="px-3 py-1 bg-white/20 rounded-full text-sm">React Native</span>
-                            <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Firebase</span>
-                            <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Stripe</span>
+                <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="https://via.placeholder.com/600x400" alt="Aplikasi FinTech Mobile" class="img-fluid w-100 h-100 object-fit-cover">
                         </div>
-                        <button class="btn-outline">Lihat Detail</button>
+                        <div class="portfolio-overlay">
+                            <h3 class="text-white mb-3">Aplikasi FinTech Mobile</h3>
+                            <p class="text-white-50 mb-3">Aplikasi perbankan yang aman dengan autentikasi biometrik</p>
+                            <div class="d-flex gap-2 justify-content-center flex-wrap">
+                                <span class="badge bg-ruby">React Native</span>
+                                <span class="badge bg-ruby">Firebase</span>
+                                <span class="badge bg-ruby">Stripe</span>
+                            </div>
+                            <button class="btn btn-outline-light mt-3">Lihat Detail</button>
+                        </div>
                     </div>
-                    <span>02</span>
                 </div>
-                
-                <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="portfolio-overlay">
-                        <h3 class="text-3xl font-bold mb-3">Marketplace E-Commerce</h3>
-                        <p class="mb-4">Platform marketplace multi-vendor dengan rekomendasi AI</p>
-                        <div class="tags flex flex-wrap gap-2 justify-center mb-4">
-                            <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Next.js</span>
-                            <span class="px-3 py-1 bg-white/20 rounded-full text-sm">MongoDB</span>
-                            <span class="px-3 py-1 bg-white/20 rounded-full text-sm">AWS</span>
+                <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="https://via.placeholder.com/600x400" alt="Marketplace E-Commerce" class="img-fluid w-100 h-100 object-fit-cover">
                         </div>
-                        <button class="btn-outline">Lihat Detail</button>
+                        <div class="portfolio-overlay">
+                            <h3 class="text-white mb-3">Marketplace E-Commerce</h3>
+                            <p class="text-white-50 mb-3">Platform marketplace multi-vendor dengan rekomendasi AI</p>
+                            <div class="d-flex gap-2 justify-content-center flex-wrap">
+                                <span class="badge bg-ruby">Next.js</span>
+                                <span class="badge bg-ruby">MongoDB</span>
+                                <span class="badge bg-ruby">AWS</span>
+                            </div>
+                            <button class="btn btn-outline-light mt-3">Lihat Detail</button>
+                        </div>
                     </div>
-                    <span>03</span>
                 </div>
-                
-                <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="portfolio-overlay">
-                        <h3 class="text-3xl font-bold mb-3">Sistem Manajemen Kesehatan</h3>
-                        <p class="mb-4">Platform yang sesuai dengan HIPAA untuk rekam medis</p>
-                        <div class="tags flex flex-wrap gap-2 justify-center mb-4">
-                            <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Vue.js</span>
-                            <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Python</span>
-                            <span class="px-3 py-1 bg-white/20 rounded-full text-sm">MySQL</span>
+                <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="https://via.placeholder.com/600x400" alt="Sistem Manajemen Kesehatan" class="img-fluid w-100 h-100 object-fit-cover">
                         </div>
-                        <button class="btn-outline">Lihat Detail</button>
+                        <div class="portfolio-overlay">
+                            <h3 class="text-white mb-3">Sistem Manajemen Kesehatan</h3>
+                            <p class="text-white-50 mb-3">Platform yang sesuai dengan HIPAA untuk rekam medis</p>
+                            <div class="d-flex gap-2 justify-content-center flex-wrap">
+                                <span class="badge bg-ruby">Vue.js</span>
+                                <span class="badge bg-ruby">Python</span>
+                                <span class="badge bg-ruby">MySQL</span>
+                            </div>
+                            <button class="btn btn-outline-light mt-3">Lihat Detail</button>
+                        </div>
                     </div>
-                    <span>04</span>
                 </div>
-                
-                <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="500">
-                    <div class="portfolio-overlay">
-                        <h3 class="text-3xl font-bold mb-3">Portal Properti</h3>
-                        <p class="mb-4">Platform listing properti dengan tur virtual</p>
-                        <div class="tags flex flex-wrap gap-2 justify-center mb-4">
-                            <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Angular</span>
-                            <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Express</span>
-                            <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Redis</span>
+                <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="https://via.placeholder.com/600x400" alt="Portal Properti" class="img-fluid w-100 h-100 object-fit-cover">
                         </div>
-                        <button class="btn-outline">Lihat Detail</button>
+                        <div class="portfolio-overlay">
+                            <h3 class="text-white mb-3">Portal Properti</h3>
+                            <p class="text-white-50 mb-3">Platform listing properti dengan tur virtual</p>
+                            <div class="d-flex gap-2 justify-content-center flex-wrap">
+                                <span class="badge bg-ruby">Angular</span>
+                                <span class="badge bg-ruby">Express</span>
+                                <span class="badge bg-ruby">Redis</span>
+                            </div>
+                            <button class="btn btn-outline-light mt-3">Lihat Detail</button>
+                        </div>
                     </div>
-                    <span>05</span>
                 </div>
-                
-                <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="600">
-                    <div class="portfolio-overlay">
-                        <h3 class="text-3xl font-bold mb-3">Dashboard Analitik AI</h3>
-                        <p class="mb-4">Platform analitik bertenaga machine learning</p>
-                        <div class="tags flex flex-wrap gap-2 justify-center mb-4">
-                            <span class="px-3 py-1 bg-white/20 rounded-full text-sm">React</span>
-                            <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Python</span>
-                            <span class="px-3 py-1 bg-white/20 rounded-full text-sm">TensorFlow</span>
+                <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="https://via.placeholder.com/600x400" alt="Dashboard Analitik AI" class="img-fluid w-100 h-100 object-fit-cover">
                         </div>
-                        <button class="btn-outline">Lihat Detail</button>
+                        <div class="portfolio-overlay">
+                            <h3 class="text-white mb-3">Dashboard Analitik AI</h3>
+                            <p class="text-white-50 mb-3">Platform analitik bertenaga machine learning</p>
+                            <div class="d-flex gap-2 justify-content-center flex-wrap">
+                                <span class="badge bg-ruby">React</span>
+                                <span class="badge bg-ruby">Python</span>
+                                <span class="badge bg-ruby">TensorFlow</span>
+                            </div>
+                            <button class="btn btn-outline-light mt-3">Lihat Detail</button>
+                        </div>
                     </div>
-                    <span>06</span>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- About Section -->
-    <section class="py-20 relative" id="about">
-        <div class="motion-gradient"></div>
-        
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right">
-                    <div class="relative rounded-2xl overflow-hidden shadow-2xl glass">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="About ScriptOn" class="w-full h-auto">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
-                            <div>
-                                <div class="text-6xl font-bold text-yellow-400 mb-3">10+</div>
-                                <h3 class="text-3xl font-bold text-white mb-3">Tahun Keunggulan</h3>
-                                <p class="text-gray-300">Memberikan solusi teknologi mutakhir yang mendorong pertumbuhan dan inovasi bisnis</p>
-                            </div>
+    <section class="py-5" id="about" style="background-color: var(--secondary);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                    <div class="about-img">
+                        <img src="https://via.placeholder.com/600x600" alt="About Script On" class="img-fluid">
+                        <div class="about-content">
+                            <div class="about-number">10+</div>
+                            <h3 class="text-white mb-3">Tahun Keunggulan</h3>
+                            <p class="text-white-50">
+                                Memberikan solusi teknologi mutakhir yang mendorong pertumbuhan dan inovasi bisnis
+                            </p>
                         </div>
                     </div>
                 </div>
-                
-                <div data-aos="fade-left">
-                    <h2 class="section-title text-5xl font-bold mb-6">Tentang <span class="gradient-text">Script On</span></h2>
-                    <p class="text-gray-400 mb-6 text-lg">
-                        Didirikan dengan visi untuk menjembatani kesenjangan antara teknologi dan kesuksesan bisnis, Script On telah muncul sebagai mitra tepercaya untuk transformasi digital.
-                    </p>
-                    <p class="text-gray-400 mb-8 text-lg">
-                        Tim kami yang terdiri dari pengembang, desainer, dan ahli strategi berpengalaman bekerja secara kolaboratif untuk menghasilkan solusi yang tidak hanya memenuhi tetapi melampaui ekspektasi. Kami percaya dalam membangun hubungan jangka panjang melalui transparansi, kualitas, dan inovasi.
-                    </p>
-                    
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="stats-card">
-                            <div class="stats-number">30+</div>
-                            <div class="stats-label">Anggota Tim</div>
-                        </div>
-                        
-                        <div class="stats-card">
-                            <div class="stats-number">15+</div>
-                            <div class="stats-label">Penghargaan</div>
-                        </div>
-                        
-                        <div class="stats-card">
-                            <div class="stats-number">100+</div>
-                            <div class="stats-label">Klien Puas</div>
-                        </div>
-                        
-                        <div class="stats-card">
-                            <div class="stats-number">250%</div>
-                            <div class="stats-label">Tingkat Pertumbuhan</div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="ps-lg-5">
+                        <h2 class="section-title text-white mb-4">Tentang <span class="text-ruby">Script On</span></h2>
+                        <p class="text-muted-foreground mb-4">
+                            Didirikan dengan visi untuk menjembatani kesenjangan antara teknologi dan kesuksesan bisnis, Script On telah muncul sebagai mitra tepercaya untuk transformasi digital.
+                        </p>
+                        <p class="text-muted-foreground mb-4">
+                            Tim kami yang terdiri dari pengembang, desainer, dan ahli strategi berpengalaman bekerja secara kolaboratif untuk menghasilkan solusi yang tidak hanya memenuhi tetapi melampaui ekspektasi. Kami percaya dalam membangun hubungan jangka panjang melalui transparansi, kualitas, dan inovasi.
+                        </p>
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="service-icon me-3" style="width: 50px; height: 50px; font-size: 1.2rem;">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div>
+                                        <div class="stats-number">30+</div>
+                                        <div class="stats-label">Anggota Tim</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="service-icon me-3" style="width: 50px; height: 50px; font-size: 1.2rem;">
+                                        <i class="fas fa-award"></i>
+                                    </div>
+                                    <div>
+                                        <div class="stats-number">15+</div>
+                                        <div class="stats-label">Penghargaan</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="service-icon me-3" style="width: 50px; height: 50px; font-size: 1.2rem;">
+                                        <i class="fas fa-bullseye"></i>
+                                    </div>
+                                    <div>
+                                        <div class="stats-number">100+</div>
+                                        <div class="stats-label">Klien Puas</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="service-icon me-3" style="width: 50px; height: 50px; font-size: 1.2rem;">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div>
+                                        <div class="stats-number">250%</div>
+                                        <div class="stats-label">Tingkat Pertumbuhan</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Testimonials Section -->
-    <section class="py-20 relative" id="testimonials">
-        <div class="motion-gradient"></div>
-        
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="section-title text-5xl font-bold mb-4">Testimoni <span class="gradient-text">Klien</span></h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Dengar apa yang dikatakan klien puas kami tentang bekerja dengan kami</p>
+    <section class="py-5" id="testimonials">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title text-white" data-aos="fade-up">Testimoni <span class="text-ruby">Klien</span></h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    Dengar apa yang dikatakan klien puas kami tentang bekerja dengan kami
+                </p>
             </div>
-            
-            <div class="max-w-4xl mx-auto">
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-                    <p class="text-gray-300 mb-6 text-lg">
-                        "Script On mengubah kehadiran digital kami sepenuhnya. Perhatian mereka terhadap detail dan keahlian teknis tak tertandingi."
-                    </p>
-                    <div class="flex items-center">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Sarah Johnson" class="w-16 h-16 rounded-full mr-4">
-                        <div>
-                            <h5 class="text-xl font-bold">Sarah Johnson</h5>
-                            <p class="text-yellow-400">CEO, TechVentures Inc.</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="testimonial-carousel">
+                        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                            <p class="text-white-50 mb-4">
+                                "Script On mengubah kehadiran digital kami sepenuhnya. Perhatian mereka terhadap detail dan keahlian teknis tak tertandingi."
+                            </p>
+                            <div class="d-flex align-items-center">
+                                <img src="https://via.placeholder.com/60" alt="Sarah Johnson" class="rounded-circle me-3">
+                                <div>
+                                    <h5 class="text-white mb-0">Sarah Johnson</h5>
+                                    <p class="text-ruby mb-0">CEO, TechVentures Inc.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card mt-8" data-aos="fade-up" data-aos-delay="200">
-                    <p class="text-gray-300 mb-6 text-lg">
-                        "Bekerja dengan Script On adalah perubahan permainan untuk bisnis kami. Mereka memberikan hasil melampaui ekspektasi dan tepat waktu."
-                    </p>
-                    <div class="flex items-center">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Michael Chen" class="w-16 h-16 rounded-full mr-4">
-                        <div>
-                            <h5 class="text-xl font-bold">Michael Chen</h5>
-                            <p class="text-yellow-400">CTO, DataFlow Systems</p>
+                        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                            <p class="text-white-50 mb-4">
+                                "Bekerja dengan Script On adalah perubahan permainan untuk bisnis kami. Mereka memberikan hasil melampaui ekspektasi dan tepat waktu."
+                            </p>
+                            <div class="d-flex align-items-center">
+                                <img src="https://via.placeholder.com/60" alt="Michael Chen" class="rounded-circle me-3">
+                                <div>
+                                    <h5 class="text-white mb-0">Michael Chen</h5>
+                                    <p class="text-ruby mb-0">CTO, DataFlow Systems</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card mt-8" data-aos="fade-up" data-aos-delay="300">
-                    <p class="text-gray-300 mb-6 text-lg">
-                        "Profesionalisme tim dan pendekatan inovatif mereka membantu kami mencapai tujuan transformasi digital dengan mulus."
-                    </p>
-                    <div class="flex items-center">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Emily Rodriguez" class="w-16 h-16 rounded-full mr-4">
-                        <div>
-                            <h5 class="text-xl font-bold">Emily Rodriguez</h5>
-                            <p class="text-yellow-400">Direktur IT, GlobalCorp</p>
+                        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
+                            <p class="text-white-50 mb-4">
+                                "Profesionalisme tim dan pendekatan inovatif mereka membantu kami mencapai tujuan transformasi digital dengan mulus."
+                            </p>
+                            <div class="d-flex align-items-center">
+                                <img src="https://via.placeholder.com/60" alt="Emily Rodriguez" class="rounded-circle me-3">
+                                <div>
+                                    <h5 class="text-white mb-0">Emily Rodriguez</h5>
+                                    <p class="text-ruby mb-0">Direktur IT, GlobalCorp</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Contact Section -->
-    <section class="py-20 relative" id="contact">
-        <div class="motion-gradient"></div>
-        
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="section-title text-5xl font-bold mb-4">Hubungi <span class="gradient-text">Kami</span></h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Siap memulai perjalanan transformasi digital Anda? Mari diskusikan proyek Anda</p>
+    <section class="py-5" id="contact" style="background-color: var(--secondary);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title text-white" data-aos="fade-up">Hubungi <span class="text-ruby">Kami</span></h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    Siap memulai perjalanan transformasi digital Anda? Mari diskusikan proyek Anda
+                </p>
             </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div data-aos="fade-right">
-                    <h3 class="text-3xl font-bold mb-6">Informasi Kontak</h3>
-                    
-                    <div class="mb-6 p-6 rounded-xl glass">
-                        <div class="flex items-center mb-4">
-                            <div class="w-16 h-16 rounded-xl bg-gradient-to-r from-orange-500 to-yellow-400 flex items-center justify-center mr-4">
-                                <i class="fas fa-envelope text-white text-xl"></i>
-                            </div>
-                            <div>
-                                <h5 class="text-lg font-bold">Email</h5>
-                                <p class="text-gray-400">contact@scripton.com</p>
-                            </div>
+            <div class="row">
+                <div class="col-lg-5 mb-4 mb-lg-0" data-aos="fade-right">
+                    <h3 class="text-white mb-4">Informasi Kontak</h3>
+                    <div class="contact-info d-flex align-items-center">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h5 class="text-white mb-1">Email</h5>
+                            <p class="text-muted-foreground mb-0">contact@scripton.com</p>
                         </div>
                     </div>
-                    
-                    <div class="mb-6 p-6 rounded-xl glass">
-                        <div class="flex items-center mb-4">
-                            <div class="w-16 h-16 rounded-xl bg-gradient-to-r from-orange-500 to-yellow-400 flex items-center justify-center mr-4">
-                                <i class="fas fa-phone text-white text-xl"></i>
-                            </div>
-                            <div>
-                                <h5 class="text-lg font-bold">Telepon</h5>
-                                <p class="text-gray-400">+62 812-3456-7890</p>
-                            </div>
+                    <div class="contact-info d-flex align-items-center">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h5 class="text-white mb-1">Telepon</h5>
+                            <p class="text-muted-foreground mb-0">+62 812-3456-7890</p>
                         </div>
                     </div>
-                    
-                    <div class="mb-6 p-6 rounded-xl glass">
-                        <div class="flex items-center mb-4">
-                            <div class="w-16 h-16 rounded-xl bg-gradient-to-r from-orange-500 to-yellow-400 flex items-center justify-center mr-4">
-                                <i class="fas fa-map-marker-alt text-white text-xl"></i>
-                            </div>
-                            <div>
-                                <h5 class="text-lg font-bold">Lokasi</h5>
-                                <p class="text-gray-400">Jl. Teknologi No. 123, Jakarta Selatan</p>
-                            </div>
+                    <div class="contact-info d-flex align-items-center">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h5 class="text-white mb-1">Lokasi</h5>
+                            <p class="text-muted-foreground mb-0">Jl. Teknologi No. 123, Jakarta Selatan</p>
                         </div>
                     </div>
-                    
-                    <div class="p-6 rounded-xl glass">
-                        <h4 class="text-2xl font-bold mb-4">Jam Operasional</h4>
-                        <div class="flex justify-between mb-2">
-                            <span class="text-gray-400">Senin - Jumat:</span>
-                            <span>09:00 - 18:00</span>
+                    <div class="office-hours">
+                        <h4 class="text-white mb-3">Jam Operasional</h4>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted-foreground">Senin - Jumat:</span>
+                            <span class="text-white">09:00 - 18:00</span>
                         </div>
-                        <div class="flex justify-between mb-2">
-                            <span class="text-gray-400">Sabtu:</span>
-                            <span>10:00 - 16:00</span>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted-foreground">Sabtu:</span>
+                            <span class="text-white">10:00 - 16:00</span>
                         </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-400">Minggu:</span>
-                            <span>Tutup</span>
+                        <div class="d-flex justify-content-between">
+                            <span class="text-muted-foreground">Minggu:</span>
+                            <span class="text-white">Tutup</span>
                         </div>
                     </div>
                 </div>
-                
-                <div data-aos="fade-left">
-                    <div class="p-8 rounded-2xl glass">
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="contact-form">
                         <form id="contactForm">
-                            <div class="mb-6">
-                                <label for="name" class="block text-gray-300 mb-2">Nama Lengkap *</label>
-                                <input type="text" id="name" class="form-control" required>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="name" class="form-label">Nama Lengkap *</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email *</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="phone" class="form-label">Nomor Telepon</label>
+                                    <input type="tel" class="form-control" id="phone">
+                                </div>
+                                <div class="col-12">
+                                    <label for="message" class="form-label">Pesan *</label>
+                                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-ruby w-100 glow">Kirim Pesan</button>
+                                </div>
                             </div>
-                            
-                            <div class="mb-6">
-                                <label for="email" class="block text-gray-300 mb-2">Email *</label>
-                                <input type="email" id="email" class="form-control" required>
-                            </div>
-                            
-                            <div class="mb-6">
-                                <label for="phone" class="block text-gray-300 mb-2">Nomor Telepon</label>
-                                <input type="tel" id="phone" class="form-control">
-                            </div>
-                            
-                            <div class="mb-6">
-                                <label for="message" class="block text-gray-300 mb-2">Pesan *</label>
-                                <textarea id="message" rows="5" class="form-control" required></textarea>
-                            </div>
-                            
-                            <button type="submit" class="btn-primary w-full">Kirim Pesan</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Footer -->
-    <footer class="py-12 glass">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div>
-                    <div class="logo mb-4">ScriptOn</div>
-                    <p class="text-gray-400 mb-6">Mengubah ide menjadi realitas digital melalui solusi teknologi inovatif.</p>
-                    <div class="flex flex-wrap">
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-logo">
+                        <img src="https://via.placeholder.com/60" alt="Logo" style="width: 60px; height: 60px; object-fit: contain;">
+                        <span class="text-ruby">Script</span>On
+                    </div>
+                    <p class="text-muted-foreground mb-4">
+                        Mengubah ide menjadi realitas digital melalui solusi teknologi inovatif.
+                    </p>
+                    <div class="d-flex flex-wrap">
                         <a href="#" class="social-icon">
                             <i class="fab fa-facebook-f"></i>
                         </a>
@@ -1139,57 +2182,80 @@
                         </a>
                     </div>
                 </div>
-                
-                <div>
-                    <h5 class="text-xl font-bold mb-4">Layanan</h5>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-orange-400 transition-colors">Pengembangan Web</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-orange-400 transition-colors">Solusi Mobile</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-orange-400 transition-colors">Arsitektur Cloud</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-orange-400 transition-colors">Keamanan Siber</a></li>
-                    </ul>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="text-white mb-3">Layanan</h5>
+                    <a href="#" class="footer-link">Pengembangan Web</a>
+                    <a href="#" class="footer-link">Solusi Mobile</a>
+                    <a href="#" class="footer-link">Arsitektur Cloud</a>
+                    <a href="#" class="footer-link">Keamanan Siber</a>
                 </div>
-                
-                <div>
-                    <h5 class="text-xl font-bold mb-4">Perusahaan</h5>
-                    <ul class="space-y-2">
-                        <li><a href="#about" class="text-gray-400 hover:text-orange-400 transition-colors">Tentang Kami</a></li>
-                        <li><a href="#portfolio" class="text-gray-400 hover:text-orange-400 transition-colors">Portfolio</a></li>
-                        <li><a href="#testimonials" class="text-gray-400 hover:text-orange-400 transition-colors">Testimoni</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-orange-400 transition-colors">Kontak</a></li>
-                    </ul>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="text-white mb-3">Perusahaan</h5>
+                    <a href="#about" class="footer-link">Tentang Kami</a>
+                    <a href="#portfolio" class="footer-link">Portfolio</a>
+                    <a href="#testimonials" class="footer-link">Testimoni</a>
+                    <a href="#contact" class="footer-link">Kontak</a>
                 </div>
-                
-                <div>
-                    <h5 class="text-xl font-bold mb-4">Newsletter</h5>
-                    <p class="text-gray-400 mb-4">Dapatkan update terbaru dari kami</p>
-                    <form id="newsletterForm" class="flex">
-                        <input type="email" placeholder="Email Anda" class="form-control rounded-l-lg flex-grow">
-                        <button type="submit" class="btn-primary rounded-l-none rounded-r-lg">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="text-white mb-3">Legal</h5>
+                    <a href="#" class="footer-link">Kebijakan Privasi</a>
+                    <a href="#" class="footer-link">Syarat & Ketentuan</a>
+                    <a href="#" class="footer-link">Kebijakan Cookie</a>
+                    <a href="#" class="footer-link">GDPR</a>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="text-white mb-3">Newsletter</h5>
+                    <p class="text-muted-foreground mb-3">Dapatkan update terbaru dari kami</p>
+                    <form id="newsletterForm" class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Email Anda">
+                            <button class="btn btn-ruby" type="submit">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
-            
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
-                <p class="text-gray-400">© <span id="currentYear"></span> ScriptOn. Semua hak dilindungi. Dibuat dengan passion dan presisi.</p>
+            <div class="border-top border-secondary mt-4 pt-4 text-center">
+                <p class="text-muted-foreground mb-0">
+                    © <span id="currentYear"></span> <span class="text-ruby">Script</span>On. Semua hak dilindungi. Dibuat dengan passion dan presisi.
+                </p>
             </div>
         </div>
     </footer>
-
-    <!-- Success Modal -->
-    <div class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden" id="successModal">
-        <div class="bg-gray-900 rounded-2xl p-8 max-w-md w-full mx-4 glass">
-            <div class="w-20 h-20 rounded-full bg-gradient-to-r from-orange-500 to-yellow-400 flex items-center justify-center mx-auto mb-6">
-                <i class="fas fa-check text-white text-3xl"></i>
+    
+    <!-- Lightbox for Projects -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="close-lightbox">&times;</span>
+            <img src="" alt="" class="lightbox-image">
+            <div class="lightbox-info">
+                <h3 class="lightbox-title"></h3>
+                <p class="lightbox-description"></p>
+                <div class="lightbox-tags"></div>
             </div>
-            <h3 class="text-3xl font-bold text-center mb-3">Pesan Terkirim!</h3>
-            <p class="text-gray-400 text-center mb-6">Terima kasih telah menghubungi kami. Kami akan segera merespons pesan Anda.</p>
-            <button class="btn-primary w-full" id="closeModal">Tutup</button>
         </div>
     </div>
-
+    
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-secondary border-0">
+                <div class="modal-body text-center p-5">
+                    <div class="service-icon mx-auto mb-4 pulse">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h4 class="text-white mb-3">Pesan Terkirim!</h4>
+                    <p class="text-muted-foreground mb-4">Terima kasih telah menghubungi kami. Kami akan segera merespons pesan Anda.</p>
+                    <button type="button" class="btn btn-ruby" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
     <!-- AOS Animation JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
@@ -1200,26 +2266,167 @@
             once: true,
             disable: 'mobile'
         });
-
+        
         // Set current year
         document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Hide loading animation after page loads
-        window.addEventListener('load', function () {
-            setTimeout(function () {
-                document.getElementById('loadingAnimation').classList.add('hidden');
-            }, 1000);
+        
+        // Initialize Particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: ['#B71C1C', '#E53935', '#FFC107']
+                },
+                shape: {
+                    type: 'circle',
+                    stroke: {
+                        width: 0,
+                        color: '#000000'
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                    anim: {
+                        enable: false,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 40,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#B71C1C',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    bubble: {
+                        distance: 400,
+                        size: 40,
+                        duration: 2,
+                        opacity: 8,
+                        speed: 3
+                    },
+                    repulse: {
+                        distance: 200,
+                        duration: 0.4
+                    },
+                    push: {
+                        particles_nb: 4
+                    },
+                    remove: {
+                        particles_nb: 2
+                    }
+                }
+            },
+            retina_detect: true
         });
-
+        
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const cursorFollower = document.getElementById('cursor-follower');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX - 20 + 'px';
+                cursorFollower.style.top = e.clientY - 20 + 'px';
+            }, 100);
+        });
+        
+        // Cursor hover effects
+        const hoverElements = document.querySelectorAll('a, button, .card, .service-icon, .social-icon, .back-to-top');
+        
+        hoverElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.style.width = '40px';
+                cursor.style.height = '40px';
+                cursorFollower.style.width = '60px';
+                cursorFollower.style.height = '60px';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+                cursorFollower.style.width = '40px';
+                cursorFollower.style.height = '40px';
+            });
+        });
+        
+        // Hide loading animation after page loads
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loadingAnimation').classList.add('hidden');
+            }, 1500);
+        });
+        
         // Navbar scroll effect
-        window.addEventListener('scroll', function () {
+        window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
-                navbar.classList.add('bg-gray-900/90');
+                navbar.classList.add('scrolled');
             } else {
-                navbar.classList.remove('bg-gray-900/90');
+                navbar.classList.remove('scrolled');
             }
-
+            
+            // Update loading bar
+            const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('loadingBar').style.width = scrollPercentage + '%';
+            
             // Show/hide back to top button
             const backToTop = document.getElementById('backToTop');
             if (window.scrollY > 300) {
@@ -1228,53 +2435,119 @@
                 backToTop.classList.remove('show');
             }
         });
-
+        
         // Back to top
-        document.getElementById('backToTop').addEventListener('click', function () {
+        document.getElementById('backToTop').addEventListener('click', function() {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
-
-        // Mobile menu toggle
-        document.getElementById('mobileMenuBtn').addEventListener('click', function () {
-            const mobileMenu = document.getElementById('mobileMenu');
-            mobileMenu.classList.toggle('hidden');
+        
+        // 3D Emblem with Three.js
+        const emblemContainer = document.getElementById('emblem');
+        const emblemScene = new THREE.Scene();
+        const emblemCamera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+        const emblemRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        emblemRenderer.setSize(300, 300);
+        emblemContainer.appendChild(emblemRenderer.domElement);
+        
+        // Create a complex geometry for the emblem
+        const emblemGeometry = new THREE.IcosahedronGeometry(1, 1);
+        const emblemMaterial = new THREE.MeshBasicMaterial({
+            color: 0xB71C1C,
+            wireframe: true
         });
-
+        
+        const emblemMesh = new THREE.Mesh(emblemGeometry, emblemMaterial);
+        emblemScene.add(emblemMesh);
+        
+        // Add a second mesh inside
+        const innerGeometry = new THREE.OctahedronGeometry(0.7, 0);
+        const innerMaterial = new THREE.MeshBasicMaterial({
+            color: 0xFFC107,
+            wireframe: true
+        });
+        
+        const innerMesh = new THREE.Mesh(innerGeometry, innerMaterial);
+        emblemScene.add(innerMesh);
+        
+        emblemCamera.position.z = 3;
+        
+        // Animate emblem
+        const animateEmblem = () => {
+            requestAnimationFrame(animateEmblem);
+            
+            emblemMesh.rotation.x += 0.01;
+            emblemMesh.rotation.y += 0.01;
+            
+            innerMesh.rotation.x -= 0.015;
+            innerMesh.rotation.y -= 0.015;
+            
+            emblemRenderer.render(emblemScene, emblemCamera);
+        };
+        
+        animateEmblem();
+        
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Hero content animation
+        gsap.timeline()
+            .to('.hero-title', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' })
+            .to('.hero-subtitle', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.5')
+            .to('.hero-buttons', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.5');
+        
+        // Stats counter animation
+        const statNumbers = document.querySelectorAll('.stats-number');
+        
+        statNumbers.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-target')) || parseInt(stat.textContent);
+            
+            gsap.to(stat, {
+                scrollTrigger: {
+                    trigger: stat,
+                    start: 'top 80%'
+                },
+                innerText: target,
+                duration: 2,
+                ease: 'power3.out',
+                snap: { innerText: 1 },
+                onUpdate: function() {
+                    stat.innerText = Math.ceil(this.targets()[0].innerText);
+                }
+            });
+        });
+        
         // Contact form submission
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-
+            
             // Show success modal
-            document.getElementById('successModal').classList.remove('hidden');
-
+            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+            successModal.show();
+            
             // Reset form
             this.reset();
         });
-
+        
         // Newsletter form submission
-        document.getElementById('newsletterForm').addEventListener('submit', function (e) {
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
             e.preventDefault();
-
+            
             // Show success modal
-            document.getElementById('successModal').classList.remove('hidden');
-
+            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+            successModal.show();
+            
             // Reset form
             this.reset();
         });
-
-        // Close modal
-        document.getElementById('closeModal').addEventListener('click', function () {
-            document.getElementById('successModal').classList.add('hidden');
-        });
-
+        
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-
+                
                 const targetId = this.getAttribute('href');
                 if (targetId !== '#') {
                     const targetElement = document.querySelector(targetId);
@@ -1286,42 +2559,134 @@
                         });
                     }
                 }
-
-                // Close mobile menu if open
-                const mobileMenu = document.getElementById('mobileMenu');
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.querySelector('.lightbox-image');
+        const lightboxTitle = document.querySelector('.lightbox-title');
+        const lightboxDescription = document.querySelector('.lightbox-description');
+        const lightboxTags = document.querySelector('.lightbox-tags');
+        const closeLightbox = document.querySelector('.close-lightbox');
+        
+        // Add click event to project images
+        document.querySelectorAll('.portfolio-img img').forEach(img => {
+            img.addEventListener('click', function() {
+                const projectCard = this.closest('.portfolio-card');
+                const projectTitle = projectCard.querySelector('.portfolio-overlay h3').textContent;
+                const projectDescription = projectCard.querySelector('.portfolio-overlay p').textContent;
+                const projectTags = projectCard.querySelectorAll('.badge');
+                
+                lightboxImage.src = this.src;
+                lightboxTitle.textContent = projectTitle;
+                lightboxDescription.textContent = projectDescription;
+                
+                // Clear previous tags
+                lightboxTags.innerHTML = '';
+                
+                // Add tags
+                projectTags.forEach(tag => {
+                    const tagElement = document.createElement('span');
+                    tagElement.className = 'lightbox-tag';
+                    tagElement.textContent = tag.textContent;
+                    lightboxTags.appendChild(tagElement);
+                });
+                
+                lightbox.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Close lightbox
+        closeLightbox.addEventListener('click', function() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close lightbox when clicking outside the content
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Add animation to service icons on hover
+        document.querySelectorAll('.service-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', function() {
+                this.classList.add('pulse');
+            });
+            
+            icon.addEventListener('mouseleave', function() {
+                this.classList.remove('pulse');
+            });
+        });
+        
+        // Add animation to social icons
+        document.querySelectorAll('.social-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', function() {
+                this.classList.add('shake');
+            });
+            
+            icon.addEventListener('mouseleave', function() {
+                this.classList.remove('shake');
+            });
+        });
+        
+        // Add animation to stats cards
+        document.querySelectorAll('.stats-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.classList.add('pulse');
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.classList.remove('pulse');
+            });
+        });
+        
+        // Add parallax effect to hero section (disabled on mobile for performance)
+        if (window.innerWidth > 768) {
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('.hero-particles');
+                if (parallax) {
+                    parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+            });
+            
+            // Add mouse move effect to hero section
+            document.querySelector('.hero-section').addEventListener('mousemove', function(e) {
+                const mouseX = e.clientX / window.innerWidth;
+                const mouseY = e.clientY / window.innerHeight;
+                
+                document.querySelectorAll('.particle').forEach((particle, index) => {
+                    const speed = (index + 1) * 0.5;
+                    const x = (mouseX - 0.5) * speed * 20;
+                    const y = (mouseY - 0.5) * speed * 20;
+                    
+                    particle.style.transform = `translate(${x}px, ${y}px)`;
+                });
+            });
+        }
+        
+        // Handle navbar collapse on mobile
+        document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                if (navbarCollapse.classList.contains('show')) {
+                    navbarCollapse.classList.remove('show');
                 }
             });
         });
-
-        // Generate particles for hero section
-        function generateParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
-
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-
-                // Random size between 5px and 15px
-                const size = Math.random() * 10 + 5;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-
-                // Random position
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-
-                // Random animation delay
-                particle.style.animationDelay = `${Math.random() * 5}s`;
-
-                particlesContainer.appendChild(particle);
-            }
+        
+        // Optimize performance on mobile
+        if (window.innerWidth <= 768) {
+            // Disable heavy animations on mobile
+            document.querySelectorAll('.floating, .tilt').forEach(element => {
+                element.style.animation = 'none';
+            });
         }
-
-        // Generate particles on page load
-        generateParticles();
     </script>
 </body>
 </html>
