@@ -81,25 +81,6 @@
             z-index: -1;
         }
         
-        /* Canvas 3D Background */
-        .canvas-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-        
-        .canvas-container canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        
         /* Custom Cursor - Disabled on mobile */
         @media (min-width: 992px) {
             body {
@@ -1825,7 +1806,7 @@
         </div>
     </nav>
     
-     <!-- Hero Section -->
+    <!-- Hero Section -->
     <section class="hero-section" id="home">
         <div class="custom-bg"></div>
         <div class="custom-overlay"></div>
@@ -1891,7 +1872,6 @@
     <section class="py-5" id="services">
         <div class="custom-bg"></div>
         <div class="custom-overlay"></div>
-        <div class="canvas-container" id="services-canvas"></div>
         
         <div class="container">
             <div class="text-center mb-5">
@@ -1987,7 +1967,6 @@
     <section class="py-5" id="portfolio">
         <div class="custom-bg"></div>
         <div class="custom-overlay"></div>
-        <div class="canvas-container" id="portfolio-canvas"></div>
         
         <div class="container">
             <div class="text-center mb-5">
@@ -2107,7 +2086,6 @@
     <section class="py-5" id="about">
         <div class="custom-bg"></div>
         <div class="custom-overlay"></div>
-        <div class="canvas-container" id="about-canvas"></div>
         
         <div class="container">
             <div class="row align-items-center">
@@ -2188,7 +2166,6 @@
     <section class="py-5" id="testimonials">
         <div class="custom-bg"></div>
         <div class="custom-overlay"></div>
-        <div class="canvas-container" id="testimonials-canvas"></div>
         
         <div class="container">
             <div class="text-center mb-5">
@@ -2265,7 +2242,6 @@
     <section class="py-5" id="contact">
         <div class="custom-bg"></div>
         <div class="custom-overlay"></div>
-        <div class="canvas-container" id="contact-canvas"></div>
         
         <div class="container">
             <div class="text-center mb-5">
@@ -2355,7 +2331,6 @@
     <footer class="footer">
         <div class="custom-bg"></div>
         <div class="custom-overlay"></div>
-        <div class="canvas-container" id="footer-canvas"></div>
         
         <div class="container">
             <div class="row g-4">
@@ -2650,499 +2625,6 @@
                 top: 0,
                 behavior: 'smooth'
             });
-        });
-        
-        // 3D Background for Hero Section
-        function initHeroBackground() {
-            const container = document.getElementById('hero-canvas');
-            if (!container) return;
-            
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            container.appendChild(renderer.domElement);
-            
-            // Create particles
-            const particlesGeometry = new THREE.BufferGeometry();
-            const particlesCount = 500;
-            const posArray = new Float32Array(particlesCount * 3);
-            
-            for(let i = 0; i < particlesCount * 3; i++) {
-                posArray[i] = (Math.random() - 0.5) * 10;
-            }
-            
-            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            
-            // Materials
-            const particlesMaterial = new THREE.PointsMaterial({
-                size: 0.02,
-                color: 0xB71C1C,
-                transparent: true,
-                opacity: 0.8,
-                blending: THREE.AdditiveBlending
-            });
-            
-            // Mesh
-            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-            scene.add(particlesMesh);
-            
-            // Add a central rotating object
-            const geometry = new THREE.IcosahedronGeometry(1, 1);
-            const material = new THREE.MeshBasicMaterial({
-                color: 0xFFC107,
-                wireframe: true
-            });
-            const mesh = new THREE.Mesh(geometry, material);
-            scene.add(mesh);
-            
-            camera.position.z = 5;
-            
-            // Animation
-            const animate = () => {
-                requestAnimationFrame(animate);
-                
-                particlesMesh.rotation.x += 0.001;
-                particlesMesh.rotation.y += 0.001;
-                
-                mesh.rotation.x += 0.005;
-                mesh.rotation.y += 0.005;
-                
-                renderer.render(scene, camera);
-            };
-            
-            animate();
-            
-            // Handle resize
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-        }
-        
-        // 3D Background for Services Section
-        function initServicesBackground() {
-            const container = document.getElementById('services-canvas');
-            if (!container) return;
-            
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            container.appendChild(renderer.domElement);
-            
-            // Create floating cubes
-            const cubes = [];
-            const cubeCount = 15;
-            
-            for (let i = 0; i < cubeCount; i++) {
-                const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-                const material = new THREE.MeshBasicMaterial({
-                    color: i % 2 === 0 ? 0xB71C1C : 0xFFC107,
-                    wireframe: true
-                });
-                const cube = new THREE.Mesh(geometry, material);
-                
-                // Random position
-                cube.position.x = (Math.random() - 0.5) * 10;
-                cube.position.y = (Math.random() - 0.5) * 10;
-                cube.position.z = (Math.random() - 0.5) * 10;
-                
-                // Random rotation
-                cube.rotation.x = Math.random() * Math.PI;
-                cube.rotation.y = Math.random() * Math.PI;
-                
-                // Random scale
-                const scale = 0.2 + Math.random() * 0.8;
-                cube.scale.set(scale, scale, scale);
-                
-                scene.add(cube);
-                cubes.push(cube);
-            }
-            
-            camera.position.z = 5;
-            
-            // Animation
-            const animate = () => {
-                requestAnimationFrame(animate);
-                
-                cubes.forEach(cube => {
-                    cube.rotation.x += 0.01;
-                    cube.rotation.y += 0.01;
-                    
-                    // Floating motion
-                    cube.position.y += Math.sin(Date.now() * 0.001 + cube.position.x) * 0.01;
-                });
-                
-                renderer.render(scene, camera);
-            };
-            
-            animate();
-            
-            // Handle resize
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-        }
-        
-        // 3D Background for Portfolio Section
-        function initPortfolioBackground() {
-            const container = document.getElementById('portfolio-canvas');
-            if (!container) return;
-            
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            container.appendChild(renderer.domElement);
-            
-            // Create a grid of spheres
-            const spheres = [];
-            const sphereCount = 30;
-            const gridSize = 5;
-            
-            for (let i = 0; i < sphereCount; i++) {
-                const geometry = new THREE.SphereGeometry(0.2, 16, 16);
-                const material = new THREE.MeshBasicMaterial({
-                    color: i % 3 === 0 ? 0xB71C1C : (i % 3 === 1 ? 0xFFC107 : 0xFFFFFF),
-                    wireframe: true
-                });
-                const sphere = new THREE.Mesh(geometry, material);
-                
-                // Grid position
-                const row = Math.floor(i / gridSize);
-                const col = i % gridSize;
-                sphere.position.x = (col - gridSize / 2) * 1.5;
-                sphere.position.y = (row - gridSize / 2) * 1.5;
-                sphere.position.z = (Math.random() - 0.5) * 5;
-                
-                scene.add(sphere);
-                spheres.push(sphere);
-            }
-            
-            camera.position.z = 10;
-            
-            // Animation
-            const animate = () => {
-                requestAnimationFrame(animate);
-                
-                spheres.forEach((sphere, i) => {
-                    sphere.rotation.x += 0.01;
-                    sphere.rotation.y += 0.01;
-                    
-                    // Wave motion
-                    sphere.position.z = Math.sin(Date.now() * 0.001 + i * 0.2) * 2;
-                });
-                
-                renderer.render(scene, camera);
-            };
-            
-            animate();
-            
-            // Handle resize
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-        }
-        
-        // 3D Background for About Section
-        function initAboutBackground() {
-            const container = document.getElementById('about-canvas');
-            if (!container) return;
-            
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            container.appendChild(renderer.domElement);
-            
-            // Create a torus knot
-            const geometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
-            const material = new THREE.MeshBasicMaterial({
-                color: 0xB71C1C,
-                wireframe: true
-            });
-            const torusKnot = new THREE.Mesh(geometry, material);
-            scene.add(torusKnot);
-            
-            // Add particles around the torus knot
-            const particlesGeometry = new THREE.BufferGeometry();
-            const particlesCount = 500;
-            const posArray = new Float32Array(particlesCount * 3);
-            
-            for(let i = 0; i < particlesCount * 3; i += 3) {
-                const radius = 2 + Math.random() * 2;
-                const theta = Math.random() * Math.PI * 2;
-                const phi = Math.random() * Math.PI;
-                
-                posArray[i] = radius * Math.sin(phi) * Math.cos(theta);
-                posArray[i + 1] = radius * Math.sin(phi) * Math.sin(theta);
-                posArray[i + 2] = radius * Math.cos(phi);
-            }
-            
-            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            
-            const particlesMaterial = new THREE.PointsMaterial({
-                size: 0.02,
-                color: 0xFFC107,
-                transparent: true,
-                opacity: 0.8,
-                blending: THREE.AdditiveBlending
-            });
-            
-            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-            scene.add(particlesMesh);
-            
-            camera.position.z = 5;
-            
-            // Animation
-            const animate = () => {
-                requestAnimationFrame(animate);
-                
-                torusKnot.rotation.x += 0.01;
-                torusKnot.rotation.y += 0.01;
-                
-                particlesMesh.rotation.x -= 0.005;
-                particlesMesh.rotation.y -= 0.005;
-                
-                renderer.render(scene, camera);
-            };
-            
-            animate();
-            
-            // Handle resize
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-        }
-        
-        // 3D Background for Testimonials Section
-        function initTestimonialsBackground() {
-            const container = document.getElementById('testimonials-canvas');
-            if (!container) return;
-            
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            container.appendChild(renderer.domElement);
-            
-            // Create multiple rotating rings
-            const rings = [];
-            const ringCount = 5;
-            
-            for (let i = 0; i < ringCount; i++) {
-                const radius = 1 + i * 0.5;
-                const geometry = new THREE.RingGeometry(radius - 0.1, radius, 32);
-                const material = new THREE.MeshBasicMaterial({
-                    color: i % 2 === 0 ? 0xB71C1C : 0xFFC107,
-                    side: THREE.DoubleSide,
-                    wireframe: true
-                });
-                const ring = new THREE.Mesh(geometry, material);
-                
-                // Random rotation
-                ring.rotation.x = Math.random() * Math.PI;
-                ring.rotation.y = Math.random() * Math.PI;
-                
-                scene.add(ring);
-                rings.push(ring);
-            }
-            
-            camera.position.z = 5;
-            
-            // Animation
-            const animate = () => {
-                requestAnimationFrame(animate);
-                
-                rings.forEach((ring, i) => {
-                    ring.rotation.x += 0.005 * (i + 1);
-                    ring.rotation.y += 0.005 * (i + 1);
-                });
-                
-                renderer.render(scene, camera);
-            };
-            
-            animate();
-            
-            // Handle resize
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-        }
-        
-        // 3D Background for Contact Section
-        function initContactBackground() {
-            const container = document.getElementById('contact-canvas');
-            if (!container) return;
-            
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            container.appendChild(renderer.domElement);
-            
-            // Create a wave-like structure
-            const waveGeometry = new THREE.PlaneGeometry(10, 10, 50, 50);
-            const waveMaterial = new THREE.MeshBasicMaterial({
-                color: 0xB71C1C,
-                wireframe: true,
-                transparent: true,
-                opacity: 0.7
-            });
-            const wave = new THREE.Mesh(waveGeometry, waveMaterial);
-            wave.rotation.x = -Math.PI / 2;
-            scene.add(wave);
-            
-            // Add floating points
-            const pointsGeometry = new THREE.BufferGeometry();
-            const pointsCount = 200;
-            const posArray = new Float32Array(pointsCount * 3);
-            
-            for(let i = 0; i < pointsCount * 3; i += 3) {
-                posArray[i] = (Math.random() - 0.5) * 10;
-                posArray[i + 1] = (Math.random() - 0.5) * 10;
-                posArray[i + 2] = (Math.random() - 0.5) * 10;
-            }
-            
-            pointsGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            
-            const pointsMaterial = new THREE.PointsMaterial({
-                size: 0.05,
-                color: 0xFFC107,
-                transparent: true,
-                opacity: 0.8,
-                blending: THREE.AdditiveBlending
-            });
-            
-            const pointsMesh = new THREE.Points(pointsGeometry, pointsMaterial);
-            scene.add(pointsMesh);
-            
-            camera.position.z = 5;
-            camera.position.y = 2;
-            
-            // Animation
-            const animate = () => {
-                requestAnimationFrame(animate);
-                
-                // Wave animation
-                const time = Date.now() * 0.001;
-                const positions = wave.geometry.attributes.position.array;
-                
-                for (let i = 0; i < positions.length; i += 3) {
-                    const x = positions[i];
-                    const y = positions[i + 1];
-                    const z = positions[i + 2];
-                    
-                    positions[i + 2] = Math.sin(x * 0.5 + time) * Math.cos(y * 0.5 + time) * 0.5;
-                }
-                
-                wave.geometry.attributes.position.needsUpdate = true;
-                
-                // Points animation
-                pointsMesh.rotation.x += 0.005;
-                pointsMesh.rotation.y += 0.005;
-                
-                renderer.render(scene, camera);
-            };
-            
-            animate();
-            
-            // Handle resize
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-        }
-        
-        // 3D Background for Footer
-        function initFooterBackground() {
-            const container = document.getElementById('footer-canvas');
-            if (!container) return;
-            
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            container.appendChild(renderer.domElement);
-            
-            // Create a simple particle system
-            const particlesGeometry = new THREE.BufferGeometry();
-            const particlesCount = 300;
-            const posArray = new Float32Array(particlesCount * 3);
-            
-            for(let i = 0; i < particlesCount * 3; i += 3) {
-                posArray[i] = (Math.random() - 0.5) * 10;
-                posArray[i + 1] = (Math.random() - 0.5) * 10;
-                posArray[i + 2] = (Math.random() - 0.5) * 10;
-            }
-            
-            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            
-            const particlesMaterial = new THREE.PointsMaterial({
-                size: 0.05,
-                color: 0xB71C1C,
-                transparent: true,
-                opacity: 0.7,
-                blending: THREE.AdditiveBlending
-            });
-            
-            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-            scene.add(particlesMesh);
-            
-            // Add a slowly rotating cube in the center
-            const geometry = new THREE.BoxGeometry(1, 1, 1);
-            const material = new THREE.MeshBasicMaterial({
-                color: 0xFFC107,
-                wireframe: true
-            });
-            const cube = new THREE.Mesh(geometry, material);
-            scene.add(cube);
-            
-            camera.position.z = 5;
-            
-            // Animation
-            const animate = () => {
-                requestAnimationFrame(animate);
-                
-                particlesMesh.rotation.x += 0.001;
-                particlesMesh.rotation.y += 0.001;
-                
-                cube.rotation.x += 0.005;
-                cube.rotation.y += 0.005;
-                
-                renderer.render(scene, camera);
-            };
-            
-            animate();
-            
-            // Handle resize
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-        }
-        
-        // Initialize all 3D backgrounds
-        window.addEventListener('load', () => {
-            initHeroBackground();
-            initServicesBackground();
-            initPortfolioBackground();
-            initAboutBackground();
-            initTestimonialsBackground();
-            initContactBackground();
-            initFooterBackground();
         });
         
         // 3D Emblem with Three.js
