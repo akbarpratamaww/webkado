@@ -27,6 +27,9 @@
     <!-- Particles.js -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    
     <style>
         :root {
             --ruby: #B71C1C;
@@ -52,7 +55,42 @@
             color: var(--foreground);
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
-            cursor: none;
+        }
+        
+        /* Custom Cursor - Disabled on mobile */
+        @media (min-width: 992px) {
+            body {
+                cursor: none;
+            }
+            
+            #cursor {
+                position: fixed;
+                width: 20px;
+                height: 20px;
+                background: radial-gradient(circle, var(--ruby), var(--ruby-dark));
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease;
+                mix-blend-mode: difference;
+            }
+            
+            #cursor-follower {
+                position: fixed;
+                width: 40px;
+                height: 40px;
+                border: 2px solid rgba(183, 28, 28, 0.5);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9998;
+                transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+            }
+        }
+        
+        @media (max-width: 991px) {
+            #cursor, #cursor-follower {
+                display: none;
+            }
         }
         
         h1, h2, h3, h4, h5, h6 {
@@ -527,6 +565,16 @@
             opacity: 1;
         }
         
+        /* Enhanced Testimonial Carousel */
+        .testimonial-carousel {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-swiper {
+            padding: 20px 0;
+        }
+        
         .testimonial-card {
             background: var(--secondary);
             border-radius: 20px;
@@ -535,11 +583,15 @@
             margin-bottom: 2rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            height: 100%;
+            transform-style: preserve-3d;
+            perspective: 1000px;
         }
         
         .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px) rotateX(5deg);
+            box-shadow: 0 15px 30px rgba(183, 28, 28, 0.3);
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(183, 28, 28, 0.1) 100%);
         }
         
         .testimonial-card:before {
@@ -551,6 +603,97 @@
             color: var(--ruby);
             opacity: 0.2;
             font-family: 'Playfair Display', serif;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover:before {
+            opacity: 0.4;
+            transform: scale(1.1);
+        }
+        
+        .testimonial-card p {
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover p {
+            transform: translateZ(20px);
+        }
+        
+        .testimonial-card .d-flex {
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover .d-flex {
+            transform: translateZ(30px);
+        }
+        
+        .testimonial-card img {
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .testimonial-card:hover img {
+            border-color: var(--ruby);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(183, 28, 28, 0.3);
+        }
+        
+        .testimonial-pagination {
+            position: relative;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .testimonial-pagination .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background: rgba(183, 28, 28, 0.3);
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-pagination .swiper-pagination-bullet-active {
+            background: var(--ruby);
+            width: 30px;
+            border-radius: 6px;
+        }
+        
+        .testimonial-navigation {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            transform: translateY(-50%);
+            z-index: 10;
+            pointer-events: none;
+        }
+        
+        .testimonial-navigation button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(183, 28, 28, 0.2);
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            pointer-events: all;
+        }
+        
+        .testimonial-navigation button:hover {
+            background: var(--ruby);
+            transform: scale(1.1);
         }
         
         .contact-form {
@@ -1052,15 +1195,6 @@
             position: relative;
         }
         
-        /* Enhanced testimonial carousel */
-        .testimonial-carousel {
-            position: relative;
-        }
-        
-        .testimonial-carousel .testimonial-card {
-            margin-bottom: 2rem;
-        }
-        
         /* Enhanced form inputs */
         .form-control:hover {
             border-color: rgba(183, 28, 28, 0.4);
@@ -1146,30 +1280,6 @@
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-        }
-        
-        /* Custom Cursor */
-        #cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            background: radial-gradient(circle, var(--ruby), var(--ruby-dark));
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease;
-            mix-blend-mode: difference;
-        }
-        
-        #cursor-follower {
-            position: fixed;
-            width: 40px;
-            height: 40px;
-            border: 2px solid rgba(183, 28, 28, 0.5);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9998;
-            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
         }
         
         /* Video Background */
@@ -1623,7 +1733,7 @@
     <!-- Loading Bar -->
     <div class="loading-bar" id="loadingBar"></div>
     
-    <!-- Custom Cursor -->
+    <!-- Custom Cursor - Only visible on desktop -->
     <div id="cursor"></div>
     <div id="cursor-follower"></div>
     
@@ -2024,41 +2134,60 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="testimonial-carousel">
-                        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-                            <p class="text-white-50 mb-4">
-                                "Script On mengubah kehadiran digital kami sepenuhnya. Perhatian mereka terhadap detail dan keahlian teknis tak tertandingi."
-                            </p>
-                            <div class="d-flex align-items-center">
-                                <img src="https://via.placeholder.com/60" alt="Sarah Johnson" class="rounded-circle me-3">
-                                <div>
-                                    <h5 class="text-white mb-0">Sarah Johnson</h5>
-                                    <p class="text-ruby mb-0">CEO, TechVentures Inc.</p>
+                        <div class="swiper testimonial-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                                        <p class="text-white-50 mb-4">
+                                            "Script On mengubah kehadiran digital kami sepenuhnya. Perhatian mereka terhadap detail dan keahlian teknis tak tertandingi."
+                                        </p>
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://via.placeholder.com/60" alt="Sarah Johnson" class="rounded-circle me-3">
+                                            <div>
+                                                <h5 class="text-white mb-0">Sarah Johnson</h5>
+                                                <p class="text-ruby mb-0">CEO, TechVentures Inc.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                                        <p class="text-white-50 mb-4">
+                                            "Bekerja dengan Script On adalah perubahan permainan untuk bisnis kami. Mereka memberikan hasil melampaui ekspektasi dan tepat waktu."
+                                        </p>
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://via.placeholder.com/60" alt="Michael Chen" class="rounded-circle me-3">
+                                            <div>
+                                                <h5 class="text-white mb-0">Michael Chen</h5>
+                                                <p class="text-ruby mb-0">CTO, DataFlow Systems</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
+                                        <p class="text-white-50 mb-4">
+                                            "Profesionalisme tim dan pendekatan inovatif mereka membantu kami mencapai tujuan transformasi digital dengan mulus."
+                                        </p>
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://via.placeholder.com/60" alt="Emily Rodriguez" class="rounded-circle me-3">
+                                            <div>
+                                                <h5 class="text-white mb-0">Emily Rodriguez</h5>
+                                                <p class="text-ruby mb-0">Direktur IT, GlobalCorp</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
-                            <p class="text-white-50 mb-4">
-                                "Bekerja dengan Script On adalah perubahan permainan untuk bisnis kami. Mereka memberikan hasil melampaui ekspektasi dan tepat waktu."
-                            </p>
-                            <div class="d-flex align-items-center">
-                                <img src="https://via.placeholder.com/60" alt="Michael Chen" class="rounded-circle me-3">
-                                <div>
-                                    <h5 class="text-white mb-0">Michael Chen</h5>
-                                    <p class="text-ruby mb-0">CTO, DataFlow Systems</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
-                            <p class="text-white-50 mb-4">
-                                "Profesionalisme tim dan pendekatan inovatif mereka membantu kami mencapai tujuan transformasi digital dengan mulus."
-                            </p>
-                            <div class="d-flex align-items-center">
-                                <img src="https://via.placeholder.com/60" alt="Emily Rodriguez" class="rounded-circle me-3">
-                                <div>
-                                    <h5 class="text-white mb-0">Emily Rodriguez</h5>
-                                    <p class="text-ruby mb-0">Direktur IT, GlobalCorp</p>
-                                </div>
-                            </div>
+                        <div class="testimonial-pagination"></div>
+                        <div class="testimonial-navigation">
+                            <button class="testimonial-prev">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="testimonial-next">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -2259,6 +2388,9 @@
     <!-- AOS Animation JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    
     <script>
         // Initialize AOS
         AOS.init({
@@ -2374,38 +2506,40 @@
             retina_detect: true
         });
         
-        // Custom Cursor
-        const cursor = document.getElementById('cursor');
-        const cursorFollower = document.getElementById('cursor-follower');
-        
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX - 10 + 'px';
-            cursor.style.top = e.clientY - 10 + 'px';
+        // Custom Cursor - Only for desktop
+        if (window.innerWidth >= 992) {
+            const cursor = document.getElementById('cursor');
+            const cursorFollower = document.getElementById('cursor-follower');
             
-            setTimeout(() => {
-                cursorFollower.style.left = e.clientX - 20 + 'px';
-                cursorFollower.style.top = e.clientY - 20 + 'px';
-            }, 100);
-        });
-        
-        // Cursor hover effects
-        const hoverElements = document.querySelectorAll('a, button, .card, .service-icon, .social-icon, .back-to-top');
-        
-        hoverElements.forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                cursor.style.width = '40px';
-                cursor.style.height = '40px';
-                cursorFollower.style.width = '60px';
-                cursorFollower.style.height = '60px';
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX - 10 + 'px';
+                cursor.style.top = e.clientY - 10 + 'px';
+                
+                setTimeout(() => {
+                    cursorFollower.style.left = e.clientX - 20 + 'px';
+                    cursorFollower.style.top = e.clientY - 20 + 'px';
+                }, 100);
             });
             
-            element.addEventListener('mouseleave', () => {
-                cursor.style.width = '20px';
-                cursor.style.height = '20px';
-                cursorFollower.style.width = '40px';
-                cursorFollower.style.height = '40px';
+            // Cursor hover effects
+            const hoverElements = document.querySelectorAll('a, button, .card, .service-icon, .social-icon, .back-to-top');
+            
+            hoverElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    cursor.style.width = '40px';
+                    cursor.style.height = '40px';
+                    cursorFollower.style.width = '60px';
+                    cursorFollower.style.height = '60px';
+                });
+                
+                element.addEventListener('mouseleave', () => {
+                    cursor.style.width = '20px';
+                    cursor.style.height = '20px';
+                    cursorFollower.style.width = '40px';
+                    cursorFollower.style.height = '40px';
+                });
             });
-        });
+        }
         
         // Hide loading animation after page loads
         window.addEventListener('load', function() {
@@ -2516,6 +2650,62 @@
                 onUpdate: function() {
                     stat.innerText = Math.ceil(this.targets()[0].innerText);
                 }
+            });
+        });
+        
+        // Initialize Testimonial Swiper
+        const testimonialSwiper = new Swiper('.testimonial-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.testimonial-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.testimonial-next',
+                prevEl: '.testimonial-prev',
+            },
+            effect: 'coverflow',
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                992: {
+                    slidesPerView: 1,
+                }
+            }
+        });
+        
+        // Add animation to testimonial cards
+        gsap.utils.toArray('.testimonial-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, {
+                    y: -10,
+                    scale: 1.02,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    y: 0,
+                    scale: 1,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
             });
         });
         
