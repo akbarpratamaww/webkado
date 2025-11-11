@@ -57,18 +57,10 @@
             overflow-x: hidden;
         }
         
-        /* Custom Cursor - Only for desktop */
-        #cursor, #cursor-follower {
-            display: none;
-        }
-        
+        /* Custom Cursor - Disabled on mobile */
         @media (min-width: 992px) {
             body {
                 cursor: none;
-            }
-            
-            #cursor, #cursor-follower {
-                display: block;
             }
             
             #cursor {
@@ -92,6 +84,12 @@
                 pointer-events: none;
                 z-index: 9998;
                 transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+            }
+        }
+        
+        @media (max-width: 991px) {
+            #cursor, #cursor-follower {
+                display: none;
             }
         }
         
@@ -2509,13 +2507,9 @@
         });
         
         // Custom Cursor - Only for desktop
-        let isDesktop = window.innerWidth >= 992;
-        let cursor = document.getElementById('cursor');
-        let cursorFollower = document.getElementById('cursor-follower');
-        
-        // Function to initialize cursor
-        function initCursor() {
-            if (!isDesktop) return;
+        if (window.innerWidth >= 992) {
+            const cursor = document.getElementById('cursor');
+            const cursorFollower = document.getElementById('cursor-follower');
             
             document.addEventListener('mousemove', (e) => {
                 cursor.style.left = e.clientX - 10 + 'px';
@@ -2546,46 +2540,6 @@
                 });
             });
         }
-        
-        // Function to destroy cursor
-        function destroyCursor() {
-            // Remove event listeners by cloning and replacing elements
-            const oldCursor = cursor;
-            const oldFollower = cursorFollower;
-            
-            cursor = cursor.cloneNode(true);
-            cursorFollower = cursorFollower.cloneNode(true);
-            
-            oldCursor.parentNode.replaceChild(cursor, oldCursor);
-            oldFollower.parentNode.replaceChild(cursorFollower, oldFollower);
-            
-            // Hide cursors
-            cursor.style.display = 'none';
-            cursorFollower.style.display = 'none';
-        }
-        
-        // Initialize or destroy cursor based on screen size
-        function handleCursorVisibility() {
-            const newIsDesktop = window.innerWidth >= 992;
-            
-            if (newIsDesktop !== isDesktop) {
-                isDesktop = newIsDesktop;
-                
-                if (isDesktop) {
-                    cursor.style.display = 'block';
-                    cursorFollower.style.display = 'block';
-                    initCursor();
-                } else {
-                    destroyCursor();
-                }
-            }
-        }
-        
-        // Initial check
-        handleCursorVisibility();
-        
-        // Listen for window resize
-        window.addEventListener('resize', handleCursorVisibility);
         
         // Hide loading animation after page loads
         window.addEventListener('load', function() {
