@@ -489,6 +489,83 @@
             margin: 0 auto 3rem;
         }
         
+        /* Parallax Service Cards Styles */
+        .services-section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .service-wrap {
+            margin: 2rem;
+            transform-style: preserve-3d;
+            transform: perspective(100rem);
+            cursor: pointer;
+            height: 100%;
+        }
+        
+        .service-container {
+            --rX: 0;
+            --rY: 0;
+            --bX: 50%;
+            --bY: 80%;
+            
+            width: 100%;
+            height: 100%;
+            border: 1px solid rgba(183, 28, 28, 0.3);
+            border-radius: 1.6rem;
+            padding: 2rem;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            
+            position: relative;
+            transform: rotateX(calc(var(--rX) * 1deg)) rotateY(calc(var(--rY) * 1deg));
+            
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(42, 42, 42, 0.9) 100%);
+            box-shadow: 0 0 3rem .5rem rgba(183, 28, 28, 0.2);
+            
+            transition: transform .6s 1s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .service-container::before,
+        .service-container::after {
+            content: "";
+            
+            width: 2rem;
+            height: 2rem;
+            border: 1px solid var(--ruby);
+            
+            position: absolute;
+            z-index: 2;
+            
+            opacity: .3;
+            transition: .3s;
+        }
+        
+        .service-container::before {
+            top: 2rem;
+            right: 2rem;
+            
+            border-bottom-width: 0;
+            border-left-width: 0;
+        }
+        
+        .service-container::after {
+            bottom: 2rem;
+            left: 2rem;
+            
+            border-top-width: 0;
+            border-right-width: 0;
+        }
+        
+        .service-container--active {
+            transition: none;
+        }
+        
         .service-icon {
             width: 70px;
             height: 70px;
@@ -503,6 +580,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
         
         .service-icon:before {
@@ -517,14 +595,75 @@
             transition: transform 0.6s;
         }
         
-        .service-card:hover .service-icon:before {
+        .service-wrap:hover .service-icon:before {
             transform: translateX(100%);
         }
         
-        .service-card:hover .service-icon {
+        .service-wrap:hover .service-icon {
             transform: rotateY(180deg);
             background: linear-gradient(135deg, var(--ruby-light) 0%, var(--ruby) 100%);
             box-shadow: 0 10px 20px rgba(183, 28, 28, 0.3);
+        }
+        
+        .service-container h3 {
+            color: var(--foreground);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            z-index: 1;
+        }
+        
+        .service-container p {
+            color: var(--muted-foreground);
+            z-index: 1;
+        }
+        
+        .service-wrap:hover .service-container::before,
+        .service-wrap:hover .service-container::after {
+            width: calc(100% - 4rem);
+            height: calc(100% - 4rem);
+        }
+        
+        /* Responsive adjustments for service cards */
+        @media screen and (max-width: 992px) {
+            .service-wrap {
+                margin: 1rem;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .service-wrap {
+                margin: 0.5rem;
+            }
+            
+            .service-container {
+                padding: 1.5rem;
+            }
+            
+            .service-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .service-container h3 {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .service-container {
+                padding: 1rem;
+            }
+            
+            .service-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            .service-container h3 {
+                font-size: 1.2rem;
+            }
         }
         
         /* 3D Carousel Portfolio Styles - Scoped to avoid conflicts */
@@ -1987,8 +2126,8 @@
         </div>
     </section>
     
-    <!-- Services Section -->
-    <section class="py-5" id="services">
+    <!-- Services Section with Parallax Effect -->
+    <section class="services-section py-5" id="services">
         <div class="custom-bg"></div>
         <div class="custom-overlay"></div>
         <div class="canvas-container" id="services-canvas"></div>
@@ -2002,78 +2141,78 @@
             </div>
             <div class="row g-4">
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card h-100 service-card glow">
-                        <div class="card-body text-center p-4">
-                            <div class="service-icon mx-auto">
+                    <div class="service-wrap">
+                        <div class="service-container">
+                            <div class="service-icon">
                                 <i class="fas fa-code"></i>
                             </div>
-                            <h3 class="card-title text-white mb-3">Pengembangan Web</h3>
-                            <p class="card-text text-muted-foreground">
+                            <h3>Pengembangan Web</h3>
+                            <p>
                                 Aplikasi web kustom yang dibangun dengan framework modern dan praktik terbaik untuk performa optimal.
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card h-100 service-card glow">
-                        <div class="card-body text-center p-4">
-                            <div class="service-icon mx-auto">
+                    <div class="service-wrap">
+                        <div class="service-container">
+                            <div class="service-icon">
                                 <i class="fas fa-mobile-alt"></i>
                             </div>
-                            <h3 class="card-title text-white mb-3">Solusi Mobile</h3>
-                            <p class="card-text text-muted-foreground">
+                            <h3>Solusi Mobile</h3>
+                            <p>
                                 Aplikasi mobile native dan cross-platform yang memberikan pengalaman pengguna yang luar biasa.
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card h-100 service-card glow">
-                        <div class="card-body text-center p-4">
-                            <div class="service-icon mx-auto">
+                    <div class="service-wrap">
+                        <div class="service-container">
+                            <div class="service-icon">
                                 <i class="fas fa-cloud"></i>
                             </div>
-                            <h3 class="card-title text-white mb-3">Arsitektur Cloud</h3>
-                            <p class="card-text text-muted-foreground">
+                            <h3>Arsitektur Cloud</h3>
+                            <p>
                                 Infrastruktur cloud yang skalabel yang dirancang untuk tumbuh bersama kebutuhan bisnis Anda.
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="card h-100 service-card glow">
-                        <div class="card-body text-center p-4">
-                            <div class="service-icon mx-auto">
+                    <div class="service-wrap">
+                        <div class="service-container">
+                            <div class="service-icon">
                                 <i class="fas fa-database"></i>
                             </div>
-                            <h3 class="card-title text-white mb-3">Solusi Data</h3>
-                            <p class="card-text text-muted-foreground">
+                            <h3>Solusi Data</h3>
+                            <p>
                                 Desain dan manajemen database yang kuat untuk penanganan data dan analitik yang efisien.
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
-                    <div class="card h-100 service-card glow">
-                        <div class="card-body text-center p-4">
-                            <div class="service-icon mx-auto">
+                    <div class="service-wrap">
+                        <div class="service-container">
+                            <div class="service-icon">
                                 <i class="fas fa-shield-alt"></i>
                             </div>
-                            <h3 class="card-title text-white mb-3">Keamanan Siber</h3>
-                            <p class="card-text text-muted-foreground">
+                            <h3>Keamanan Siber</h3>
+                            <p>
                                 Solusi keamanan komprehensif untuk melindungi aset digital dan data pengguna Anda.
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
-                    <div class="card h-100 service-card glow">
-                        <div class="card-body text-center p-4">
-                            <div class="service-icon mx-auto">
+                    <div class="service-wrap">
+                        <div class="service-container">
+                            <div class="service-icon">
                                 <i class="fas fa-bolt"></i>
                             </div>
-                            <h3 class="card-title text-white mb-3">Optimasi Performa</h3>
-                            <p class="card-text text-muted-foreground">
+                            <h3>Optimasi Performa</h3>
+                            <p>
                                 Percepat aplikasi Anda dengan teknik optimasi mutakhir.
                             </p>
                         </div>
@@ -3217,6 +3356,93 @@
                     slidesPerView: 1,
                 }
             }
+        });
+        
+        // Parallax Tilt Effect for Service Cards
+        class parallaxTiltEffect {
+            constructor({element, tiltEffect}) {
+                this.element = element;
+                this.container = this.element.querySelector(".service-container");
+                this.size = [this.element.offsetWidth, this.element.offsetHeight];
+                [this.w, this.h] = this.size;
+                
+                this.tiltEffect = tiltEffect;
+                
+                this.mouseOnComponent = false;
+                
+                this.handleMouseMove = this.handleMouseMove.bind(this);
+                this.handleMouseEnter = this.handleMouseEnter.bind(this);
+                this.handleMouseLeave = this.handleMouseLeave.bind(this);
+                this.defaultStates = this.defaultStates.bind(this);
+                this.setProperty = this.setProperty.bind(this);
+                this.init = this.init.bind(this);
+                
+                this.init();
+            }
+            
+            handleMouseMove(event) {
+                const rect = this.element.getBoundingClientRect();
+                const offsetX = event.clientX - rect.left;
+                const offsetY = event.clientY - rect.top;
+                
+                let X;
+                let Y;
+                
+                if (this.tiltEffect === "reverse") {
+                    X = ((offsetX - (this.w/2)) / 3) / 3;
+                    Y = (-(offsetY - (this.h/2)) / 3) / 3;
+                }
+                
+                else if (this.tiltEffect === "normal") {
+                    X = (-(offsetX - (this.w/2)) / 3) / 3;
+                    Y = ((offsetY - (this.h/2)) / 3) / 3;
+                }
+                
+                this.setProperty('--rY', X.toFixed(2));
+                this.setProperty('--rX', Y.toFixed(2));
+                
+                this.setProperty('--bY', (80 - (X/4).toFixed(2)) + '%');
+                this.setProperty('--bX', (50 - (Y/4).toFixed(2)) + '%');
+            }
+            
+            handleMouseEnter() {
+                this.mouseOnComponent = true;
+                this.container.classList.add("service-container--active");
+            }
+            
+            handleMouseLeave() {
+                this.mouseOnComponent = false;
+                this.defaultStates();
+            }
+            
+            defaultStates() {
+                this.container.classList.remove("service-container--active");
+                this.setProperty('--rY', 0);
+                this.setProperty('--rX', 0);
+                this.setProperty('--bY', '80%');
+                this.setProperty('--bX', '50%');
+            }
+            
+            setProperty(p, v) {
+                return this.container.style.setProperty(p, v);
+            }
+            
+            init() {
+                this.element.addEventListener('mousemove', this.handleMouseMove);
+                this.element.addEventListener('mouseenter', this.handleMouseEnter);
+                this.element.addEventListener('mouseleave', this.handleMouseLeave);
+            }
+        }
+        
+        // Initialize parallax effect for service cards
+        const serviceWraps = document.querySelectorAll('.service-wrap');
+        
+        serviceWraps.forEach((wrap, index) => {
+            const tiltEffect = index % 2 === 0 ? 'reverse' : 'normal';
+            new parallaxTiltEffect({
+                element: wrap,
+                tiltEffect: tiltEffect
+            });
         });
         
         // Contact form submission
