@@ -489,7 +489,7 @@
             margin: 0 auto 3rem;
         }
         
-        /* Parallax Service Cards Styles dengan Glow Border Merah */
+        /* Parallax Service Cards Styles dengan Background Hitam dan Border Glow Merah */
         .services-section {
             padding: 80px 0;
             position: relative;
@@ -524,7 +524,9 @@
             position: relative;
             transform: rotateX(calc(var(--rX) * 1deg)) rotateY(calc(var(--rY) * 1deg));
             
-            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(42, 42, 42, 0.9) 100%);
+            /* Background hitam solid */
+            background-color: #000000;
+            
             box-shadow: 0 0 3rem .5rem rgba(183, 28, 28, 0.2);
             
             transition: transform .6s 1s, box-shadow .3s ease, border-color .3s ease;
@@ -563,6 +565,7 @@
             }
         }
         
+        /* Inner background to maintain black background */
         .service-container::after {
             content: "";
             position: absolute;
@@ -570,7 +573,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(42, 42, 42, 0.9) 100%);
+            background-color: #000000;
             border-radius: 1.4rem;
             z-index: -1;
         }
@@ -2175,7 +2178,7 @@
         </div>
     </section>
     
-    <!-- Services Section with Parallax Effect dan Glow Border Merah -->
+    <!-- Services Section dengan Background Hitam dan Border Glow Merah -->
     <section class="services-section py-5" id="services">
         <div class="custom-bg"></div>
         <div class="custom-overlay"></div>
