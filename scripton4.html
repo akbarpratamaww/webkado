@@ -489,7 +489,7 @@
             margin: 0 auto 3rem;
         }
         
-        /* Parallax Service Cards Styles */
+        /* Parallax Service Cards Styles dengan Glow Border Merah */
         .services-section {
             padding: 80px 0;
             position: relative;
@@ -511,7 +511,7 @@
             
             width: 100%;
             height: 100%;
-            border: 1px solid rgba(183, 28, 28, 0.3);
+            border: 2px solid var(--ruby);
             border-radius: 1.6rem;
             padding: 2rem;
             
@@ -527,43 +527,66 @@
             background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(42, 42, 42, 0.9) 100%);
             box-shadow: 0 0 3rem .5rem rgba(183, 28, 28, 0.2);
             
-            transition: transform .6s 1s;
+            transition: transform .6s 1s, box-shadow .3s ease, border-color .3s ease;
             backdrop-filter: blur(10px);
         }
         
-        .service-container::before,
+        /* Glow border effect */
+        .service-container::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--ruby), var(--ruby-light), var(--ruby), var(--ruby-dark), var(--ruby));
+            background-size: 400% 400%;
+            border-radius: 1.6rem;
+            z-index: -1;
+            opacity: 0.7;
+            animation: glowing-border 3s ease-in-out infinite;
+            transition: opacity 0.3s ease;
+        }
+        
+        @keyframes glowing-border {
+            0% {
+                background-position: 0% 50%;
+                opacity: 0.7;
+            }
+            50% {
+                background-position: 100% 50%;
+                opacity: 1;
+            }
+            100% {
+                background-position: 0% 50%;
+                opacity: 0.7;
+            }
+        }
+        
         .service-container::after {
             content: "";
-            
-            width: 2rem;
-            height: 2rem;
-            border: 1px solid var(--ruby);
-            
             position: absolute;
-            z-index: 2;
-            
-            opacity: .3;
-            transition: .3s;
-        }
-        
-        .service-container::before {
-            top: 2rem;
-            right: 2rem;
-            
-            border-bottom-width: 0;
-            border-left-width: 0;
-        }
-        
-        .service-container::after {
-            bottom: 2rem;
-            left: 2rem;
-            
-            border-top-width: 0;
-            border-right-width: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(42, 42, 42, 0.9) 100%);
+            border-radius: 1.4rem;
+            z-index: -1;
         }
         
         .service-container--active {
             transition: none;
+        }
+        
+        .service-wrap:hover .service-container {
+            box-shadow: 0 0 5rem 1rem rgba(183, 28, 28, 0.6);
+            border-color: var(--ruby-light);
+        }
+        
+        .service-wrap:hover .service-container::before {
+            opacity: 1;
+            animation-duration: 1.5s;
         }
         
         .service-icon {
@@ -617,10 +640,36 @@
             z-index: 1;
         }
         
-        .service-wrap:hover .service-container::before,
-        .service-wrap:hover .service-container::after {
-            width: calc(100% - 4rem);
-            height: calc(100% - 4rem);
+        /* Corner decorations */
+        .service-container .corner-decoration {
+            position: absolute;
+            width: 2rem;
+            height: 2rem;
+            border: 1px solid var(--ruby-light);
+            z-index: 2;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+        
+        .service-container .corner-decoration.top-right {
+            top: 1rem;
+            right: 1rem;
+            border-bottom: none;
+            border-left: none;
+        }
+        
+        .service-container .corner-decoration.bottom-left {
+            bottom: 1rem;
+            left: 1rem;
+            border-top: none;
+            border-right: none;
+        }
+        
+        .service-wrap:hover .service-container .corner-decoration {
+            width: 3rem;
+            height: 3rem;
+            opacity: 1;
+            border-color: var(--accent);
         }
         
         /* Responsive adjustments for service cards */
@@ -883,7 +932,7 @@
             }
         }
         
-        /* Add a subtle glow effect to the carousel */
+        /* Add a subtle glow effect to carousel */
         .carousel-container::before {
             content: '';
             position: absolute;
@@ -2126,7 +2175,7 @@
         </div>
     </section>
     
-    <!-- Services Section with Parallax Effect -->
+    <!-- Services Section with Parallax Effect dan Glow Border Merah -->
     <section class="services-section py-5" id="services">
         <div class="custom-bg"></div>
         <div class="custom-overlay"></div>
@@ -2143,6 +2192,8 @@
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-wrap">
                         <div class="service-container">
+                            <div class="corner-decoration top-right"></div>
+                            <div class="corner-decoration bottom-left"></div>
                             <div class="service-icon">
                                 <i class="fas fa-code"></i>
                             </div>
@@ -2156,6 +2207,8 @@
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-wrap">
                         <div class="service-container">
+                            <div class="corner-decoration top-right"></div>
+                            <div class="corner-decoration bottom-left"></div>
                             <div class="service-icon">
                                 <i class="fas fa-mobile-alt"></i>
                             </div>
@@ -2169,6 +2222,8 @@
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-wrap">
                         <div class="service-container">
+                            <div class="corner-decoration top-right"></div>
+                            <div class="corner-decoration bottom-left"></div>
                             <div class="service-icon">
                                 <i class="fas fa-cloud"></i>
                             </div>
@@ -2182,6 +2237,8 @@
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
                     <div class="service-wrap">
                         <div class="service-container">
+                            <div class="corner-decoration top-right"></div>
+                            <div class="corner-decoration bottom-left"></div>
                             <div class="service-icon">
                                 <i class="fas fa-database"></i>
                             </div>
@@ -2195,6 +2252,8 @@
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
                     <div class="service-wrap">
                         <div class="service-container">
+                            <div class="corner-decoration top-right"></div>
+                            <div class="corner-decoration bottom-left"></div>
                             <div class="service-icon">
                                 <i class="fas fa-shield-alt"></i>
                             </div>
@@ -2208,6 +2267,8 @@
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
                     <div class="service-wrap">
                         <div class="service-container">
+                            <div class="corner-decoration top-right"></div>
+                            <div class="corner-decoration bottom-left"></div>
                             <div class="service-icon">
                                 <i class="fas fa-bolt"></i>
                             </div>
